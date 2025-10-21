@@ -42,17 +42,17 @@ export default async function NewsSection() {
             <Card key={item.id} className="overflow-hidden hover:shadow-lg transition-shadow">
               <div className="grid grid-rows-[auto_auto_1fr] h-full">
                 
-                <!--
-                {item.image_url && (
+                {(
                   <div className="aspect-video overflow-hidden">
                     <img
-                      src={"/placeholder.svg" || item.image_url }
+                      src={"/placeholder.svg"}
                       alt={item.title}
                       className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
                     />
                   </div>
                 )}
-                  --!>
+             
+          
 
                 <CardHeader>
                   <div className="flex items-center justify-between mb-2">
