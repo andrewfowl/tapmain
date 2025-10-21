@@ -165,24 +165,7 @@ async function NewsSection() {
               key={item.id}
               className="border border-corporate-200 hover:shadow-card transition-all duration-300 group overflow-hidden grid grid-rows-[auto_1fr]"
             >
-              {item.image_url && (
-                <div className="aspect-video overflow-hidden">
-                  <img
-                    src={item.image_url || "/placeholder.svg"}
-                    alt={item.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                    onError={(e) => {
-                      e.currentTarget.style.display = "none"
-                    }}
-                  />
-                </div>
-              )}
-              {!item.image_url && (
-                <div className="aspect-video bg-corporate-100 flex items-center justify-center">
-                  <div className="text-corporate-400 text-sm">No image available</div>
-                </div>
-              )}
-
+              
               <CardContent className="p-6 grid grid-rows-[auto_auto_1fr_auto_auto] gap-3">
                 <Badge className="bg-corporate-50 text-corporate-600 text-xs w-fit">{item.category}</Badge>
                 {/* CHANGE: Removed line-clamp-2 to show full title text */}
