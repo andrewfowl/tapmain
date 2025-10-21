@@ -41,6 +41,8 @@ export default async function NewsSection() {
           {news.map((item) => (
             <Card key={item.id} className="overflow-hidden hover:shadow-lg transition-shadow">
               <div className="grid grid-rows-[auto_auto_1fr] h-full">
+                
+                <!--
                 {item.image_url && (
                   <div className="aspect-video overflow-hidden">
                     <img
@@ -50,6 +52,7 @@ export default async function NewsSection() {
                     />
                   </div>
                 )}
+                  --!>
 
                 <CardHeader>
                   <div className="flex items-center justify-between mb-2">
