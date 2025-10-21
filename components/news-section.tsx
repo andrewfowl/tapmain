@@ -46,7 +46,7 @@ export default async function NewsSection() {
                 {item.image_url && (
                   <div className="aspect-video overflow-hidden">
                     <img
-                      src={item.image_url || "/placeholder.svg"}
+                      src={"/placeholder.svg" || item.image_url }
                       alt={item.title}
                       className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
                     />
