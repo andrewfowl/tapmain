@@ -117,17 +117,17 @@ export default function ContactForm() {
   }
 
   return (
-    <div className="space-y-8">
-      <div className="text-center">
-        <h2 className="text-3xl font-serif text-corporate-900 mb-4">How can we help you?</h2>
-        <p className="text-corporate-600 mb-8">Tell us about your finance transformation needs</p>
+    <div className="space-y-12 py-8">
+      <div className="text-center space-y-4">
+        <h2 className="text-3xl font-serif text-corporate-900">How can we help you?</h2>
+        <p className="text-corporate-600 text-lg">Tell us about your finance transformation needs</p>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-16">
         <div className="lg:col-span-2">
-          <form onSubmit={handleSubmit} className="space-y-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="space-y-2">
+          <form onSubmit={handleSubmit} className="space-y-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div className="space-y-3">
                 <label htmlFor="firstName" className="text-sm font-medium text-corporate-900">
                   First Name
                 </label>
@@ -142,7 +142,7 @@ export default function ContactForm() {
                   required
                 />
               </div>
-              <div className="space-y-2">
+              <div className="space-y-3">
                 <label htmlFor="lastName" className="text-sm font-medium text-corporate-900">
                   Last Name
                 </label>
@@ -159,7 +159,7 @@ export default function ContactForm() {
               </div>
             </div>
 
-            <div className="space-y-2">
+            <div className="space-y-3">
               <label htmlFor="email" className="text-sm font-medium text-corporate-900">
                 Email Address
               </label>
@@ -175,7 +175,7 @@ export default function ContactForm() {
               />
             </div>
 
-            <div className="space-y-2">
+            <div className="space-y-3">
               <label htmlFor="company" className="text-sm font-medium text-corporate-900">
                 Company
               </label>
@@ -190,7 +190,7 @@ export default function ContactForm() {
               />
             </div>
 
-            <div className="space-y-2">
+            <div className="space-y-3">
               <label htmlFor="subject" className="text-sm font-medium text-corporate-900">
                 Subject
               </label>
@@ -205,14 +205,14 @@ export default function ContactForm() {
               />
             </div>
 
-            <div className="space-y-2">
+            <div className="space-y-3">
               <label htmlFor="message" className="text-sm font-medium text-corporate-900">
                 Message
               </label>
               <textarea
                 id="message"
                 name="message"
-                rows={5}
+                rows={6}
                 value={formData.message}
                 onChange={handleInputChange}
                 className="w-full px-4 py-3 border border-corporate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-accent1-500 bg-white text-corporate-900 placeholder-corporate-400"
@@ -243,7 +243,7 @@ export default function ContactForm() {
               </div>
             )}
 
-            <div className="flex items-start space-x-3">
+            <div className="flex items-start space-x-3 pt-4">
               <Checkbox
                 id="privacy"
                 checked={formData.privacyConsent}
@@ -261,7 +261,7 @@ export default function ContactForm() {
               </label>
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-4">
+            <div className="flex flex-col sm:flex-row gap-4 pt-4">
               <Button type="submit" size="lg" className="bg-black hover:bg-gray-800 text-white" disabled={isSubmitting}>
                 {isSubmitting ? "Sending..." : "Send Message"}
               </Button>
@@ -295,17 +295,17 @@ export default function ContactForm() {
         </div>
 
         <div>
-          <h3 className="text-2xl font-serif text-corporate-900 mb-8">Contact Information</h3>
+          <h3 className="text-2xl font-serif text-corporate-900 mb-10">Contact Information</h3>
 
-          <div className="space-y-6">
+          <div className="space-y-8">
             <Card className="bg-white border-corporate-200">
-              <CardContent className="p-6 flex items-start gap-4">
+              <CardContent className="p-8 flex items-start gap-4">
                 <div className="bg-corporate-100 p-3 rounded-full">
                   <Mail className="h-6 w-6 text-corporate-700" />
                 </div>
                 <div>
-                  <h4 className="font-medium text-corporate-900 mb-1">Email Us</h4>
-                  <p className="text-corporate-600 mb-2">Our team will respond within 24 hours</p>
+                  <h4 className="font-medium text-corporate-900 mb-2">Email Us</h4>
+                  <p className="text-corporate-600 mb-3">Our team will respond within 24 hours</p>
                   <a href="mailto:info@techaccountingpro.com" className="text-accent1-600 hover:underline">
                     info@techaccountingpro.com
                   </a>
@@ -314,13 +314,13 @@ export default function ContactForm() {
             </Card>
 
             <Card className="bg-white border-corporate-200">
-              <CardContent className="p-6 flex items-start gap-4">
+              <CardContent className="p-8 flex items-start gap-4">
                 <div className="bg-corporate-100 p-3 rounded-full">
                   <Phone className="h-6 w-6 text-corporate-700" />
                 </div>
                 <div>
-                  <h4 className="font-medium text-corporate-900 mb-1">Call Us</h4>
-                  <p className="text-corporate-600 mb-2">Monday to Friday, 9am-6pm EST</p>
+                  <h4 className="font-medium text-corporate-900 mb-2">Call Us</h4>
+                  <p className="text-corporate-600 mb-3">Monday to Friday, 9am-6pm EST</p>
                   <a href="tel:5022860115" className="text-accent1-600 hover:underline">
                     502 286 0115
                   </a>
