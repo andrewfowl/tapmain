@@ -176,7 +176,7 @@ async function NewsSection() {
                 {item.external_url ? (
                   <Button asChild variant="outline" size="sm" className="w-full bg-transparent">
                     <a href={item.external_url} target="_blank" rel="noopener noreferrer">
-                      Read External Article
+                      Read More
                       <ChevronRight />
                     </a>
                   </Button>
