@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Checkbox } from "@/components/ui/checkbox"
 import TechnicalInquiryForm from "./technical-inquiry-form"
+import { submitContactForm } from "@/actions/contact-actions"
 
 const Mail = ({ className }: { className?: string }) => (
   <svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -49,21 +50,61 @@ export default function ContactForm() {
     subject: "",
     message: "",
     privacyConsent: false,
+    honeypot: "", // Added honeypot field for bot prevention
   })
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitMessage, setSubmitMessage] = useState<{ type: "success" | "error"; text: string } | null>(null)
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
 
-    if (typeof window !== "undefined" && (window as any).plausible) {
-      ;(window as any).plausible("Form Submit", {
-        props: {
-          category: "General Contact",
-          label: formData.subject || "General Inquiry",
-        },
+    if (!formData.privacyConsent) {
+      setSubmitMessage({
+        type: "error",
+        text: "Please agree to the Privacy Policy to continue",
       })
+      return
     }
 
-    console.log("Form submitted:", formData)
+    setIsSubmitting(true)
+    setSubmitMessage(null)
+
+    const result = await submitContactForm(formData)
+
+    setIsSubmitting(false)
+
+    if (result.success) {
+      setSubmitMessage({
+        type: "success",
+        text: result.message,
+      })
+
+      setFormData({
+        firstName: "",
+        lastName: "",
+        email: "",
+        company: "",
+        subject: "",
+        message: "",
+        privacyConsent: false,
+        honeypot: "",
+      })
+
+      // Track analytics
+      if (typeof window !== "undefined" && (window as any).plausible) {
+        ;(window as any).plausible("Form Submit", {
+          props: {
+            category: "General Contact",
+            label: formData.subject || "General Inquiry",
+          },
+        })
+      }
+    } else {
+      setSubmitMessage({
+        type: "error",
+        text: result.message,
+      })
+    }
   }
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -179,12 +220,36 @@ export default function ContactForm() {
               ></textarea>
             </div>
 
+            <input
+              type="text"
+              name="honeypot"
+              value={formData.honeypot}
+              onChange={handleInputChange}
+              style={{ position: "absolute", left: "-9999px" }}
+              tabIndex={-1}
+              autoComplete="off"
+              aria-hidden="true"
+            />
+
+            {submitMessage && (
+              <div
+                className={`p-4 rounded-md border-2 ${
+                  submitMessage.type === "success"
+                    ? "bg-green-50 border-green-500 text-green-800"
+                    : "bg-red-50 border-red-500 text-red-800"
+                }`}
+              >
+                {submitMessage.text}
+              </div>
+            )}
+
             <div className="flex items-start space-x-3">
               <Checkbox
                 id="privacy"
                 checked={formData.privacyConsent}
                 onCheckedChange={(checked) => setFormData((prev) => ({ ...prev, privacyConsent: checked as boolean }))}
                 className="mt-1"
+                required
               />
               <label htmlFor="privacy" className="text-sm text-corporate-600 leading-relaxed">
                 I agree to the{" "}
@@ -192,12 +257,13 @@ export default function ContactForm() {
                   Privacy Policy
                 </button>{" "}
                 and consent to being contacted about our services.
+                <span className="text-red-500 ml-1">*</span>
               </label>
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button type="submit" size="lg" className="bg-black hover:bg-gray-800 text-white">
-                Send Message
+              <Button type="submit" size="lg" className="bg-black hover:bg-gray-800 text-white" disabled={isSubmitting}>
+                {isSubmitting ? "Sending..." : "Send Message"}
               </Button>
               <Button
                 type="button"
