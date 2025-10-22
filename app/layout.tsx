@@ -6,6 +6,10 @@ import Script from 'next/script'
 import { SiteHeader } from "@/components/site-header"
 import { SiteFooter } from "@/components/site-footer"
 
+const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID ?? "GTM-XXXXXXX"
+const FB_PIXEL = process.env.NEXT_PUBLIC_FB_PIXEL_ID ?? "000000000000000"
+const GTAG_ID = process.env.NEXT_PUBLIC_GTAG_ID ?? "G-0000000000"
+
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
@@ -21,11 +25,12 @@ const jetbrainsMono = JetBrains_Mono({
 export const metadata: Metadata = {
   title: 'TechAccountingPro | Expert Technical Accounting Services Tailored to Your Business Needs.',
   description: 'Solve complex crypto accounting questions with TechAccountingPro. Access expert insights, actionable templates, and proven methodologies to modernize your accounting practices with cutting-edge technology. ',
+  metadataBase: new URL("https://techaccountingpro.com"),
   openGraph: {
     url: 'https://techaccountingpro.com/',
     title: 'TechAccountingPro | Your Technical Accounting Expert.',
     description: 'Solve complex crypto accounting questions with TechAccountingPro.',
-    images: ['/placeholder-logo.png'],
+    images: ['https://techaccountingpro.com/placeholder-logo.png'],
     siteName: 'TechAccountingPro',
     locale: 'en_US',
     type: 'website'
@@ -36,7 +41,7 @@ export const metadata: Metadata = {
     creator: '@tech_accounting',
     title: 'TechAccountingPro | Expert Technical Accounting Services Tailored to Your Business Needs.',
     description: 'Unlock Complex Accounting Solutions with TechAccountingPro.',
-    images: ['/placeholder-logo.png']
+    images: ['https://techaccountingpro.com/placeholder-logo.png']
   }
 }
 
@@ -55,7 +60,7 @@ export default function RootLayout({
             new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
             j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-          })(window,document,'script','dataLayer','GTM-NVT9NSG');`
+          })(window,document,'script','dataLayer', '${GTM_ID}' );`
         }} />
         
       {/* Facebook Pixel */}
@@ -69,22 +74,25 @@ export default function RootLayout({
             t.src=v;s=b.getElementsByTagName(e)[0];
             s.parentNode.insertBefore(t,s)}(window, document,'script',
             'https://connect.facebook.net/en_US/fbevents.js');
-            fbq('init', '756082456105844');
+            fbq('init', '${FB_PIXEL}' );
             fbq('track', 'PageView');
           `
         }} />
-        <noscript>
-          <img height="1" width="1" style={{ display: 'none' }}
-            src="https://www.facebook.com/tr?id=756082456105844&ev=PageView&noscript=1" />
-        </noscript>
+        
       
       </head>
       <body className={`${inter.variable} ${jetbrainsMono.variable} font-sans`}>
          {/* Google Tag Manager (noscript) */}
         <noscript>
-          <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NVT9NSG"
+          <iframe src={`https://www.googletagmanager.com/ns.html?id=${GTM_ID}`}
             height="0" width="0" style={{ display: 'none', visibility: 'hidden' }}></iframe>
         </noscript>
+
+        <noscript>
+          <img height="1" width="1" style={{ display: 'none' }}
+            src={`https://www.facebook.com/tr?id=${FB_PIXEL}&ev=PageView&noscript=1`} />
+        </noscript>
+        
         <SiteHeader />
         <main className="min-h-screen">{children}</main>
         <SiteFooter />
