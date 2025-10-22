@@ -8,13 +8,13 @@ import { Badge } from "@/components/ui/badge"
 import EmailCaptureModal from "./email-capture-modal"
 
 const ArrowRightIcon = () => (
-  <svg className="h-3 w-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+  <svg aria-hidden="true" className="h-3 w-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
   </svg>
 )
 
 const DownloadIcon = () => (
-  <svg className="h-3 w-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+  <svg aria-hidden="true"  className="h-3 w-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
     <path
       strokeLinecap="round"
       strokeLinejoin="round"
@@ -25,7 +25,7 @@ const DownloadIcon = () => (
 )
 
 const FileTextIcon = () => (
-  <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+  <svg aria-hidden="true" className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
     <path
       strokeLinecap="round"
       strokeLinejoin="round"
@@ -36,7 +36,7 @@ const FileTextIcon = () => (
 )
 
 const BookOpenIcon = () => (
-  <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+  <svg aria-hidden="true"  className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
     <path
       strokeLinecap="round"
       strokeLinejoin="round"
@@ -47,7 +47,7 @@ const BookOpenIcon = () => (
 )
 
 const TargetIcon = () => (
-  <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+  <svg aria-hidden="true"  className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
     <path
       strokeLinecap="round"
       strokeLinejoin="round"
@@ -58,13 +58,13 @@ const TargetIcon = () => (
 )
 
 const ChevronDownIcon = () => (
-  <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+  <svg aria-hidden="true"  className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
   </svg>
 )
 
 const ChevronUpIcon = () => (
-  <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+  <svg aria-hidden="true" className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 15l7-7 7 7" />
   </svg>
 )
@@ -114,16 +114,13 @@ export default function CombinedResourcesSection({ templates, policies, insights
     description: "",
   })
 
-  const toggleSection = (section: string) => {
-    const newExpanded = new Set(expandedSections)
-    if (newExpanded.has(section)) {
-      newExpanded.delete(section)
-    } else {
-      newExpanded.add(section)
-    }
-    setExpandedSections(newExpanded)
-  }
-
+  const toggleSection = (section: string) =>
+  setExpandedSections(prev => {
+    const next = new Set(prev)
+    next.has(section) ? next.delete(section) : next.add(section)
+    return next
+  })
+  
   const handleDownloadClick = (title: string, description: string, downloadUrl?: string) => {
     setEmailModal({
       isOpen: true,
@@ -138,15 +135,21 @@ export default function CombinedResourcesSection({ templates, policies, insights
     // 1. Save the email to your database
     // 2. Send the download link via email
     // 3. Track the download for analytics
-    console.log("Email captured:", email)
 
+      console.log("Email captured:", email)
+    
     // For now, just trigger the download
-    if (emailModal.downloadUrl) {
-      window.open(emailModal.downloadUrl, "_blank")
-    }
+    if (emailModal.downloadUrl) window.open(emailModal.downloadUrl, "_blank", "noopener,noreferrer")
+    
+    setEmailModal((m) => ({ ...m, isOpen: false }))
   }
 
-  const renderResourceGrid = (items: any[], type: "template" | "policy" | "insight", showAll: boolean) => {
+  type Item = Template | Policy | Insight
+  const renderResourceGrid = (
+    items: Item[],
+    type: "template" | "policy" | "insight", 
+    showAll: boolean
+  ) => {
     const displayItems = showAll ? items : items.slice(0, 4)
 
     return (
@@ -194,6 +197,8 @@ export default function CombinedResourcesSection({ templates, policies, insights
                     variant="outline"
                     size="sm"
                     className="w-full bg-transparent border-corporate-300 hover:bg-corporate-50 hover:border-accent1-300"
+                    onClick={() => handleDownloadClick(item.title, item.description, item.file_url)}
+                    disabled={!item.file_url}
                   >
                     <Link href={`/insights/${item.slug}`}>
                       Read More
@@ -312,7 +317,7 @@ export default function CombinedResourcesSection({ templates, policies, insights
                   </div>
                   <h3 className="text-2xl font-semibold text-corporate-900">Expert Insights</h3>
                 </div>
-                {insights.length > 4 && (
+                {hasInsights && insights.length > 4 && (
                   <Button
                     variant="outline"
                     onClick={() => toggleSection("insights")}
