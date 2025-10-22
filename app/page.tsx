@@ -216,7 +216,7 @@ async function CombinedResourcesContent() {
     getPublishedInsights(8),
   ])
 
-  return <CombinedResourcesSection templates={templates} policies={policies} insights={insights} />
+   return <CombinedResourcesSection templates={templates} policies={policies} insights={[]} />
 }
 
 export default async function Home() {
@@ -243,11 +243,11 @@ export default async function Home() {
   }
 
   const stats = [
-    { value: "$282B", label: "Total Assets of Clients Served" },
-    { value: "3 years", label: "Serving Clients" },
-    { value: "25+", label: "Financial Statement Sets" },
+    { value: "$282B", label: "Total Assets Under Service" },
+    { value: "3 years", label: "Helping Startups" },
+    { value: "100+", label: "Financial Statements Prepared" },
     { value: "100+", label: "Thought Leadership Publications" },
-    { value: `${templateCount}+`, label: "Templates & Frameworks" },
+    { value: `${templateCount}+`, label: "Templates & Frameworks Published" },
   ]
 
   const faqs = [
@@ -718,7 +718,7 @@ export default async function Home() {
       </section>
 
       {/* 5. Combined Resources Section (Templates, Policies, Insights) */}
-      <div className="hidden">
+      <div>
         <Suspense
           fallback={
             <div className="py-20 animate-pulse bg-corporate-50">
