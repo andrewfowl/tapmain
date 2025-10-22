@@ -35,50 +35,6 @@ async function FeaturedSolutionsContent() {
         <SolutionsGrid solutions={allSolutions} />
       </div>
 
-      {/* Test Your Knowledge and Technical Accounting Inquiry cards below */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-        {/* B. Test Your Knowledge */}
-        <Card className="border border-corporate-200">
-          <CardContent className="p-6">
-            <div className="flex items-center mb-4">
-              <Crosshair />
-              <h3 className="text-xl font-medium text-corporate-900 ml-3">Test Your Knowledge</h3>
-            </div>
-            <p className="text-corporate-600 mb-4">
-              Challenge yourself with our interactive assessments and see how you rank on the leaderboard.
-            </p>
-            <div className="bg-corporate-50 rounded-lg p-6 mb-4 text-center">
-              <div className="text-corporate-600 mb-2">Ready to test your knowledge?</div>
-              <div className="text-sm text-corporate-500">Take the assessment to see your score and ranking</div>
-            </div>
-            <Button variant="outline" className="w-full bg-transparent">
-              Take Assessment
-            </Button>
-          </CardContent>
-        </Card>
-
-        {/* C. Technical Accounting Inquiry Service */}
-        <Card className="border border-corporate-200">
-          <CardContent className="p-6">
-            <div className="flex items-center mb-4">
-              <BookOpen />
-              <h3 className="text-xl font-medium text-corporate-900 ml-3">Technical Accounting Inquiry</h3>
-            </div>
-            <p className="text-corporate-600 mb-4">
-              Get expert answers to your technical accounting questions. Public and private consultation options
-              available.
-            </p>
-            <div className="space-y-2 mb-4">
-              <div className="text-sm text-corporate-600">Recent Public Responses:</div>
-              <div className="text-xs text-corporate-500">• ASC 606 Revenue Recognition</div>
-              <div className="text-xs text-corporate-500">• Lease Accounting Updates</div>
-              <div className="text-xs text-corporate-500">• Stock Compensation</div>
-            </div>
-            <Button variant="outline" className="w-full bg-transparent">
-              Ask a Question
-            </Button>
-          </CardContent>
-        </Card>
       </div>
     </div>
   )
@@ -857,13 +813,27 @@ export default async function Home() {
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-2xl mx-auto">
             <Button size="lg" className="bg-black text-white hover:bg-gray-800 flex-1">
-              Ask a Public Question
-              <ChevronRight />
-            </Button>
-            <Button size="lg" variant="outline" className="bg-transparent flex-1">
-              Schedule Private Consultation
-              <ChevronRight />
-            </Button>
+                <a
+                  href="https://cal.com/andrew-belonogov/30min"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group"
+                >
+                  Ask a Public Question
+                  <ChevronRight />
+                </a>
+              </Button>
+              <Button size="lg" variant="outline" className="bg-transparent flex-1">
+                <a
+                  href="https://cal.com/andrew-belonogov/30min"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group"
+                >
+                  Schedule Private Consultation
+                  <ChevronRight />
+                </a>
+              </Button>
           </div>
         </div>
       </section>
