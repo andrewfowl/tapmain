@@ -810,7 +810,7 @@ export default async function Home() {
           </div>
 
           {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-2xl mx-auto">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-1xl mx-auto">
             <Button size="lg" className="bg-black text-white hover:bg-gray-800 flex-1">
                 <a
                   href="https://cal.com/andrew-belonogov/30min"
@@ -818,18 +818,7 @@ export default async function Home() {
                   rel="noopener noreferrer"
                   className="group"
                 >
-                  Ask a Public Question
-                  <ChevronRight />
-                </a>
-              </Button>
-              <Button size="lg" variant="outline" className="bg-transparent flex-1">
-                <a
-                  href="https://cal.com/andrew-belonogov/30min"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group"
-                >
-                  Schedule Private Consultation
+                  Free Public Consultation
                   <ChevronRight />
                 </a>
               </Button>
