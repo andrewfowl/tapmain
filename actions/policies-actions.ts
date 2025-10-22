@@ -13,6 +13,7 @@ export interface Policy {
   created_at: string
   updated_at: string
   created_by: string
+  downloadUrl?: string
 }
 
 export async function getPublishedPolicies(): Promise<Policy[]> {
@@ -119,6 +120,7 @@ function getFallbackPolicies(): Policy[] {
       created_at: new Date().toISOString(),
       updated_at: new Date().toISOString(),
       created_by: "system",
+      downloadUrl: "",
     },
     {
       id: "2",
@@ -131,6 +133,7 @@ function getFallbackPolicies(): Policy[] {
       created_at: new Date().toISOString(),
       updated_at: new Date().toISOString(),
       created_by: "system",
+      downloadUrl: "",
     },
     {
       id: "3",
@@ -143,6 +146,7 @@ function getFallbackPolicies(): Policy[] {
       created_at: new Date().toISOString(),
       updated_at: new Date().toISOString(),
       created_by: "system",
+      downloadUrl: "",
     },
     {
       id: "4",
@@ -155,6 +159,7 @@ function getFallbackPolicies(): Policy[] {
       created_at: new Date().toISOString(),
       updated_at: new Date().toISOString(),
       created_by: "system",
+      downloadUrl: "",
     },
   ]
 }
