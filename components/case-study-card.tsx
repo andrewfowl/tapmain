@@ -47,7 +47,7 @@ export function CaseStudyCard({ result, title, description, highlights, pdfUrl, 
             <Button asChild variant="outline" className="w-full bg-transparent">
               <a href={pdfUrl} target="_blank" rel="noopener noreferrer">
                 <Download />
-                <span className="ml-2">Download Case Study (PDF)</span>
+                <span className="ml-2">Download PDF</span>
               </a>
             </Button>
 
