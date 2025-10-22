@@ -15,6 +15,7 @@ export interface Template {
   published: boolean
   created_at: string
   updated_at: string
+  downloadUrl?: string
 }
 
 export async function getTemplateDownloadUrl(slug: string, fileType: string): Promise<string> {
@@ -29,7 +30,8 @@ export async function getTemplateDownloadUrl(slug: string, fileType: string): Pr
   }
 
   const folder = folderMap[fileType.toLowerCase()] || "pdfs"
-  return `${baseUrl}${folder}/${slug}.${fileType}`
+  const returnUrl = downloadUrl ||  `${baseUrl}${folder}/${slug}.${fileType}`
+  return returnUrl
 }
 
 export async function getPublishedTemplates(): Promise<Template[]> {
