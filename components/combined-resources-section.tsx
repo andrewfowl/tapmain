@@ -82,7 +82,7 @@ interface Policy {
   title: string
   description: string
   category: string
-  url?: string
+  downloadUrl?: string
 }
 
 interface Insight {
@@ -92,6 +92,7 @@ interface Insight {
   type: string
   slug: string
   image_url?: string
+  downloadUrl?: string
 }
 
 interface CombinedResourcesSectionProps {
@@ -198,8 +199,8 @@ export default function CombinedResourcesSection({ templates, policies, insights
                     variant="outline"
                     size="sm"
                     className="w-full bg-transparent border-corporate-300 hover:bg-corporate-50 hover:border-accent1-300"
-                    onClick={() => handleDownloadClick(item.title, item.description, item.url)}
-                    disabled={!item.url}
+                    onClick={() => handleDownloadClick(item.title, item.description, item.slug)}
+                    disabled={!item.downloadUrl}
                   >
                     <Link href={`/insights/${item.slug}`}>
                       Read More
@@ -213,7 +214,7 @@ export default function CombinedResourcesSection({ templates, policies, insights
                     variant="outline"
                     size="sm"
                     className="w-full bg-transparent border-corporate-300 hover:bg-accent1-50 hover:border-accent1-300 hover:text-accent1-700"
-                    onClick={() => handleDownloadClick(item.title, item.description, item.url)}
+                    onClick={() => handleDownloadClick(item.title, item.description, item.downloadUrl)}
                   > Download
                     <div className="ml-2">
                       <DownloadIcon />
