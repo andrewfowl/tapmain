@@ -199,8 +199,9 @@ export default async function Home() {
 
   const stats = [
     { value: "$282B", label: "Total Assets Under Service" },
-    { value: "3 years", label: "Helping Startups" },
+    { value: "3 years", label: "Helping Web3 Startups" },
     { value: "100+", label: "Financial Statements Prepared" },
+    { value: "500+", label: "Template Downloads" },
     { value: "100+", label: "Thought Leadership Publications" },
     { value: `${templateCount}+`, label: "Templates & Frameworks Published" },
   ]
