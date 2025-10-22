@@ -11,6 +11,7 @@ export interface Insight {
   published: boolean
   created_at: string
   updated_at: string
+  downloadUrl?: string
 }
 
 export async function getPublishedInsights(limit = 6): Promise<Insight[]> {
