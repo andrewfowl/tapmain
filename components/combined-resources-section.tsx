@@ -122,6 +122,7 @@ export default function CombinedResourcesSection({ templates, policies, insights
   })
   
   const handleDownloadClick = (title: string, description: string, downloadUrl?: string) => {
+    
     setEmailModal({
       isOpen: true,
       title,
