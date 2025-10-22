@@ -214,12 +214,7 @@ export default function CombinedResourcesSection({ templates, policies, insights
                     size="sm"
                     className="w-full bg-transparent border-corporate-300 hover:bg-accent1-50 hover:border-accent1-300 hover:text-accent1-700"
                     onClick={() => handleDownloadClick(item.title, item.description, item.file_url)}
-                  >
-                    {item.title.toLowerCase().includes("case study")
-                      ? "Read Case Study (PDF)"
-                      : item.title.toLowerCase().includes("report")
-                        ? "Download Report"
-                        : "Download"}
+                  > Download
                     <div className="ml-2">
                       <DownloadIcon />
                     </div>
