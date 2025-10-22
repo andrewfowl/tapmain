@@ -36,9 +36,10 @@ interface EmailCaptureModalProps {
   onSubmit: (email: string) => void
   title: string
   description: string
+  downloadUrl?: string
 }
 
-export default function EmailCaptureModal({ isOpen, onClose, onSubmit, title, description }: EmailCaptureModalProps) {
+export default function EmailCaptureModal({ isOpen, onClose, onSubmit, title, description, downloadUrl? }: EmailCaptureModalProps) {
   const [email, setEmail] = useState("")
   const [isSubmitting, setIsSubmitting] = useState(false)
 
@@ -48,6 +49,10 @@ export default function EmailCaptureModal({ isOpen, onClose, onSubmit, title, de
 
     setIsSubmitting(true)
     try {
+      if (downloadUrl) {
+          const win = window.open(downloadUrl, "_blank", "noopener,noreferrer")
+          if (!win) window.location.href = downloadUrl // fallback if blocked
+      }
       await onSubmit(email)
       setEmail("")
       onClose()
