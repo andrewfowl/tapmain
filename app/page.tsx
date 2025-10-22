@@ -1034,12 +1034,15 @@ export default async function Home() {
       {/* 10. Case Studies */}
       <section className="py-20 md:py-28 bg-card">
         <div className="corporate-container">
-          <div className="corporate-section-title">
-            <h2 className="text-3xl md:text-4xl">See How We've Helped Clients</h2>
-            <p>Real results from our client engagements in the digital assets space.</p>
+          <div className="text-center mb-16">
+            <Badge className="bg-corporate-100 text-corporate-800 hover:bg-corporate-200 mb-4">Case Studies</Badge>
+            <h2 className="text-2xl md:text-3xl font-serif text-corporate-900 mb-4">See How We've Helped Clients</h2>
+            <p className="text-corporate-600 max-w-2xl mx-auto">
+              Real results from our client engagements in the digital assets space.
+            </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-16 max-w-4xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-7xl mx-auto">
             {[
               {
                 result: "Successful audit by Top CPA firm",
@@ -1072,53 +1075,7 @@ export default async function Home() {
                 image: "/images/case-study-01.jpg",
               },
             ].map((caseStudy, index) => (
-              <Card key={index} className="border border-corporate-200">
-                {caseStudy.image && (
-                  <div className="relative w-full h-[272px] overflow-hidden">
-                    <Image
-                      src={caseStudy.image || "/placeholder.svg"}
-                      alt={caseStudy.title}
-                      width={190}
-                      height={272}
-                      className="object-cover w-full h-full"
-                    />
-                  </div>
-                )}
-                <CardContent className="p-8 grid grid-rows-[auto_auto_1fr_auto] gap-4 h-full">
-                  {/* Date and title row */}
-                  <div>
-                    <div className="text-xs text-corporate-500 mb-2">{caseStudy.date}</div>
-                    <h3 className="text-xl font-medium text-corporate-800 min-h-[3.5rem] line-clamp-2">
-                      {caseStudy.title}
-                    </h3>
-                    <p className="text-lg font-serif text-accent1-600 mt-2">{caseStudy.result}</p>
-                  </div>
-
-                  {/* Description and highlights - flexible height */}
-                  <div>
-                    <p className="text-corporate-600 text-sm mb-4">{caseStudy.description}</p>
-                    <div>
-                      <h4 className="font-medium text-corporate-800 mb-2 text-sm">Key Achievements:</h4>
-                      <ul className="space-y-1">
-                        {caseStudy.highlights.map((highlight, i) => (
-                          <li key={i} className="text-corporate-600 text-xs flex items-start">
-                            <Check />
-                            <span className="ml-2">{highlight}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </div>
-
-                  {/* Download button - aligned to bottom */}
-                  <Button asChild variant="outline" className="w-full bg-transparent">
-                    <a href={caseStudy.pdfUrl} target="_blank" rel="noopener noreferrer">
-                      <Download />
-                      <span className="ml-2">Download Case Study (PDF)</span>
-                    </a>
-                  </Button>
-                </CardContent>
-              </Card>
+                <CaseStudyCard key={index} {...caseStudy} />
             ))}
           </div>
         </div>
