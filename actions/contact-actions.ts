@@ -19,92 +19,86 @@ interface SubmissionResult {
   message: string
 }
 
-// Simple rate limiting check - max 3 submissions per IP per hour
-async function checkRateLimit(ipAddress: string): Promise<boolean> {
-  const supabase = await createClient()
+// Max 3 submissions per IP per hour
+const MAX_PER_HOUR_PER_IP = 3
+
+type Supa = Awaited<ReturnType<typeof createClient>>
+
+async function checkRateLimit(supabase: Supa, ipAddress: string): Promise<boolean> {
   const oneHourAgo = new Date(Date.now() - 60 * 60 * 1000).toISOString()
 
-  const { data, error } = await supabase.from("service_requests").select("id").gte("created_at", oneHourAgo)
+  const { count, error } = await supabase
+    .from("service_requests")
+    .select("id", { count: "exact", head: true })
+    .eq("ip_address", ipAddress)
+    .gte("created_at", oneHourAgo)
 
   if (error) {
     console.error("[v0] Rate limit check error:", error)
-    return true // Allow on error to not block legitimate users
+    return true // allow on error
   }
 
-  return (data?.length || 0) < 5
+  return (count || 0) < MAX_PER_HOUR_PER_IP
 }
+
 
 export async function submitContactForm(submission: ContactSubmission): Promise<SubmissionResult> {
   try {
-    console.log("[v0] Contact form submission received:", {
-      email: submission.email,
-      hasPrivacyConsent: submission.privacyConsent,
-    })
-
-    // Bot prevention: Check honeypot field
-    if (submission.honeypot) {
-      console.log("[v0] Bot detected via honeypot field")
-      return {
-        success: false,
-        message: "Invalid submission",
-      }
+    // Honeypot fast-fail
+    if (submission.honeypot?.trim()) {
+      return { success: false, message: "Invalid submission" }
     }
 
-    // Validate required fields
-    if (!submission.firstName || !submission.lastName || !submission.email || !submission.message) {
-      return {
-        success: false,
-        message: "Please fill in all required fields",
-      }
+    // Normalize
+    const firstName = submission.firstName?.trim()
+    const lastName  = submission.lastName?.trim()
+    const email     = submission.email?.toLowerCase().trim()
+    const company   = submission.company?.trim() || null
+    const subject   = submission.subject?.trim()
+    const message   = submission.message?.trim()
+
+    // Requireds
+    if (!firstName || !lastName || !email || !message) {
+      return { success: false, message: "Please fill in all required fields" }
     }
 
-    // Validate privacy consent
     if (!submission.privacyConsent) {
-      return {
-        success: false,
-        message: "Please agree to the Privacy Policy to continue",
-      }
+      return { success: false, message: "Please agree to the Privacy Policy to continue" }
     }
 
-    // Validate email
+    // Email format
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-    if (!emailRegex.test(submission.email)) {
-      return {
-        success: false,
-        message: "Please provide a valid email address",
-      }
+    if (!emailRegex.test(email)) {
+      return { success: false, message: "Please provide a valid email address" }
     }
 
-    // Get IP address for rate limiting
-    const headersList = await headers()
-    const ipAddress = headersList.get("x-forwarded-for")?.split(",")[0] || headersList.get("x-real-ip") || "unknown"
-
-    // Check rate limit
-    const withinLimit = await checkRateLimit(ipAddress)
-    if (!withinLimit) {
-      return {
-        success: false,
-        message: "Too many submission attempts. Please try again later.",
-      }
-    }
+    // Headers() is sync
+    const hdrs = headers()
+    const rawIp =
+      hdrs.get("x-forwarded-for")?.split(",")[0]?.trim() ||
+      hdrs.get("x-real-ip")?.trim() ||
+      null
 
     const supabase = await createClient()
 
-    // Combine first and last name
-    const fullName = `${submission.firstName.trim()} ${submission.lastName.trim()}`
+    // Rate limit only if we have an IP
+    if (rawIp) {
+      const withinLimit = await checkRateLimit(supabase, rawIp)
+      if (!withinLimit) {
+        return { success: false, message: "Too many submission attempts. Please try again later." }
+      }
+    }
 
-    // Combine subject and message
-    const fullMessage = submission.subject
-      ? `Subject: ${submission.subject}\n\n${submission.message}`
-      : submission.message
+    const fullName = `${firstName} ${lastName}`
+    const fullMessage = subject ? `Subject: ${subject}\n\n${message}` : message
 
-    // Insert contact submission into service_requests table
     const { error } = await supabase.from("service_requests").insert({
       full_name: fullName,
-      email: submission.email.toLowerCase().trim(),
-      company: submission.company?.trim() || null,
-      message: fullMessage.trim(),
-      solution_id: null, // General contact, not related to a specific solution
+      email,
+      company,
+      message: fullMessage,
+      solution_id: null,          // general contact
+      ip_address: rawIp ?? null,  // store null if unknown
     })
 
     if (error) {
@@ -115,17 +109,12 @@ export async function submitContactForm(submission: ContactSubmission): Promise<
       }
     }
 
-    console.log("[v0] Contact form submitted successfully for:", submission.email)
-
     return {
       success: true,
       message: "Thank you for contacting us! We'll get back to you within 24 hours.",
     }
-  } catch (error) {
-    console.error("[v0] Contact form submission error:", error)
-    return {
-      success: false,
-      message: "An error occurred. Please try again.",
-    }
+  } catch (err) {
+    console.error("[v0] Contact form submission error:", err)
+    return { success: false, message: "An error occurred. Please try again." }
   }
 }
