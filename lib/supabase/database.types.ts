@@ -41,6 +41,7 @@ export interface Database {
           image_url: string | null
           type: string | null
           published: boolean
+          downloadUrl: string | null
         }
         Insert: {
           id?: string
@@ -53,6 +54,7 @@ export interface Database {
           image_url?: string | null
           type?: string | null
           published?: boolean
+          downloadUrl?: string | null
         }
         Update: {
           id?: string
@@ -65,6 +67,7 @@ export interface Database {
           image_url?: string | null
           type?: string | null
           published?: boolean
+          downloadUrl?: string | null
         }
       }
       news: {
@@ -117,8 +120,8 @@ export interface Database {
           slug: string
           description: string | null
           content: Json | null
-          url: string | null
           published: boolean
+          downloadUrl: string | null
         }
         Insert: {
           id?: string
@@ -128,8 +131,8 @@ export interface Database {
           slug: string
           description?: string | null
           content?: Json | null
-          url?: string | null
           published?: boolean
+          downloadUrl?: string | null
         }
         Update: {
           id?: string
@@ -139,8 +142,8 @@ export interface Database {
           slug?: string
           description?: string | null
           content?: Json | null
-          url?: string | null
           published?: boolean
+          downloadUrl?: string | null
         }
       }
       profiles: {
@@ -340,6 +343,7 @@ export interface Database {
           content: Json | null
           published: boolean
           created_by: string | null
+          downloadUrl: string | null
         }
         Insert: {
           id?: string
@@ -355,6 +359,7 @@ export interface Database {
           content?: Json | null
           published?: boolean
           created_by?: string | null
+          downloadUrl?: string | null
         }
         Update: {
           id?: string
@@ -370,6 +375,7 @@ export interface Database {
           content?: Json | null
           published?: boolean
           created_by?: string | null
+          downloadUrl?: string | null
         }
       }
       newsletter_subscriptions: {
