@@ -19,6 +19,7 @@ import { Suspense } from "react"
 import Image from "next/image"
 import SolutionsGrid from "@/components/solutions-grid"
 import { ChevronRight, Check, Download, BookOpen, Crosshair, FileText } from "@geist-ui/icons"
+import { CaseStudyCard } from "@/components/case-study-card"
 
 async function FeaturedSolutionsContent() {
   const allSolutions = await getPublishedSolutions()
@@ -153,39 +154,39 @@ async function NewsSection() {
   return (
     <section className="py-20 md:py-28 bg-background" id="news">
       <div className="corporate-container">
-        <div className="corporate-section-title">
+        <div className="text-center mb-16">
           <Badge className="bg-corporate-100 text-corporate-800 hover:bg-corporate-200 mb-4">Latest News</Badge>
-          <h2>Industry Updates</h2>
-          <p>Stay informed with the latest developments in accounting and finance.</p>
+          <h2 className="text-2xl md:text-3xl font-serif text-corporate-900 mb-4">Latest News and Industry Updates</h2>
+          <p className="text-corporate-600 max-w-2xl mx-auto">
+            Stay informed with the latest news and industry updates.
+          </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16">
-          {news.map((item, index) => (
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          {news.map((item) => (
             <Card
               key={item.id}
-              className="border border-corporate-200 hover:shadow-card transition-all duration-300 group overflow-hidden grid grid-rows-[auto_1fr]"
+              className="border-2 border-black hover:shadow-lg transition-all duration-300 group overflow-hidden flex flex-col"
             >
-              
-              <CardContent className="p-6 grid grid-rows-[auto_auto_1fr_auto_auto] gap-3">
-                <Badge className="bg-corporate-50 text-corporate-600 text-xs w-fit">{item.category}</Badge>
-                {/* CHANGE: Removed line-clamp-2 to show full title text */}
-                <h3 className="text-lg font-medium text-corporate-900 min-h-[3.5rem]">{item.title}</h3>
-                <p className="text-corporate-600 text-sm">{item.summary}</p>
-                <div className="text-xs text-corporate-500">{new Date(item.created_at).toLocaleDateString()}</div>
+              <CardContent className="p-6 flex flex-col h-full">
+                <Badge className="bg-corporate-50 text-corporate-600 text-xs w-fit mb-3">{item.category}</Badge>
+                <h3 className="text-lg font-medium text-corporate-900 mb-3 flex-grow">{item.title}</h3>
+                <p className="text-corporate-600 text-sm mb-4 line-clamp-3">{item.summary}</p>
+                <div className="text-xs text-corporate-500 mb-4">{new Date(item.created_at).toLocaleDateString()}</div>
 
-                {item.external_url ? (
-                  <Button asChild variant="outline" size="sm" className="w-full bg-transparent">
+                 {item.external_url ? (
+                  <Button asChild size="sm" className="w-full bg-black text-white hover:bg-gray-800 mt-auto">
                     <a href={item.external_url} target="_blank" rel="noopener noreferrer">
                       Read More
                       <ChevronRight />
                     </a>
                   </Button>
                 ) : (
-                  <Button asChild variant="outline" size="sm" className="w-full bg-transparent">
+                  <Button asChild size="sm" className="w-full bg-black text-white hover:bg-gray-800 mt-auto">
                     <Link href={`/news/${item.slug}`}>
                       Read More
                       <ChevronRight />
-                    </Link>
+                       </Link>
                   </Button>
                 )}
               </CardContent>
