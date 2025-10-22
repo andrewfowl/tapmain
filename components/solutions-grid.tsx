@@ -68,7 +68,7 @@ export default function SolutionsGrid({ solutions }: SolutionsGridProps) {
               <Button
                 asChild
                 variant="outline"
-                className="w-full bg-black text-white hover:bg-gray-800 border-2 border-black mt-auto"
+                className="w-full bg-black text-white hover:bg-corporate-700 border-2 border-black mt-auto"
               >
                 <Link href={`/solutions/${solution.slug}`}>
                   Learn More
