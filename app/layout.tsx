@@ -48,6 +48,21 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        <Script id="consent-defaults" strategy="beforeInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('consent', 'default', {
+              ad_user_data: 'denied',
+              ad_personalization: 'denied',
+              ad_storage: 'denied',
+              analytics_storage: 'denied',
+              functionality_storage: 'denied',
+              personalization_storage: 'denied',
+              security_storage: 'granted'
+            });
+          `}
+        </Script>
           {/* Google Tag Manager */}
         <Script id="gtm-init" strategy="afterInteractive" dangerouslySetInnerHTML={{
           __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
