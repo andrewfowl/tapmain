@@ -57,16 +57,6 @@ export default function RootLayout({
           })(window,document,'script','dataLayer','GTM-NVT9NSG');`
         }} />
         
-        {/* Google Analytics */}
-        <Script async src="https://www.googletagmanager.com/gtag/js?id=G-GKG67JVQKV" />
-        <Script id="gtag-init" strategy="afterInteractive" dangerouslySetInnerHTML={{
-          __html: `
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-GKG67JVQKV');
-          `
-        }} />
       {/* Facebook Pixel */}
         <Script id="fb-pixel" strategy="afterInteractive" dangerouslySetInnerHTML={{
           __html: `
