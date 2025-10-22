@@ -798,7 +798,8 @@ export default async function Home() {
               <div className="bg-corporate-50 border-2 border-corporate-200 p-6">
                 <h4 className="text-lg font-medium text-corporate-900 mb-3">Private Consultation</h4>
                 <p className="text-sm text-corporate-600 mb-4">
-                  Need confidential advice? Schedule a private consultation with our experts.
+                  Need advice? Schedule a consultation with our experts.
+                  Consultation is free of charge if you agree to publish your question and our answer.
                 </p>
                 <div className="flex gap-3">
                   <Badge className="bg-corporate-100 text-corporate-800 text-xs">1-on-1 Support</Badge>
