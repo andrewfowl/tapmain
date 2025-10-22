@@ -31,14 +31,6 @@ const policies = {
     fileSize: "1.5 MB",
     fileType: "PDF",
   },
-  3: {
-    id: 3,
-    title: "Technology Startup Security Policy",
-    description: "Guidelines for securing accounting technology systems and financial data in startup environments.",
-    image: "/placeholder.svg?height=400&width=800&text=Tech+Security+Policy",
-    fileSize: "0.9 MB",
-    fileType: "PDF",
-  },
 }
 
 export default function PolicyDownloadPage() {
