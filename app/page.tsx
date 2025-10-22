@@ -482,18 +482,6 @@ export default async function Home() {
           </div>
 
           {/* Features Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-16">
-            <div className="text-center p-6 bg-white border-2 border-black">
-              <h3 className="text-lg font-medium text-corporate-900 mb-2">Dynamic Questions</h3>
-              <p className="text-corporate-600">
-                Dynamic question selection ensures every test is unique and challenging.
-              </p>
-            </div>
-            <div className="text-center p-6 bg-white border-2 border-black">
-              <h3 className="text-lg font-medium text-corporate-900 mb-2">Leaderboards</h3>
-              <p className="text-corporate-600">Compete with others and track your performance across all tests.</p>
-            </div>
-          </div>
 
           {/* Test Card and Leaderboard */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
