@@ -21,7 +21,7 @@ export function CaseStudyCard({ result, title, description, highlights, pdfUrl, 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
           {/* Left side - Image */}
           {image && (
-            <div className="relative w-full min-h-[64px] lg:h-full min-h-[300px]">
+            <div className="relative w-full aspect-[197/272]">
               <Image src={image || "/placeholder.svg"} alt={title} fill className="object-cover" />
             </div>
           )}
