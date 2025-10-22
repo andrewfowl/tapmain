@@ -284,7 +284,7 @@ export default async function Home() {
   ]
 
   return (
-    <main className="flex min-h-screen flex-col px-4 sm:px-6 lg:px-8">
+    <main className="flex min-h-screen flex-col px-4 sm:px-6 lg:px-40">
       {/* 1. Hero Section - Updated with new benefit-oriented copy */}
       <section className="relative overflow-hidden pt-24 pb-20 md:pt-32 md:pb-28 bg-background">
         <div className="corporate-container relative z-10">
@@ -323,13 +323,16 @@ export default async function Home() {
 
             <div className="max-w-6xl mx-auto">
               <div className="text-center mb-12">
-                <h3 className="text-2xl font-serif text-corporate-900 mb-3">Why Choose Us</h3>
+                <h2 className="text-2xl font-serif text-corporate-900 mb-3">Why Choose Us</h2>
+                <p className="text-corporate-600 max-w-2xl mx-auto mb-6">
+                  Comprehensive support designed to help your business thrive in the digital economy.
+                </p>
                 <div className="w-16 h-0.5 bg-corporate-900 mx-auto"></div>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-0 border border-corporate-900">
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                 {/* Save Time */}
-                <div className="p-8 border-b md:border-r border-corporate-900 lg:border-b-0">
+                 <div className="p-8 border-2 border-black bg-white">
                   <div className="text-4xl font-serif text-corporate-900 mb-3">01</div>
                   <h4 className="text-lg font-medium text-corporate-900 mb-3">Save Time</h4>
                   <p className="text-sm text-corporate-700 leading-relaxed">
@@ -339,7 +342,7 @@ export default async function Home() {
                 </div>
 
                 {/* Save Money */}
-                <div className="p-8 border-b lg:border-r border-corporate-900 lg:border-b-0">
+                <div className="p-8 border-2 border-black bg-white">
                   <div className="text-4xl font-serif text-corporate-900 mb-3">02</div>
                   <h4 className="text-lg font-medium text-corporate-900 mb-3">Save Money</h4>
                   <p className="text-sm text-corporate-700 leading-relaxed">
@@ -349,7 +352,7 @@ export default async function Home() {
                 </div>
 
                 {/* Ensure Compliance */}
-                <div className="p-8 border-b md:border-r border-corporate-900 lg:border-b-0">
+                <div className="p-8 border-2 border-black bg-white">
                   <div className="text-4xl font-serif text-corporate-900 mb-3">03</div>
                   <h4 className="text-lg font-medium text-corporate-900 mb-3">Ensure Compliance</h4>
                   <p className="text-sm text-corporate-700 leading-relaxed">
@@ -359,7 +362,7 @@ export default async function Home() {
                 </div>
 
                 {/* Safeguard Your Wealth */}
-                <div className="p-8 border-b border-corporate-900 lg:border-b-0">
+                <div className="p-8 border-2 border-black bg-white">
                   <div className="text-4xl font-serif text-corporate-900 mb-3">04</div>
                   <h4 className="text-lg font-medium text-corporate-900 mb-3">Safeguard Your Wealth</h4>
                   <p className="text-sm text-corporate-700 leading-relaxed">
@@ -368,7 +371,7 @@ export default async function Home() {
                 </div>
 
                 {/* Follow Best Practices */}
-                <div className="p-8 border-b md:border-r border-corporate-900 md:border-b-0">
+                <div className="p-8 border-2 border-black bg-white">
                   <div className="text-4xl font-serif text-corporate-900 mb-3">05</div>
                   <h4 className="text-lg font-medium text-corporate-900 mb-3">Follow Best Practices</h4>
                   <p className="text-sm text-corporate-700 leading-relaxed">
@@ -377,7 +380,7 @@ export default async function Home() {
                 </div>
 
                 {/* Make Informed Decisions */}
-                <div className="p-8 border-b lg:border-r border-corporate-900 md:border-b-0">
+                <div className="p-8 border-2 border-black bg-white">
                   <div className="text-4xl font-serif text-corporate-900 mb-3">06</div>
                   <h4 className="text-lg font-medium text-corporate-900 mb-3">Make Informed Decisions</h4>
                   <p className="text-sm text-corporate-700 leading-relaxed">
@@ -386,7 +389,7 @@ export default async function Home() {
                 </div>
 
                 {/* Access Insights */}
-                <div className="p-8 border-b md:border-r border-corporate-900 md:border-b-0">
+                <div className="p-8 border-2 border-black bg-white">
                   <div className="text-4xl font-serif text-corporate-900 mb-3">07</div>
                   <h4 className="text-lg font-medium text-corporate-900 mb-3">Access Insights</h4>
                   <p className="text-sm text-corporate-700 leading-relaxed">
@@ -395,7 +398,7 @@ export default async function Home() {
                 </div>
 
                 {/* Stay Ahead */}
-                <div className="p-8">
+                <div className="p-8 border-2 border-black bg-white">
                   <div className="text-4xl font-serif text-corporate-900 mb-3">08</div>
                   <h4 className="text-lg font-medium text-corporate-900 mb-3">Stay Ahead</h4>
                   <p className="text-sm text-corporate-700 leading-relaxed">
@@ -412,11 +415,11 @@ export default async function Home() {
 
       {/* 2.6. Features Section - Added new Features section */}
 
-      {/* 3. Quick Trust Boost - Enhanced design */}
+      {/* 3. Client Logos Section */}
       <section className="py-16 md:py-20 bg-background">
         <div className="corporate-container">
-          {/* Client Logos */}
-          <div className="text-center mb-16">
+          <div className="text-center">
+
             <p className="text-corporate-500 text-sm font-medium mb-8 tracking-wide uppercase">
               Trusted by Leading Organizations
             </p>
@@ -435,10 +438,20 @@ export default async function Home() {
               </div>
             </div>
           </div>
+        </div>
+      </section>
 
-          {/* Stats Grid */}
+       {/* 3.5. Stats Section */}
+      <section className="py-16 md:py-20 bg-card">
+        <div className="corporate-container">
+          <div className="text-center mb-12">
+            <h2 className="text-2xl md:text-3xl font-serif text-corporate-900 mb-4">Our Impact</h2>
+            <p className="text-corporate-600 max-w-2xl mx-auto">
+              Proven results from years of helping organizations transform their finance operations.
+            </p>
+          </div>
           <div className="flex flex-wrap justify-center gap-6">
-            {stats.map((stat, index) => (
+             {stats.map((stat, index) => (
               <div key={index} className="text-center bg-white p-6 border border-corporate-100 min-w-[140px]">
                 <div className="text-2xl md:text-3xl font-serif text-corporate-800 font-medium mb-2">{stat.value}</div>
                 <div className="text-corporate-600 text-sm font-medium">{stat.label}</div>
