@@ -112,8 +112,9 @@ export default function EmailCaptureModal({ isOpen, onClose, onSubmit, title, de
               </Button>
               <Button
                 type="submit"
-                className="flex-1 bg-accent1-600 hover:bg-accent1-700 text-black shadow-sm hover:shadow-md transition-all duration-300"
+                className="flex-1 bg-corporate-800 hover:bg-corporate-700 text-white shadow-sm hover:shadow-md transition-all duration-300"
                 disabled={isSubmitting || !email}
+                
               >
                 {isSubmitting ? "Processing..." : "Download"}
               </Button>
