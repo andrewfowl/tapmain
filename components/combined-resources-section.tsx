@@ -97,11 +97,12 @@ interface Insight {
 interface CombinedResourcesSectionProps {
   templates: Template[]
   policies: Policy[]
-  insights: Insight[]
+  insights?: Insight[]
 }
 
-export default function CombinedResourcesSection({ templates, policies, insights }: CombinedResourcesSectionProps) {
+export default function CombinedResourcesSection({ templates, policies, insights=[] }: CombinedResourcesSectionProps) {
   const [expandedSections, setExpandedSections] = useState<Set<string>>(new Set())
+  const hasInsights = insights.length > 0
   const [emailModal, setEmailModal] = useState<{
     isOpen: boolean
     title: string
@@ -299,9 +300,12 @@ export default function CombinedResourcesSection({ templates, policies, insights
               {renderResourceGrid(policies, "policy", expandedSections.has("policies"))}
             </div>
 
-            {/* Insights Subsection */}
-            <div>
+             {/* Insights Subsection (renders only if there’s data) */}
+        {hasInsights && (
+      <div>
+     
               <div className="flex items-center justify-between mb-8">
+                
                 <div className="flex items-center gap-4">
                   <div className="bg-accent1-100 p-2 rounded-lg">
                     <BookOpenIcon />
@@ -326,8 +330,10 @@ export default function CombinedResourcesSection({ templates, policies, insights
                   </Button>
                 )}
               </div>
+         
               {renderResourceGrid(insights, "insight", expandedSections.has("insights"))}
             </div>
+         )}
           </div>
         </div>
       </section>
