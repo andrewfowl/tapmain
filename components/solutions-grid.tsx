@@ -26,8 +26,8 @@ export default function SolutionsGrid({ solutions }: SolutionsGridProps) {
   const uniqueSolutions = Array.from(new Map(solutions.map((s) => [s.id, s])).values()).slice(0, 6)
 
   return (
-    <div className="w-full border-2 border-black p-6">
-      <div className="grid grid-cols-3 gap-6 justify-items-center">
+       <div className="w-full p-6">
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6 justify-items-center">
         {uniqueSolutions.map((solution) => (
           <Card key={solution.id} className="border-2 border-black hover:bg-gray-50 transition-all duration-300 w-full">
             <CardContent className="p-6 h-full flex flex-col">
@@ -56,7 +56,7 @@ export default function SolutionsGrid({ solutions }: SolutionsGridProps) {
                 <div className="text-sm text-black font-semibold mb-3">{solution.pricing_info}</div>
               )}
 
-              <div className="space-y-1 mb-4">
+              <div className="space-y-1">
                 {(solution.benefits || solution.features)?.slice(0, 2).map((item, i) => (
                   <div key={i} className="text-xs text-gray-600 flex items-start">
                     <span className="mr-2 font-bold">•</span>
