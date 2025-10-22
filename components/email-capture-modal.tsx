@@ -36,10 +36,10 @@ interface EmailCaptureModalProps {
   onSubmit: (email: string) => void
   title: string
   description: string
-  downloadUrl?: string
+  downloadUrl: string
 }
 
-export default function EmailCaptureModal({ isOpen, onClose, onSubmit, title, description, downloadUrl? }: EmailCaptureModalProps) {
+export default function EmailCaptureModal({ isOpen, onClose, onSubmit, title, description, downloadUrl }: EmailCaptureModalProps) {
   const [email, setEmail] = useState("")
   const [isSubmitting, setIsSubmitting] = useState(false)
 
