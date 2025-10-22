@@ -74,7 +74,7 @@ interface Template {
   title: string
   description: string
   category: string
-  url?: string
+  downloadUrl?: string
 }
 
 interface Policy {
@@ -141,12 +141,20 @@ export default function CombinedResourcesSection({ templates, policies, insights
       console.log("Email captured:", email)
     
     // For now, just trigger the download
-    if (emailModal.downloadUrl) window.open(emailModal.downloadUrl, "_blank", "noopener,noreferrer")
+  //  if (emailModal.downloadUrl) window.open(emailModal.downloadUrl, "_blank", "noopener,noreferrer")
     
     setEmailModal((m) => ({ ...m, isOpen: false }))
   }
 
   type Item = Template | Policy | Insight
+
+  function getDownloadUrl(item: Item, type: "template" | "policy" | "insight") {
+  if (type === "template") return (item as Template).downloadUrl ?? (item as any).url 
+  if (type === "policy") return (item as Policy).downloadUrl
+  // insights are articles; not gated downloads
+  return undefined
+}
+  
   const renderResourceGrid = (
     items: Item[],
     type: "template" | "policy" | "insight", 
@@ -191,37 +199,40 @@ export default function CombinedResourcesSection({ templates, policies, insights
                 {type === "insight" ? item.hook : item.description}
               </p>
 
-              {/* Action button - aligned to bottom */}
-              <div>
-                {type === "insight" ? (
-                  <Button
-                    asChild
-                    variant="outline"
-                    size="sm"
-                    className="w-full bg-transparent border-corporate-300 hover:bg-corporate-50 hover:border-accent1-300"
-                    onClick={() => handleDownloadClick(item.title, item.description, item.slug)}
-                    disabled={!item.downloadUrl}
-                  >
-                    <Link href={`/insights/${item.slug}`}>
-                      Read More
-                      <div className="ml-2">
-                        <ArrowRightIcon />
-                      </div>
-                    </Link>
-                  </Button>
-                ) : (
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    className="w-full bg-transparent border-corporate-300 hover:bg-accent1-50 hover:border-accent1-300 hover:text-accent1-700"
-                    onClick={() => handleDownloadClick(item.title, item.description, item.downloadUrl)}
-                  > Download
-                    <div className="ml-2">
-                      <DownloadIcon />
-                    </div>
-                  </Button>
-                )}
-              </div>
+      {/* Action button */}
+          <div>
+            {type === "insight" ? (
+              <Button
+                asChild
+                variant="outline"
+                size="sm"
+                className="w-full bg-transparent border-corporate-300 text-corporate-900 hover:bg-corporate-50 hover:border-accent1-300 hover:text-accent1-700"
+              >
+                <Link href={`/insights/${(item as Insight).slug}`}>
+                  Read More
+                  <div className="ml-2"><ArrowRightIcon /></div>
+                </Link>
+              </Button>
+            ) : (
+              <Button
+                variant="outline"
+                size="sm"
+                className="w-full bg-transparent border-corporate-300 text-corporate-900 hover:bg-accent1-50 hover:border-accent1-300 hover:text-accent1-700"
+                onClick={() =>
+                  handleDownloadClick(
+                    item.title,
+                    // for insights we used hook; for downloads use description safely:
+                    "description" in item ? (item as Template | Policy).description : "",
+                    getDownloadUrl(item, type)
+                  )
+                }
+                disabled={!getDownloadUrl(item, type)}
+              >
+                Download
+                <div className="ml-2"><DownloadIcon /></div>
+              </Button>
+            )}
+          </div>
             </CardContent>
           </Card>
         ))}
@@ -346,6 +357,7 @@ export default function CombinedResourcesSection({ templates, policies, insights
         onSubmit={handleEmailSubmit}
         title={emailModal.title}
         description={emailModal.description}
+        downloadUrl={emailModal.downloadUrl}
       />
     </>
   )
