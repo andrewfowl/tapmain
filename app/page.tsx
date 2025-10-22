@@ -819,7 +819,6 @@ export default async function Home() {
                   className="group"
                 >
                   Free Public Consultation
-                  <ChevronRight />
                 </a>
               </Button>
           </div>
