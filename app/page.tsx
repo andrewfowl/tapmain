@@ -812,14 +812,14 @@ export default async function Home() {
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-1xl mx-auto">
-            <Button size="lg" className="bg-black text-white hover:bg-gray-800 flex-1">
+            <Button className="bg-black text-white hover:bg-gray-800 flex-1">
                 <a
                   href="https://cal.com/andrew-belonogov/30min"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="group"
                 >
-                  Free Public Consultation
+                  Consultation
                 </a>
               </Button>
           </div>
