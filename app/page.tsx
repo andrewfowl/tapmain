@@ -767,6 +767,119 @@ export default async function Home() {
         <NewsSection />
       </Suspense>
 
+      {/* 6.5. Technical Accounting Inquiry Section */}
+      <section className="py-20 md:py-28 bg-card">
+        <div className="corporate-container">
+          <div className="text-center mb-16">
+            <Badge className="bg-corporate-100 text-corporate-800 hover:bg-corporate-200 mb-4">Expert Support</Badge>
+            <h2 className="text-2xl md:text-3xl font-serif text-corporate-900 mb-4">Technical Accounting Inquiry</h2>
+            <p className="text-corporate-600 max-w-2xl mx-auto">
+              Get expert answers to your technical accounting questions. Public and private consultation options
+              available.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto mb-12">
+            {/* Left Column - Inquiry Types */}
+            <div>
+              <h3 className="text-xl font-serif text-corporate-900 mb-6">Popular Inquiry Topics</h3>
+              <div className="space-y-4">
+                {[
+                  {
+                    category: "Revenue Recognition",
+                    description: "ASC 606 implementation and complex arrangements",
+                    count: "24 inquiries",
+                  },
+                  {
+                    category: "Lease Accounting",
+                    description: "ASC 842 compliance and lease modifications",
+                    count: "18 inquiries",
+                  },
+                  {
+                    category: "Stock Compensation",
+                    description: "ASC 718 valuation and disclosure requirements",
+                    count: "15 inquiries",
+                  },
+                  {
+                    category: "Digital Assets",
+                    description: "Cryptocurrency and token accounting treatment",
+                    count: "32 inquiries",
+                  },
+                ].map((topic, index) => (
+                  <Card key={index} className="border-2 border-black hover:shadow-lg transition-all duration-300">
+                    <CardContent className="p-6">
+                      <div className="flex justify-between items-start mb-2">
+                        <h4 className="text-lg font-medium text-corporate-900">{topic.category}</h4>
+                        <Badge className="bg-corporate-100 text-corporate-800 text-xs">{topic.count}</Badge>
+                      </div>
+                      <p className="text-sm text-corporate-600">{topic.description}</p>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+            </div>
+
+            {/* Right Column - Recent Responses */}
+            <div>
+              <h3 className="text-xl font-serif text-corporate-900 mb-6">Recent Public Responses</h3>
+              <div className="bg-white border-2 border-black p-8 mb-6">
+                <div className="space-y-6">
+                  {[
+                    {
+                      question: "How to account for staking rewards?",
+                      answer: "Staking rewards should be recognized as income when earned...",
+                      date: "2 days ago",
+                    },
+                    {
+                      question: "Revenue recognition for SaaS contracts",
+                      answer: "Under ASC 606, SaaS revenue should be recognized over time...",
+                      date: "5 days ago",
+                    },
+                    {
+                      question: "Lease modification accounting",
+                      answer: "Lease modifications require reassessment of the lease term...",
+                      date: "1 week ago",
+                    },
+                  ].map((response, index) => (
+                    <div key={index} className="pb-6 border-b border-corporate-200 last:border-b-0 last:pb-0">
+                      <div className="flex items-start justify-between mb-2">
+                        <h4 className="text-sm font-medium text-corporate-900">{response.question}</h4>
+                        <span className="text-xs text-corporate-500 whitespace-nowrap ml-4">{response.date}</span>
+                      </div>
+                      <p className="text-sm text-corporate-600 line-clamp-2">{response.answer}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="bg-corporate-50 border-2 border-corporate-200 p-6">
+                <h4 className="text-lg font-medium text-corporate-900 mb-3">Private Consultation</h4>
+                <p className="text-sm text-corporate-600 mb-4">
+                  Need confidential advice? Schedule a private consultation with our experts.
+                </p>
+                <div className="flex gap-3">
+                  <Badge className="bg-corporate-100 text-corporate-800 text-xs">1-on-1 Support</Badge>
+                  <Badge className="bg-corporate-100 text-corporate-800 text-xs">Confidential</Badge>
+                  <Badge className="bg-corporate-100 text-corporate-800 text-xs">Priority Response</Badge>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* CTA Buttons */}
+          <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-2xl mx-auto">
+            <Button size="lg" className="bg-black text-white hover:bg-gray-800 flex-1">
+              Ask a Public Question
+              <ChevronRight />
+            </Button>
+            <Button size="lg" variant="outline" className="bg-transparent flex-1">
+              Schedule Private Consultation
+              <ChevronRight />
+            </Button>
+          </div>
+        </div>
+      </section>
+
       {/* 7. Events Section with Luma calendar embed */}
       <div className="hidden">
         <section className="py-20 md:py-28 bg-card" id="events">
