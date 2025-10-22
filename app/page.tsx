@@ -35,7 +35,6 @@ async function FeaturedSolutionsContent() {
         <SolutionsGrid solutions={allSolutions} />
       </div>
 
-      </div>
     </div>
   )
 }
