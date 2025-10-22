@@ -23,7 +23,7 @@ export function CaseStudyCard({ result, title, description, highlights, pdfUrl, 
           {/* Top Row */}
           <div className={`grid grid-cols-1 ${hasImage ? "lg:grid-cols-2" : ""}`}>
             {/* Left side - Image */}
-            {hasImage && (
+            {!!image && (
               <div className="relative w-full aspect-[197/272]">
                 <Image src={image!} alt={title} fill className="object-cover" />
               </div>
