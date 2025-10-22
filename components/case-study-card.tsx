@@ -64,3 +64,4 @@ export function CaseStudyCard({ result, title, description, highlights, pdfUrl, 
         </div>
       </CardContent>
     </Card>
+)};
