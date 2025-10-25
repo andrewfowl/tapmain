@@ -125,7 +125,6 @@ export default function PolicyDownloadPage() {
 
   return (
     <div className="min-h-screen flex flex-col bg-corporate-50">
-      <SiteHeader />
 
       <main className="flex-1 py-12 md:py-16 lg:py-20">
         <div className="corporate-container">
