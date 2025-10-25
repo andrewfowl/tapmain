@@ -7,7 +7,6 @@ import { LayoutWithScroll } from "@/app/layout-with-scroll"
 
 export default function PrivacyPolicyPage() {
   return (
-    <SiteHeader />
     <LayoutWithScroll>
       <div className="min-h-screen bg-white flex flex-col">
         
@@ -165,6 +164,5 @@ export default function PrivacyPolicyPage() {
        
       </div>
     </LayoutWithScroll>
-     <SiteFooter />
   )
 }
