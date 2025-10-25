@@ -983,16 +983,7 @@ export default async function Home() {
 
 
       
-         {/* 4.3. Test Your Knowledge Section */}
-      <section className="py-20 md:py-28 bg-card">
-        <div className="corporate-container">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-serif text-corporate-900 mb-4">Test Your Knowledge</h2>
-            <p className="text-lg text-corporate-600 max-w-3xl mx-auto">
-              Challenge yourself with our comprehensive testing platform. Prove your expertise and climb the
-              leaderboards.
-            </p>
-          </div>
+
 
           {/* Features Grid */}
 
