@@ -38,7 +38,6 @@ export default function ContactPage() {
 
   return (
     <div className="min-h-screen bg-white flex flex-col">
-      <SiteHeader />
 
       {/* Hero Section */}
       <section className="relative bg-corporate-50 pt-24 pb-16 md:pt-32 md:pb-24 overflow-hidden">
@@ -294,8 +293,6 @@ export default function ContactPage() {
           </div>
         </div>
       </section>
-
-      <SiteFooter />
     </div>
   )
 }
