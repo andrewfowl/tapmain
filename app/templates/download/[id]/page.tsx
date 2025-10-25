@@ -133,7 +133,6 @@ export default function TemplateDownloadPage() {
 
   return (
     <div className="min-h-screen flex flex-col bg-corporate-50">
-      <SiteHeader />
 
       <main className="flex-1 py-12 md:py-16 lg:py-20">
         <div className="corporate-container">
@@ -506,7 +505,6 @@ export default function TemplateDownloadPage() {
         </div>
       </main>
 
-      <SiteFooter />
     </div>
   )
 }
