@@ -255,8 +255,7 @@ export default function TemplatePage() {
 
   return (
     <div className="min-h-screen bg-white flex flex-col">
-      <SiteHeader />
-
+     
       {/* Breadcrumb */}
       <div className="bg-corporate-50 pt-24 pb-6">
         <div className="corporate-container">
@@ -1042,7 +1041,7 @@ export default function TemplatePage() {
         </DialogContent>
       </Dialog>
 
-      <SiteFooter />
+    
     </div>
   )
 }
