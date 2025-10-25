@@ -7,9 +7,10 @@ import { LayoutWithScroll } from "@/app/layout-with-scroll"
 
 export default function PrivacyPolicyPage() {
   return (
+    <SiteHeader />
     <LayoutWithScroll>
       <div className="min-h-screen bg-white flex flex-col">
-        <SiteHeader />
+        
 
         <div className="flex-1 py-12 md:py-16 lg:py-20">
           <div className="corporate-container">
@@ -161,8 +162,9 @@ export default function PrivacyPolicyPage() {
           </div>
         </div>
 
-        <SiteFooter />
+       
       </div>
     </LayoutWithScroll>
+     <SiteFooter />
   )
 }
