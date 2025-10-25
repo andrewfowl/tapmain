@@ -22,6 +22,8 @@ interface SolutionsGridProps {
   solutions: Solution[]
 }
 
+const solutionButton = "<Button asChild variant="outline" className="w-full bg-black text-white hover:bg-corporate-700 border-2 border-black mt-auto"><Link href={`/solutions/${solution.slug}`}>Learn More<ChevronRight /></Link></Button>"
+
 export default function SolutionsGrid({ solutions }: SolutionsGridProps) {
   const uniqueSolutions = Array.from(new Map(solutions.map((s) => [s.id, s])).values()).slice(0, 6)
 
@@ -65,16 +67,6 @@ export default function SolutionsGrid({ solutions }: SolutionsGridProps) {
                 ))}
               </div>
 
-              <Button
-                asChild
-                variant="outline"
-                className="w-full bg-black text-white hover:bg-corporate-700 border-2 border-black mt-auto"
-              >
-                <Link href={`/solutions/${solution.slug}`}>
-                  Learn More
-                  <ChevronRight />
-                </Link>
-              </Button>
             </CardContent>
           </Card>
         ))}
