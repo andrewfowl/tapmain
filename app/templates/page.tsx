@@ -7,13 +7,12 @@ import { TemplatesPageSkeleton } from "@/components/templates-page-skeleton"
 export default function TemplatesPage() {
   return (
     <div className="min-h-screen bg-white flex flex-col">
-      <SiteHeader />
 
       <Suspense fallback={<TemplatesPageSkeleton />}>
         <TemplatesPageContent />
       </Suspense>
 
-      <SiteFooter />
+    
     </div>
   )
 }
