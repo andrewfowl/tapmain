@@ -982,76 +982,8 @@ export default async function Home() {
       </section>
 
 
-      
 
-
-          {/* Features Grid */}
-
-          {/* Test Card and Leaderboard */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
-            {/* Test Card */}
-            <Card className="border-2 border-black">
-              <CardContent className="p-8">
-                <h3 className="text-2xl font-serif text-corporate-900 mb-4">Blockchain Aptitude Test</h3>
-                <p className="text-corporate-600 mb-6">
-                  Test your knowledge of blockchain technology, cryptocurrencies, and distributed systems
-                </p>
-
-                <div className="flex gap-6 mb-8">
-                  <div className="text-center">
-                    <div className="text-3xl font-bold text-corporate-800">25</div>
-                    <div className="text-sm text-corporate-600">Questions</div>
-                  </div>
-                  <div className="text-center">
-                    <div className="text-3xl font-bold text-corporate-800">102</div>
-                    <div className="text-sm text-corporate-600">Taken</div>
-                  </div>
-                </div>
-
-                <Button size="lg" className="w-full bg-black text-white hover:bg-gray-800">
-                  Start Test
-                  <ChevronRight />
-                </Button>
-              </CardContent>
-            </Card>
-
-            {/* Leaderboard */}
-            <div className="bg-white border-2 border-black p-8">
-              <h3 className="text-2xl font-serif text-corporate-900 mb-2">Leaderboard</h3>
-              <p className="text-corporate-600 mb-6">
-                See how you stack up against other participants. Rankings are based on score, then completion time.
-              </p>
-
-              <div className="mb-4">
-                <h4 className="text-lg font-medium text-corporate-800 mb-4">Top Performers</h4>
-                <div className="space-y-3">
-                  {[
-                    { rank: 1, name: "Alex Chen", score: "100%", time: "12:34" },
-                    { rank: 2, name: "Sarah Kim", score: "96%", time: "14:22" },
-                    { rank: 3, name: "Mike Johnson", score: "92%", time: "15:18" },
-                  ].map((performer) => (
-                    <div
-                      key={performer.rank}
-                      className="flex items-center justify-between p-3 bg-corporate-50 border border-corporate-200"
-                    >
-                      <div className="flex items-center gap-4">
-                        <div className="w-8 h-8 rounded-full bg-corporate-800 text-white flex items-center justify-center font-bold">
-                          {performer.rank}
-                        </div>
-                        <span className="font-medium text-corporate-900">{performer.name}</span>
-                      </div>
-                      <div className="flex gap-4 text-sm text-corporate-600">
-                        <span>{performer.score}</span>
-                        <span>{performer.time}</span>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+    
 
 
       {/* 12. Contact Section */}
