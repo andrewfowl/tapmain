@@ -34,7 +34,7 @@ export default function PrivacyPolicyPage() {
   and agree to our privacy practices as described below.
 </p>
 
-<hr>
+<hr />
 
 <h2>1. Information We Collect</h2>
 <p>We collect personal information in various ways:</p>
