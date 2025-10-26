@@ -133,7 +133,7 @@ export default function PrivacyPolicyPage() {
 <br />
 <h2><strong>8. Contact Us</strong></h2>
 <p>
-  If you have any questions, concerns, or requests regarding this Privacy Policy or our data practices, please email us at 
+  If you have any questions, concerns, or requests regarding this Privacy Policy or our data practices, please email us at <br/> 
   <a href="mailto:info@techaccountingpro.com">info@techaccountingpro.com</a>.
 </p>
 <br />
