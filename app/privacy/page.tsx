@@ -22,7 +22,7 @@ export default function PrivacyPolicyPage() {
                   </Link>
                 </Button>
                 
-        <h1 className="text-3xl md:text-4xl font-serif text-corporate-900 mb-4">Techaccountingpro Privacy Policy</h1>
+        <h1 className="text-3xl md:text-4xl font-serif text-corporate-900 mb-4">Privacy Policy</h1>
                 <p className="text-corporate-600"><em>Last Updated: January 22, 2025</em></p>
                 </div>
               <div className="prose max-w-none text-corporate-700">
@@ -36,7 +36,7 @@ export default function PrivacyPolicyPage() {
 
 <hr />
 
-<h2>1. Information We Collect</h2>
+<h2><strong>1. Information We Collect</strong></h2>
 <p>We collect personal information in various ways:</p>
 
 <ol>
@@ -59,7 +59,7 @@ export default function PrivacyPolicyPage() {
   </li>
 </ol>
 
-<h2>2. How We Use Personal Information</h2>
+<h2><strong>2. How We Use Personal Information</strong></h2>
 <p>We use personal information to:</p>
 <ul>
   <li>Provide and improve our services, respond to inquiries, and personalize user experiences.</li>
@@ -74,7 +74,7 @@ export default function PrivacyPolicyPage() {
   (see Section 4).
 </p>
 
-<h2>3. Disclosure of Personal Information</h2>
+<h2><strong>3. Disclosure of Personal Information</strong></h2>
 <ol>
   <li>
     <strong>Service Providers and Partners:</strong> We may share information with third parties who assist us in delivering 
@@ -94,7 +94,7 @@ export default function PrivacyPolicyPage() {
   </li>
 </ol>
 
-<h2>4. Your Choices</h2>
+<h2><strong>4. Your Choices</strong></h2>
 <ul>
   <li><strong>Opt-Out:</strong> You can opt out of email marketing or targeted advertising by following unsubscribe links or 
     adjusting cookie settings in your browser.</li>
@@ -107,14 +107,14 @@ export default function PrivacyPolicyPage() {
   </li>
 </ul>
 
-<h2>5. Data Security</h2>
+<h2><strong>5. Data Security</strong></h2>
 <p>
   We maintain reasonable administrative, technical, and physical safeguards to protect personal information from loss, 
   misuse, unauthorized access, disclosure, alteration, and destruction. However, no transmission of data over 
   the internet can be guaranteed to be completely secure.
 </p>
 
-<h2>6. Additional Notices</h2>
+<h2><strong>6. Additional Notices</strong></h2>
 <p>
   <strong>Data Privacy Framework:</strong> Where applicable, we adhere to relevant data transfer frameworks (e.g., EU-U.S. 
   and Swiss-U.S. Data Privacy Frameworks) or use standard contractual clauses.
@@ -124,14 +124,14 @@ export default function PrivacyPolicyPage() {
   individuals outside the U.S. in accordance with applicable laws.
 </p>
 
-<h2>7. Changes to This Privacy Policy</h2>
+<h2><strong>7. Changes to This Privacy Policy</strong></h2>
 <p>
   We may periodically update this Privacy Policy to reflect changes in our practices or applicable laws. We will revise 
   the “Last Updated” date above and encourage you to review this page regularly. Your continued use of our Activities 
   signifies your acceptance of the updated terms.
 </p>
 
-<h2>8. Contact Us</h2>
+<h2><strong>8. Contact Us</strong></h2>
 <p>
   If you have any questions, concerns, or requests regarding this Privacy Policy or our data practices, please email us at 
   <a href="mailto:info@techaccountingpro.com">info@techaccountingpro.com</a>.
