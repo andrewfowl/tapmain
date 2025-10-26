@@ -21,141 +21,125 @@ export default function PrivacyPolicyPage() {
                     Back to Home
                   </Link>
                 </Button>
-                <h1 className="text-3xl md:text-4xl font-serif text-corporate-900 mb-4">Privacy Policy</h1>
-                <p className="text-corporate-600">Last Updated: March 23, 2025</p>
-              </div>
-
+                
+        <h1 className="text-3xl md:text-4xl font-serif text-corporate-900 mb-4">Techaccountingpro Privacy Policy</h1>
+                <p className="text-corporate-600"><em>Last Updated: January 22, 2025</em></p>
+                </div>
               <div className="prose max-w-none text-corporate-700">
-                <p>
-                  At Finance Transform, we take your privacy seriously. This Privacy Policy explains how we collect,
-                  use, disclose, and safeguard your information when you visit our website or use our services.
-                </p>
+<p>
+  Techaccountingpro (“we,” “us,” or “our”) is committed to protecting the confidentiality and 
+  privacy of the personal information we obtain via our websites, web-based and mobile 
+  applications, in-person and virtual meetings or events, marketing materials, and other 
+  related services (collectively, “Activities”). By engaging in these Activities, you acknowledge 
+  and agree to our privacy practices as described below.
+</p>
 
-                <h2>Information We Collect</h2>
-                <p>
-                  We collect information that you provide directly to us, such as when you create an account, subscribe
-                  to our newsletter, fill out a form, or otherwise communicate with us. This information may include:
-                </p>
-                <ul>
-                  <li>Personal identifiers such as your name, email address, and phone number</li>
-                  <li>Account credentials such as your username and password</li>
-                  <li>Professional information such as your job title, company name, and industry</li>
-                  <li>Payment information when you purchase our services</li>
-                  <li>Communications you send to us</li>
-                </ul>
+<hr>
 
-                <p>We also automatically collect certain information when you visit our website, including:</p>
-                <ul>
-                  <li>
-                    Log information such as your IP address, browser type, pages visited, and time spent on our website
-                  </li>
-                  <li>Device information such as your operating system and device type</li>
-                  <li>Location information based on your IP address</li>
-                  <li>Usage information such as your interactions with our website and services</li>
-                </ul>
+<h2>1. Information We Collect</h2>
+<p>We collect personal information in various ways:</p>
 
-                <h2>How We Use Your Information</h2>
-                <p>We use the information we collect for various purposes, including to:</p>
-                <ul>
-                  <li>Provide, maintain, and improve our services</li>
-                  <li>Process transactions and send related information</li>
-                  <li>Send you technical notices, updates, security alerts, and support messages</li>
-                  <li>Respond to your comments, questions, and requests</li>
-                  <li>Communicate with you about products, services, offers, and events</li>
-                  <li>Monitor and analyze trends, usage, and activities in connection with our services</li>
-                  <li>Detect, investigate, and prevent fraudulent transactions and other illegal activities</li>
-                  <li>Personalize and improve your experience with our services</li>
-                </ul>
+<ol>
+  <li>
+    <strong>Personal Information You Provide:</strong> When you sign up for newsletters, download content, 
+    register for events, or contact us, we may collect information such as your name, email, phone number, 
+    employer, dietary restrictions, or other details you voluntarily provide.
+  </li>
+  <li>
+    <strong>Sensitive Personal Information:</strong> We only collect sensitive information (e.g., race, ethnicity, health data) 
+    if you choose to provide it, and we will use it only as permitted by law and with your consent.
+  </li>
+  <li>
+    <strong>Automatically Collected Information:</strong> We (and third-party providers) use cookies, web beacons, and 
+    similar technologies to gather details about your device, IP address, browsing activity, and location (if enabled).
+  </li>
+  <li>
+    <strong>Children:</strong> Our Activities are not intended for individuals under 18. We do not knowingly collect 
+    personal information from children under 18 without parental consent.
+  </li>
+</ol>
 
-                <h2>How We Share Your Information</h2>
-                <p>We may share your information in the following circumstances:</p>
-                <ul>
-                  <li>
-                    With vendors, consultants, and other service providers who need access to such information to carry
-                    out work on our behalf
-                  </li>
-                  <li>
-                    In response to a request for information if we believe disclosure is in accordance with, or required
-                    by, any applicable law, regulation, or legal process
-                  </li>
-                  <li>
-                    If we believe your actions are inconsistent with our user agreements or policies, or to protect the
-                    rights, property, and safety of Finance Transform or others
-                  </li>
-                  <li>
-                    In connection with, or during negotiations of, any merger, sale of company assets, financing, or
-                    acquisition of all or a portion of our business by another company
-                  </li>
-                  <li>With your consent or at your direction</li>
-                </ul>
+<h2>2. How We Use Personal Information</h2>
+<p>We use personal information to:</p>
+<ul>
+  <li>Provide and improve our services, respond to inquiries, and personalize user experiences.</li>
+  <li>Perform business operations (e.g., background checks, audits, anti-money laundering and 
+    “know-your-client” checks, data analytics, and benchmarking).</li>
+  <li>Send marketing communications about our products, services, or events (you may opt out at any time).</li>
+  <li>Comply with applicable laws, regulations, or professional standards.</li>
+</ul>
+<p>
+  We may employ <strong>targeted advertising</strong> (i.e., interest-based ads) and share limited data (e.g., IP address, 
+  cookie data) with advertising partners or analytics providers. You can opt out of certain online tracking 
+  (see Section 4).
+</p>
 
-                <h2>Your Choices</h2>
-                <p>You have several choices regarding the information we collect and how it is used:</p>
-                <ul>
-                  <li>
-                    <strong>Account Information:</strong> You may update, correct, or delete your account information at
-                    any time by logging into your account or contacting us.
-                  </li>
-                  <li>
-                    <strong>Cookies:</strong> Most web browsers are set to accept cookies by default. You can usually
-                    choose to set your browser to remove or reject browser cookies.
-                  </li>
-                  <li>
-                    <strong>Promotional Communications:</strong> You may opt out of receiving promotional emails from us
-                    by following the instructions in those emails. If you opt out, we may still send you non-promotional
-                    emails, such as those about your account or our ongoing business relations.
-                  </li>
-                </ul>
+<h2>3. Disclosure of Personal Information</h2>
+<ol>
+  <li>
+    <strong>Service Providers and Partners:</strong> We may share information with third parties who assist us in delivering 
+    services (e.g., hosting, email distribution, advertising).
+  </li>
+  <li>
+    <strong>Legal Requirements:</strong> We may disclose information to government authorities or as otherwise required by law, 
+    court order, or professional standards.
+  </li>
+  <li>
+    <strong>Corporate Transactions:</strong> In mergers, acquisitions, or sales of assets, information may be transferred subject 
+    to confidentiality obligations.
+  </li>
+  <li>
+    <strong>Cross-Border Transfers:</strong> Your information may be transferred across jurisdictions. We apply appropriate 
+    safeguards and comply with relevant data protection laws.
+  </li>
+</ol>
 
-                <h2>Data Security</h2>
-                <p>
-                  We take reasonable measures to help protect information about you from loss, theft, misuse,
-                  unauthorized access, disclosure, alteration, and destruction. However, no security system is
-                  impenetrable, and we cannot guarantee the security of our systems.
-                </p>
+<h2>4. Your Choices</h2>
+<ul>
+  <li><strong>Opt-Out:</strong> You can opt out of email marketing or targeted advertising by following unsubscribe links or 
+    adjusting cookie settings in your browser.</li>
+  <li><strong>State-Specific Rights:</strong> Depending on your U.S. state of residence (e.g., California, Colorado, Connecticut, 
+    Delaware, Iowa, Nebraska, New Hampshire, New Jersey, Montana, Oregon, Texas, Utah, Virginia), you may have the right 
+    to request access, correction, or deletion of your personal information, and/or to opt out of targeted advertising 
+    or “sales” of personal information (as defined by law).</li>
+  <li><strong>Requests:</strong> To exercise these rights or opt out, please submit a request via email to 
+    <a href="mailto:info@techaccountingpro.com">info@techaccountingpro.com</a>. We will respond as required by applicable law.
+  </li>
+</ul>
 
-                <h2>Data Retention</h2>
-                <p>
-                  We store the information we collect about you for as long as is necessary for the purpose(s) for which
-                  we originally collected it. We may retain certain information for legitimate business purposes or as
-                  required by law.
-                </p>
+<h2>5. Data Security</h2>
+<p>
+  We maintain reasonable administrative, technical, and physical safeguards to protect personal information from loss, 
+  misuse, unauthorized access, disclosure, alteration, and destruction. However, no transmission of data over 
+  the internet can be guaranteed to be completely secure.
+</p>
 
-                <h2>Children's Privacy</h2>
-                <p>
-                  Our services are not directed to children under 16, and we do not knowingly collect personal
-                  information from children under 16. If we learn we have collected personal information from a child
-                  under 16, we will delete this information.
-                </p>
+<h2>6. Additional Notices</h2>
+<p>
+  <strong>Data Privacy Framework:</strong> Where applicable, we adhere to relevant data transfer frameworks (e.g., EU-U.S. 
+  and Swiss-U.S. Data Privacy Frameworks) or use standard contractual clauses.
+</p>
+<p>
+  <strong>Non-U.S. Residents:</strong> Our Activities primarily target the U.S., but we may collect and process data from 
+  individuals outside the U.S. in accordance with applicable laws.
+</p>
 
-                <h2>International Data Transfers</h2>
-                <p>
-                  We are based in the United States and the information we collect is governed by U.S. law. If you are
-                  accessing our services from outside the United States, please be aware that information collected
-                  through our services may be transferred to, processed, stored, and used in the United States and other
-                  jurisdictions.
-                </p>
+<h2>7. Changes to This Privacy Policy</h2>
+<p>
+  We may periodically update this Privacy Policy to reflect changes in our practices or applicable laws. We will revise 
+  the “Last Updated” date above and encourage you to review this page regularly. Your continued use of our Activities 
+  signifies your acceptance of the updated terms.
+</p>
 
-                <h2>Changes to This Privacy Policy</h2>
-                <p>
-                  We may change this Privacy Policy from time to time. If we make changes, we will notify you by
-                  revising the date at the top of the policy and, in some cases, we may provide you with additional
-                  notice (such as adding a statement to our website or sending you a notification).
-                </p>
+<h2>8. Contact Us</h2>
+<p>
+  If you have any questions, concerns, or requests regarding this Privacy Policy or our data practices, please email us at 
+  <a href="mailto:info@techaccountingpro.com">info@techaccountingpro.com</a>.
+</p>
 
-                <h2>Contact Us</h2>
-                <p>If you have any questions about this Privacy Policy, please contact us at:</p>
-                <p>
-                  Finance Transform
-                  <br />
-                  123 Finance Street
-                  <br />
-                  New York, NY 10001
-                  <br />
-                  Email: privacy@financetransform.com
-                  <br />
-                  Phone: +1 (555) 123-4567
-                </p>
+<p>
+  <em>&copy; 2025. All rights reserved by Techaccountingpro.</em>
+</p>
               </div>
             </div>
           </div>
