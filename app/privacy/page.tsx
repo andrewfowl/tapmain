@@ -35,7 +35,7 @@ export default function PrivacyPolicyPage() {
 </p>
 
 <hr />
-
+<br />
 <h2><strong>1. Information We Collect</strong></h2>
 <p>We collect personal information in various ways:</p>
 
@@ -58,7 +58,7 @@ export default function PrivacyPolicyPage() {
     personal information from children under 18 without parental consent.
   </li>
 </ol>
-
+<br />
 <h2><strong>2. How We Use Personal Information</strong></h2>
 <p>We use personal information to:</p>
 <ul>
@@ -73,7 +73,7 @@ export default function PrivacyPolicyPage() {
   cookie data) with advertising partners or analytics providers. You can opt out of certain online tracking 
   (see Section 4).
 </p>
-
+<br />
 <h2><strong>3. Disclosure of Personal Information</strong></h2>
 <ol>
   <li>
@@ -93,7 +93,7 @@ export default function PrivacyPolicyPage() {
     safeguards and comply with relevant data protection laws.
   </li>
 </ol>
-
+<br />
 <h2><strong>4. Your Choices</strong></h2>
 <ul>
   <li><strong>Opt-Out:</strong> You can opt out of email marketing or targeted advertising by following unsubscribe links or 
@@ -106,14 +106,14 @@ export default function PrivacyPolicyPage() {
     <a href="mailto:info@techaccountingpro.com">info@techaccountingpro.com</a>. We will respond as required by applicable law.
   </li>
 </ul>
-
+<br />
 <h2><strong>5. Data Security</strong></h2>
 <p>
   We maintain reasonable administrative, technical, and physical safeguards to protect personal information from loss, 
   misuse, unauthorized access, disclosure, alteration, and destruction. However, no transmission of data over 
   the internet can be guaranteed to be completely secure.
 </p>
-
+<br />
 <h2><strong>6. Additional Notices</strong></h2>
 <p>
   <strong>Data Privacy Framework:</strong> Where applicable, we adhere to relevant data transfer frameworks (e.g., EU-U.S. 
@@ -123,20 +123,20 @@ export default function PrivacyPolicyPage() {
   <strong>Non-U.S. Residents:</strong> Our Activities primarily target the U.S., but we may collect and process data from 
   individuals outside the U.S. in accordance with applicable laws.
 </p>
-
+<br />
 <h2><strong>7. Changes to This Privacy Policy</strong></h2>
 <p>
   We may periodically update this Privacy Policy to reflect changes in our practices or applicable laws. We will revise 
   the “Last Updated” date above and encourage you to review this page regularly. Your continued use of our Activities 
   signifies your acceptance of the updated terms.
 </p>
-
+<br />
 <h2><strong>8. Contact Us</strong></h2>
 <p>
   If you have any questions, concerns, or requests regarding this Privacy Policy or our data practices, please email us at 
   <a href="mailto:info@techaccountingpro.com">info@techaccountingpro.com</a>.
 </p>
-
+<br />
 <p>
   <em>&copy; 2025. All rights reserved by Techaccountingpro.</em>
 </p>
