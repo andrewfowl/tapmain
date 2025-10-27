@@ -127,8 +127,7 @@ async function NewsSection() {
                 <Badge className="bg-corporate-50 text-corporate-600 text-xs w-fit mb-3">{item.category}</Badge>
                 <h3 className="text-lg font-medium text-corporate-900 mb-3 flex-grow">{item.title}</h3>
                 <p className="text-corporate-600 text-sm mb-4 line-clamp-3">{item.summary}</p>
-                <div className="text-xs text-corporate-500 mb-4">{new Date(item.created_at).toLocaleDateString()}</div>
-
+                <div className="text-xs text-corporate-500 mb-4">  {new Date(item.created_at).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: '2-digit' })} </div>
                  {item.external_url ? (
                   <Button asChild size="sm" className="w-full bg-black text-white hover:bg-gray-800 mt-auto">
                     <a href={item.external_url} target="_blank" rel="noopener noreferrer">
@@ -174,6 +173,10 @@ async function CombinedResourcesContent() {
    return <CombinedResourcesSection templates={templates} policies={policies} insights={[]} />
 }
 
+
+
+
+
 export default async function Home() {
   let initialInsights: any[] = []
   let allInsights: any[] = []
@@ -190,7 +193,7 @@ export default async function Home() {
   let templateCount = 0
 
   try {
-    allTemplates = await getPublishedTemplates(1000)
+    allTemplates = await getPublishedTemplates(50)
     templateCount = allTemplates.length
   } catch (error) {
     console.error("[v0] Error loading templates:", error)
