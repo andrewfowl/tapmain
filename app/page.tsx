@@ -20,6 +20,7 @@ import Image from "next/image"
 import SolutionsGrid from "@/components/solutions-grid"
 import { ChevronRight, Check, Download, BookOpen, Crosshair, FileText } from "@geist-ui/icons"
 import { CaseStudyCard } from "@/components/case-study-card"
+import TrackedLink from '@/components/tracked-link'
 
 async function FeaturedSolutionsContent() {
   const allSolutions = await getPublishedSolutions()
@@ -266,16 +267,20 @@ export default async function Home() {
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16">
               <Button asChild size="lg" className="bg-corporate-800 hover:bg-corporate-700 text-white">
-                <a
-                  href="https://cal.com/andrew-belonogov/30min"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group"
-                >
-                  Book a Free Consultation
+              <TrackedLink 
+                href="https://cal.com/andrew-belonogov/30min"
+                external
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group"
+                eventName="conversion_event_contact"
+                > 
+                 Book a Free Consultation
                   <ChevronRight />
-                </a>
-              </Button>
+              </TrackedLink>
+          </Button>
+
+              
 
               <InteractiveAssessmentButton />
             </div>
@@ -420,6 +425,15 @@ export default async function Home() {
         </div>
       </section>
 
+    
+
+// Internal example
+<Button asChild variant="outline">
+  <TrackedLink href="/contact" eventName="conversion_event_contact">
+    Contact Us
+  </TrackedLink>
+</Button>
+      
       {/* 4. Featured Solutions */}
       <section className="py-20 md:py-28 bg-background">
         <div className="corporate-container">
@@ -475,10 +489,10 @@ export default async function Home() {
                 </div>
 
                 <Button asChild className="w-full bg-corporate-800 hover:bg-corporate-700 text-white mt-auto">
-                  <a href="https://buy.stripe.com/cN2eWK4Fqbo24vudQT" target="_blank" rel="noopener noreferrer">
+                  <TrackedLink href="https://buy.stripe.com/cN2eWK4Fqbo24vudQT" external eventName="conversion_event_subscribe" target="_blank" rel="noopener noreferrer">
                     Get Started
                     <ChevronRight />
-                  </a>
+                  </TrackedLink>
                 </Button>
               </CardContent>
             </Card>
@@ -737,16 +751,20 @@ export default async function Home() {
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-1xl mx-auto">
-            <Button className="bg-black text-white hover:bg-gray-800 flex-1">
-                <a
-                  href="https://cal.com/andrew-belonogov/30min"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group"
-                >
-                  Consultation
-                </a>
-              </Button>
+            
+
+            <Button asChild className="bg-black text-white hover:bg-gray-800 flex-1">
+              <TrackedLink 
+                href="https://cal.com/andrew-belonogov/30min" 
+                external 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="group" 
+                eventName="conversion_event_contact"
+                > 
+                Consultation
+              </TrackedLink>
+          </Button>
           </div>
         </div>
       </section>
