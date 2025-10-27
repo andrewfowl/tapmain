@@ -9,6 +9,7 @@ import { SiteFooter } from "@/components/site-footer"
 const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID ?? "GTM-XXXXXXX"
 const FB_PIXEL = process.env.NEXT_PUBLIC_FB_PIXEL_ID ?? "000000000000000"
 const GTAG_ID = process.env.NEXT_PUBLIC_GTAG_ID ?? "G-0000000000"
+const GADS_PHONE = process.env.NEXT_PUBLIC_GADS_PHONE ?? ''
 
 const inter = Inter({
   subsets: ["latin"],
@@ -68,6 +69,13 @@ export default function RootLayout({
               `,
             }}
           />
+        <script>
+          gtag('config', 'AW-17679930099/katICJ282rQbEPOlue5B', {
+            'phone_conversion_number': '+15022860115'
+          });
+        </script>
+
+
       {/* Facebook Pixel */}
         <Script
             id="fb-pixel"
