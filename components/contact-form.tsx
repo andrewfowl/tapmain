@@ -237,7 +237,25 @@ export default function ContactForm() {
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
-              <Button type="submit" size="lg" className="bg-black hover:bg-gray-800 text-white" disabled={isSubmitting}>
+              <Button 
+                type="submit" 
+                size="lg" 
+                className="bg-black hover:bg-gray-800 text-white" 
+                onClick={() => {
+                      window.dataLayer?.push({
+                        event: "send_message_click",
+                        category: "Contact",
+                        label: "Send Message Button",
+                      })
+                  
+                      if (window.gtag) {
+                        window.gtag("event", "conversion_event_contact", {
+                          event_category: "Contact",
+                          event_label: "Send Message Button",
+                        })
+                      }
+                    }}
+                disabled={isSubmitting}>
                 {isSubmitting ? "Sending..." : "Send Message"}
               </Button>
               <Button
@@ -253,7 +271,7 @@ export default function ContactForm() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="group"
-                  eventName="book_meeting_click"
+                  eventName="conversion_event_contact"
                   // If you want to ALSO push to GTM's dataLayer, you can piggyback:
                   onClick={() => {
                     window.dataLayer?.push({
