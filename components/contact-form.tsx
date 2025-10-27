@@ -13,6 +13,7 @@ import { Button } from "@/components/ui/button"
 import { Checkbox } from "@/components/ui/checkbox"
 import TechnicalInquiryForm from "./technical-inquiry-form"
 import { submitContactForm } from "@/actions/contact-actions"
+import TrackedLink from '@/components/tracked-link'
 
 
 type ContactType = "general" | "technical"
@@ -246,20 +247,24 @@ export default function ContactForm() {
                 className="border-corporate-300 text-corporate-900 hover:bg-corporate-50 bg-white"
                 asChild
               >
-                <a
+                <TrackedLink
                   href="https://cal.com/andrew-belonogov/30min"
+                  external
                   target="_blank"
                   rel="noopener noreferrer"
+                  className="group"
+                  eventName="book_meeting_click"
+                  // If you want to ALSO push to GTM's dataLayer, you can piggyback:
                   onClick={() => {
                     window.dataLayer?.push({
                       event: "book_meeting_click",
                       category: "Contact",
                       label: "Book Meeting Button",
-                    });
+                    })
                   }}
                 >
                   Book a Meeting
-                </a>
+                </TrackedLink>
               </Button>
             </div>
           </form>
