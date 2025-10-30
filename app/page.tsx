@@ -425,14 +425,7 @@ export default async function Home() {
         </div>
       </section>
 
-    
-
-// Internal example
-<Button asChild variant="outline">
-  <TrackedLink href="/contact" eventName="conversion_event_contact">
-    Contact Us
-  </TrackedLink>
-</Button>
+  
       
       {/* 4. Featured Solutions */}
       <section className="py-20 md:py-28 bg-background">
