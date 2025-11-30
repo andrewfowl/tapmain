@@ -1,167 +1,313 @@
 import Link from "next/link"
 import { ArrowLeft } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { SiteHeader } from "@/components/site-header"
-import { SiteFooter } from "@/components/site-footer"
 import { LayoutWithScroll } from "@/app/layout-with-scroll"
+import type { Metadata } from "next"
+
+export const metadata: Metadata = {
+  title: "Privacy Policy | TechAccountingPro",
+  description:
+    "Privacy Policy for TechAccountingPro, LLC. Learn how we collect, use, and protect your personal information.",
+  openGraph: {
+    title: "Privacy Policy | TechAccountingPro",
+    description: "Privacy Policy for TechAccountingPro, LLC.",
+    type: "website",
+  },
+}
 
 export default function PrivacyPolicyPage() {
   return (
     <LayoutWithScroll>
       <div className="min-h-screen bg-[#0f0f0f] flex flex-col">
-        <SiteHeader />
-
         <div className="flex-1 py-12 md:py-16 lg:py-20">
           <div className="corporate-container">
-            <div className="max-w-4xl mx-auto">
-              <div className="mb-8">
-                <Button asChild variant="ghost" className="mb-4">
-                  <Link href="/" className="flex items-center text-white/60 hover:text-white">
-                    <ArrowLeft className="mr-2 h-4 w-4" />
-                    Back to Home
-                  </Link>
-                </Button>
-                <h1 className="text-3xl md:text-4xl font-serif text-white mb-4">Privacy Policy</h1>
-                <p className="text-white/60">Last Updated: March 23, 2025</p>
+            <article className="max-w-4xl mx-auto">
+              <header className="mb-12">
+                <nav aria-label="Breadcrumb" className="mb-6">
+                  <Button asChild variant="ghost" className="hover:bg-white/10">
+                    <Link href="/" className="flex items-center text-white/60 hover:text-white">
+                      <ArrowLeft className="mr-2 h-4 w-4" />
+                      Back to Home
+                    </Link>
+                  </Button>
+                </nav>
+                <h1 className="text-4xl md:text-5xl font-serif text-white mb-4 tracking-tight">Privacy Policy</h1>
+                <p className="text-white/50 text-sm">
+                  <time dateTime="2025-08-11">Last Updated: August 11, 2025</time>
+                </p>
+              </header>
+
+              <div className="space-y-10">
+                {/* Introduction */}
+                <section aria-labelledby="intro" className="space-y-4">
+                  <p className="text-lg text-white/80 leading-relaxed">
+                    TechAccountingPro, LLC (the "Company") is committed to maintaining robust privacy protections for
+                    its users. Our Privacy Policy ("Privacy Policy") is designed to help you understand how we collect,
+                    use, and safeguard the information you provide to us and to assist you in making informed decisions
+                    when using our Service.
+                  </p>
+                  <p className="text-white/70 leading-relaxed">
+                    For purposes of this Agreement, "Site" refers to the Company's website, which can be accessed at
+                    https://techaccountingpro.com. "Service" refers to the Company's services accessed via the Site, in
+                    which users can access our resources and learn more about our consulting offering.
+                  </p>
+                  <p className="text-white/70 leading-relaxed">
+                    The terms "we," "us," and "our" refer to the Company. "You" refers to you, as a user of our Site or
+                    our Service.
+                  </p>
+                  <div className="bg-white/5 border border-white/10 rounded-lg p-4 mt-6">
+                    <p className="text-white/70 leading-relaxed">
+                      By accessing our Site or our Service, you accept our Privacy Policy, and you consent to our
+                      collection, storage, use, and disclosure of your Personal Information as described in this Privacy
+                      Policy.
+                    </p>
+                  </div>
+                </section>
+
+                {/* Section I */}
+                <section aria-labelledby="info-collect" className="space-y-6">
+                  <h2
+                    id="info-collect"
+                    className="text-2xl font-semibold text-white pt-6 pb-3 border-b border-white/20"
+                  >
+                    I. Information We Collect
+                  </h2>
+                  <p className="text-white/70 leading-relaxed">
+                    We collect "Non-Personal Information" and "Personal Information." Non-Personal Information includes
+                    information that cannot be used to personally identify you, such as anonymous usage data, general
+                    demographic information we may collect, referring/exit pages and URLs, platform types, preferences
+                    you submit, and preferences that are generated based on the data you submit and the number of
+                    clicks. Personal Information includes your email, name, employer, position, date of birth, and
+                    contact information, which you submit to us through the registration process at the Site.
+                  </p>
+
+                  <div className="space-y-6 pl-4 border-l-2 border-white/10">
+                    <div className="space-y-3">
+                      <h3 id="info-tech" className="text-lg font-medium text-white/90">
+                        1. Information collected via Technology
+                      </h3>
+                      <p className="text-white/70 leading-relaxed">
+                        To activate the Service, you do not need to submit any Personal Information other than your
+                        email address. To use the Service thereafter, you do need to submit further Personal
+                        Information, which may include: email, full legal name, and employer.
+                      </p>
+                      <p className="text-white/70 leading-relaxed">
+                        However, in an effort to improve the quality of the Service, we track information provided to us
+                        by your browser or by our software application when you view or use the Service, such as the
+                        website you came from (known as the "referring URL"), the type of browser you use, the device
+                        from which you connected to the Service, the time and date of access, and other information that
+                        does not personally identify you. We track this information using cookies, or small text files
+                        which include an anonymous unique identifier.
+                      </p>
+                      <p className="text-white/70 leading-relaxed">
+                        Cookies are sent to a user's browser from our servers and are stored on the user's computer hard
+                        drive. Sending a cookie to a user's browser enables us to collect Non-Personal information about
+                        that user and keep a record of the user's preferences when utilizing our services, both on an
+                        individual and aggregate basis.
+                      </p>
+                      <p className="text-white/70 leading-relaxed">
+                        The Company may use both persistent and session cookies; persistent cookies remain on your
+                        computer after you close your session and until you delete them, while session cookies expire
+                        when you close your browser.
+                      </p>
+                    </div>
+
+                    <div className="space-y-3">
+                      <h3 id="info-register" className="text-lg font-medium text-white/90">
+                        2. Information you provide us by registering for an account
+                      </h3>
+                      <p className="text-white/70 leading-relaxed">
+                        In addition to the information provided automatically by your browser when you visit the Site,
+                        to become a subscriber to the Service, you will need to create a personal profile. You can
+                        create a profile by registering with the Service and entering your email address, creating a
+                        user name, and a password. By registering, you are authorizing us to collect, store, and use
+                        your email address in accordance with this Privacy Policy.
+                      </p>
+                    </div>
+
+                    <div className="space-y-3">
+                      <h3 id="children-privacy" className="text-lg font-medium text-white/90">
+                        3. Children's Privacy
+                      </h3>
+                      <p className="text-white/70 leading-relaxed">
+                        The Site and the Service are not directed to anyone under the age of 13. The Site does not
+                        knowingly collect or solicit information from anyone under the age of 13, or allow anyone under
+                        the age of 13 to sign up for the Service. In the event that we learn that we have gathered
+                        personal information from anyone under the age of 13 without the consent of a parent or
+                        guardian, we will delete that information as soon as possible. If you believe we have collected
+                        such information, please contact us at{" "}
+                        <a
+                          href="mailto:info@techaccountingpro.com"
+                          className="text-white underline underline-offset-2 hover:text-white/80 transition-colors"
+                        >
+                          info@techaccountingpro.com
+                        </a>
+                        .
+                      </p>
+                    </div>
+                  </div>
+                </section>
+
+                {/* Section II */}
+                <section aria-labelledby="info-use" className="space-y-6">
+                  <h2 id="info-use" className="text-2xl font-semibold text-white pt-6 pb-3 border-b border-white/20">
+                    II. How We Use and Share Information
+                  </h2>
+
+                  <div className="space-y-6 pl-4 border-l-2 border-white/10">
+                    <div className="space-y-3">
+                      <h3 id="personal-info" className="text-lg font-medium text-white/90">
+                        Personal Information
+                      </h3>
+                      <p className="text-white/70 leading-relaxed">
+                        Except as otherwise stated in this Privacy Policy, we do not sell, trade, rent, or otherwise
+                        share for marketing purposes your Personal Information with third parties without your consent.
+                        We do share Personal Information with vendors who are performing services for the Company, such
+                        as the servers for our email communications, who are provided access to users' email addresses
+                        for purposes of sending emails from us. Those vendors use your Personal Information only at our
+                        direction and in accordance with our Privacy Policy.
+                      </p>
+                      <p className="text-white/70 leading-relaxed">
+                        In general, the Personal Information you provide to us is used to help us communicate with you.
+                        For example, we use Personal Information to contact users in response to questions, solicit
+                        feedback from users, provide technical support, and inform users about promotional offers.
+                      </p>
+                      <p className="text-white/70 leading-relaxed">
+                        We may share Personal Information with outside parties if we have a good-faith belief that
+                        access, use, preservation or disclosure of the information is reasonably necessary to meet any
+                        applicable legal process or enforceable governmental request; to enforce applicable Terms of
+                        Service, including investigation of potential violations; address fraud, security or technical
+                        concerns; or to protect against harm to the rights, property, or safety of our users or the
+                        public as required or permitted by law.
+                      </p>
+                    </div>
+
+                    <div className="space-y-3">
+                      <h3 id="non-personal-info" className="text-lg font-medium text-white/90">
+                        Non-Personal Information
+                      </h3>
+                      <p className="text-white/70 leading-relaxed">
+                        In general, we use Non-Personal Information to help us improve the Service and customize the
+                        user experience. We also aggregate Non-Personal Information in order to track trends and analyze
+                        use patterns on the Site. This Privacy Policy does not limit in any way our use or disclosure of
+                        Non-Personal Information, and we reserve the right to use and disclose such Non-Personal
+                        Information to our partners, advertisers, and other third parties at our discretion.
+                      </p>
+                      <p className="text-white/70 leading-relaxed">
+                        In the event we undergo a business transaction such as a merger, acquisition by another company,
+                        or sale of all or a portion of our assets, your Personal Information may be among the assets
+                        transferred. You acknowledge and consent that such transfers may occur and are permitted by this
+                        Privacy Policy, and that any acquirer of our assets may continue to process your Personal
+                        Information as set forth in this Privacy Policy. If our information practices change at any time
+                        in the future, we will post the policy changes to the Site so that you may opt out of the new
+                        information practices. We suggest that you check the Site periodically if you are concerned
+                        about how your information is used.
+                      </p>
+                    </div>
+                  </div>
+                </section>
+
+                {/* Section III */}
+                <section aria-labelledby="info-protect" className="space-y-4">
+                  <h2
+                    id="info-protect"
+                    className="text-2xl font-semibold text-white pt-6 pb-3 border-b border-white/20"
+                  >
+                    III. How We Protect Information
+                  </h2>
+                  <p className="text-white/70 leading-relaxed">
+                    We implement security measures designed to protect your information from unauthorized access. Your
+                    account is protected by your account password, and we urge you to take steps to keep your personal
+                    information safe by not disclosing your password and by logging out of your account after each use.
+                    We further protect your information from potential security breaches by implementing certain
+                    technological security measures, including encryption, firewalls, and secure socket layer
+                    technology.
+                  </p>
+                  <div className="bg-amber-500/10 border border-amber-500/30 rounded-lg p-4 mt-4">
+                    <p className="text-white/70 leading-relaxed">
+                      <strong className="text-amber-400">Important:</strong> However, these measures do not guarantee
+                      that your information will not be accessed, disclosed, altered, or destroyed by breach of such
+                      firewalls and secure server software. By using our Service, you acknowledge that you understand
+                      and agree to assume these risks.
+                    </p>
+                  </div>
+                </section>
+
+                {/* Section IV */}
+                <section aria-labelledby="your-rights" className="space-y-4">
+                  <h2 id="your-rights" className="text-2xl font-semibold text-white pt-6 pb-3 border-b border-white/20">
+                    IV. Your Rights Regarding the Use of Your Personal Information
+                  </h2>
+                  <p className="text-white/70 leading-relaxed">
+                    You have the right at any time to prevent us from contacting you for marketing purposes. When we
+                    send a promotional communication to a user, the user can opt out of further promotional
+                    communications by following the unsubscribe instructions provided in each promotional e-mail. You
+                    can also indicate that you do not wish to receive marketing communications from us in the "Settings"
+                    section of your personal profile on the Site.
+                  </p>
+                  <p className="text-white/70 leading-relaxed">
+                    Please note that, notwithstanding the promotional preferences you indicate by either unsubscribing
+                    or opting out in the "Settings" section of your personal profile on the Site, we may continue to
+                    send you administrative emails, including, for example, periodic updates to our Privacy Policy.
+                  </p>
+                </section>
+
+                {/* Section V */}
+                <section aria-labelledby="links" className="space-y-4">
+                  <h2 id="links" className="text-2xl font-semibold text-white pt-6 pb-3 border-b border-white/20">
+                    V. Links to Other Websites
+                  </h2>
+                  <p className="text-white/70 leading-relaxed">
+                    As part of the Service, we may provide links to or compatibility with other websites or
+                    applications. However, we are not responsible for the privacy practices employed by those websites
+                    or the information or content they contain. This Privacy Policy applies solely to information
+                    collected by us through the Site and the Service. Therefore, this Privacy Policy does not apply to
+                    your use of a third-party website accessed by selecting a link on our Site or via our Service. To
+                    the extent that you access or use the Service through or on another website or application, then the
+                    privacy policy of that other website or application will apply to your access or use of that site or
+                    application. We encourage our users to read the privacy statements of other websites before
+                    proceeding to use them.
+                  </p>
+                </section>
+
+                {/* Section VI */}
+                <section aria-labelledby="changes" className="space-y-4">
+                  <h2 id="changes" className="text-2xl font-semibold text-white pt-6 pb-3 border-b border-white/20">
+                    VI. Changes to Our Privacy Policy
+                  </h2>
+                  <p className="text-white/70 leading-relaxed">
+                    The Company reserves the right to change this policy and our Terms of Service at any time. We will
+                    notify you of significant changes to our Privacy Policy by sending a notice to the primary email
+                    address specified in your account or by placing a prominent notice on our site. Significant changes
+                    will go into effect 30 days following such notification. Non-material changes or clarifications will
+                    take effect immediately. You should periodically check the Site and this privacy page for updates.
+                  </p>
+                </section>
+
+                {/* Section VII - Contact */}
+                <section aria-labelledby="contact" className="space-y-4">
+                  <h2 id="contact" className="text-2xl font-semibold text-white pt-6 pb-3 border-b border-white/20">
+                    VII. Contact Us
+                  </h2>
+                  <div className="bg-white/5 border border-white/10 rounded-lg p-6">
+                    <p className="text-white/70 leading-relaxed mb-4">
+                      If you have any questions regarding this Privacy Policy or the practices of this Site, please
+                      contact us:
+                    </p>
+                    <address className="not-italic">
+                      <a
+                        href="mailto:info@techaccountingpro.com"
+                        className="inline-flex items-center text-white underline underline-offset-2 hover:text-white/80 transition-colors"
+                      >
+                        info@techaccountingpro.com
+                      </a>
+                    </address>
+                  </div>
+                </section>
               </div>
-
-              <div className="prose prose-invert max-w-none text-white/70 prose-headings:text-white prose-h2:text-xl prose-h2:mt-8 prose-h2:mb-4 prose-p:mb-4 prose-ul:text-white/70 prose-li:text-white/70">
-                <p>
-                  At Finance Transform, we take your privacy seriously. This Privacy Policy explains how we collect,
-                  use, disclose, and safeguard your information when you visit our website or use our services.
-                </p>
-
-                <h2>Information We Collect</h2>
-                <p>
-                  We collect information that you provide directly to us, such as when you create an account, subscribe
-                  to our newsletter, fill out a form, or otherwise communicate with us. This information may include:
-                </p>
-                <ul>
-                  <li>Personal identifiers such as your name, email address, and phone number</li>
-                  <li>Account credentials such as your username and password</li>
-                  <li>Professional information such as your job title, company name, and industry</li>
-                  <li>Payment information when you purchase our services</li>
-                  <li>Communications you send to us</li>
-                </ul>
-
-                <p>We also automatically collect certain information when you visit our website, including:</p>
-                <ul>
-                  <li>
-                    Log information such as your IP address, browser type, pages visited, and time spent on our website
-                  </li>
-                  <li>Device information such as your operating system and device type</li>
-                  <li>Location information based on your IP address</li>
-                  <li>Usage information such as your interactions with our website and services</li>
-                </ul>
-
-                <h2>How We Use Your Information</h2>
-                <p>We use the information we collect for various purposes, including to:</p>
-                <ul>
-                  <li>Provide, maintain, and improve our services</li>
-                  <li>Process transactions and send related information</li>
-                  <li>Send you technical notices, updates, security alerts, and support messages</li>
-                  <li>Respond to your comments, questions, and requests</li>
-                  <li>Communicate with you about products, services, offers, and events</li>
-                  <li>Monitor and analyze trends, usage, and activities in connection with our services</li>
-                  <li>Detect, investigate, and prevent fraudulent transactions and other illegal activities</li>
-                  <li>Personalize and improve your experience with our services</li>
-                </ul>
-
-                <h2>How We Share Your Information</h2>
-                <p>We may share your information in the following circumstances:</p>
-                <ul>
-                  <li>
-                    With vendors, consultants, and other service providers who need access to such information to carry
-                    out work on our behalf
-                  </li>
-                  <li>
-                    In response to a request for information if we believe disclosure is in accordance with, or required
-                    by, any applicable law, regulation, or legal process
-                  </li>
-                  <li>
-                    If we believe your actions are inconsistent with our user agreements or policies, or to protect the
-                    rights, property, and safety of Finance Transform or others
-                  </li>
-                  <li>
-                    In connection with, or during negotiations of, any merger, sale of company assets, financing, or
-                    acquisition of all or a portion of our business by another company
-                  </li>
-                  <li>With your consent or at your direction</li>
-                </ul>
-
-                <h2>Your Choices</h2>
-                <p>You have several choices regarding the information we collect and how it is used:</p>
-                <ul>
-                  <li>
-                    <strong>Account Information:</strong> You may update, correct, or delete your account information at
-                    any time by logging into your account or contacting us.
-                  </li>
-                  <li>
-                    <strong>Cookies:</strong> Most web browsers are set to accept cookies by default. You can usually
-                    choose to set your browser to remove or reject browser cookies.
-                  </li>
-                  <li>
-                    <strong>Promotional Communications:</strong> You may opt out of receiving promotional emails from us
-                    by following the instructions in those emails. If you opt out, we may still send you non-promotional
-                    emails, such as those about your account or our ongoing business relations.
-                  </li>
-                </ul>
-
-                <h2>Data Security</h2>
-                <p>
-                  We take reasonable measures to help protect information about you from loss, theft, misuse,
-                  unauthorized access, disclosure, alteration, and destruction. However, no security system is
-                  impenetrable, and we cannot guarantee the security of our systems.
-                </p>
-
-                <h2>Data Retention</h2>
-                <p>
-                  We store the information we collect about you for as long as is necessary for the purpose(s) for which
-                  we originally collected it. We may retain certain information for legitimate business purposes or as
-                  required by law.
-                </p>
-
-                <h2>Children's Privacy</h2>
-                <p>
-                  Our services are not directed to children under 16, and we do not knowingly collect personal
-                  information from children under 16. If we learn we have collected personal information from a child
-                  under 16, we will delete this information.
-                </p>
-
-                <h2>International Data Transfers</h2>
-                <p>
-                  We are based in the United States and the information we collect is governed by U.S. law. If you are
-                  accessing our services from outside the United States, please be aware that information collected
-                  through our services may be transferred to, processed, stored, and used in the United States and other
-                  jurisdictions.
-                </p>
-
-                <h2>Changes to This Privacy Policy</h2>
-                <p>
-                  We may change this Privacy Policy from time to time. If we make changes, we will notify you by
-                  revising the date at the top of the policy and, in some cases, we may provide you with additional
-                  notice (such as adding a statement to our website or sending you a notification).
-                </p>
-
-                <h2>Contact Us</h2>
-                <p>If you have any questions about this Privacy Policy, please contact us at:</p>
-                <p>
-                  Finance Transform
-                  <br />
-                  123 Finance Street
-                  <br />
-                  New York, NY 10001
-                  <br />
-                  Email: privacy@financetransform.com
-                  <br />
-                  Phone: +1 (555) 123-4567
-                </p>
-              </div>
-            </div>
+            </article>
           </div>
         </div>
-
-        <SiteFooter />
       </div>
     </LayoutWithScroll>
   )
