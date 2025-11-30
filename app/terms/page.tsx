@@ -7,29 +7,29 @@ import { LayoutWithScroll } from "@/app/layout-with-scroll"
 
 export default function TermsOfServicePage() {
   return (
-    
     <LayoutWithScroll>
-      <div className="min-h-screen bg-white flex flex-col">
+      <div className="min-h-screen bg-[#0f0f0f] flex flex-col">
+        <SiteHeader />
 
         <div className="flex-1 py-12 md:py-16 lg:py-20">
           <div className="corporate-container">
             <div className="max-w-4xl mx-auto">
               <div className="mb-8">
                 <Button asChild variant="ghost" className="mb-4">
-                  <Link href="/" className="flex items-center text-corporate-600 hover:text-corporate-900">
+                  <Link href="/" className="flex items-center text-white/60 hover:text-white">
                     <ArrowLeft className="mr-2 h-4 w-4" />
                     Back to Home
                   </Link>
                 </Button>
-                <h1 className="text-3xl md:text-4xl font-serif text-corporate-900 mb-4">Terms of Service</h1>
-                <p className="text-corporate-600">Last Updated: March 23, 2025</p>
+                <h1 className="text-3xl md:text-4xl font-serif text-white mb-4">Terms of Service</h1>
+                <p className="text-white/60">Last Updated: March 23, 2025</p>
               </div>
 
-              <div className="prose max-w-none text-corporate-700">
+              <div className="prose prose-invert max-w-none text-white/70 prose-headings:text-white prose-h2:text-xl prose-h2:mt-8 prose-h2:mb-4 prose-p:mb-4 prose-ul:text-white/70 prose-li:text-white/70">
                 <p>
-                  Welcome to TechAccountingPro (the "Company"). Please read these Terms of Service ("Terms") carefully as they contain
-                  important information about your legal rights, remedies, and obligations. By accessing or using 
-                  the Company's platform, you agree to comply with and be bound by these Terms.
+                  Welcome to Finance Transform. Please read these Terms of Service ("Terms") carefully as they contain
+                  important information about your legal rights, remedies, and obligations. By accessing or using the
+                  Finance Transform platform, you agree to comply with and be bound by these Terms.
                 </p>
 
                 <h2>1. Acceptance of Terms</h2>
@@ -72,9 +72,9 @@ export default function TermsOfServicePage() {
                 <p>
                   Our platform and its entire contents, features, and functionality (including but not limited to all
                   information, software, text, displays, images, video, and audio, and the design, selection, and
-                  arrangement thereof), are owned by the Company, its licensors, or other providers of such
-                  material and are protected by copyright, trademark, patent, trade secret, and other intellectual property
-                  or proprietary rights laws.
+                  arrangement thereof), are owned by Finance Transform, its licensors, or other providers of such
+                  material and are protected by copyright, trademark, patent, trade secret, and other intellectual
+                  property or proprietary rights laws.
                 </p>
 
                 <h2>7. User Content</h2>
@@ -96,7 +96,7 @@ export default function TermsOfServicePage() {
                   <li>Engage in any conduct that restricts or inhibits anyone's use or enjoyment of our services</li>
                   <li>Use our services to send spam or other unsolicited communications</li>
                   <li>
-                    Impersonate or attempt to impersonate the Company, an employee, another user, or any other
+                    Impersonate or attempt to impersonate Finance Transform, an employee, another user, or any other
                     person
                   </li>
                   <li>Engage in any other conduct that could damage, disable, overburden, or impair our services</li>
@@ -118,7 +118,7 @@ export default function TermsOfServicePage() {
 
                 <h2>11. Limitation of Liability</h2>
                 <p>
-                  IN NO EVENT WILL THE COMPANY, ITS AFFILIATES, OR THEIR LICENSORS, SERVICE PROVIDERS, EMPLOYEES,
+                  IN NO EVENT WILL FINANCE TRANSFORM, ITS AFFILIATES, OR THEIR LICENSORS, SERVICE PROVIDERS, EMPLOYEES,
                   AGENTS, OFFICERS, OR DIRECTORS BE LIABLE FOR DAMAGES OF ANY KIND, UNDER ANY LEGAL THEORY, ARISING OUT
                   OF OR IN CONNECTION WITH YOUR USE, OR INABILITY TO USE, OUR SERVICES, INCLUDING ANY DIRECT, INDIRECT,
                   SPECIAL, INCIDENTAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES.
@@ -126,7 +126,7 @@ export default function TermsOfServicePage() {
 
                 <h2>12. Indemnification</h2>
                 <p>
-                  You agree to defend, indemnify, and hold harmless the Company, its affiliates, licensors, and
+                  You agree to defend, indemnify, and hold harmless Finance Transform, its affiliates, licensors, and
                   service providers, and its and their respective officers, directors, employees, contractors, agents,
                   licensors, suppliers, successors, and assigns from and against any claims, liabilities, damages,
                   judgments, awards, losses, costs, expenses, or fees (including reasonable attorneys' fees) arising out
@@ -136,7 +136,7 @@ export default function TermsOfServicePage() {
                 <h2>13. Governing Law and Jurisdiction</h2>
                 <p>
                   These Terms and your use of our services will be governed by and construed in accordance with the laws
-                  of the State of Kentucky, without giving effect to any choice or conflict of law provision or rule.
+                  of the State of New York, without giving effect to any choice or conflict of law provision or rule.
                   Any legal suit, action, or proceeding arising out of, or related to, these Terms or our services shall
                   be instituted exclusively in the federal courts of the United States or the courts of the State of New
                   York.
@@ -144,16 +144,16 @@ export default function TermsOfServicePage() {
 
                 <h2>14. Waiver and Severability</h2>
                 <p>
-                  No waiver by the Company of any term or condition set out in these Terms shall be deemed a
+                  No waiver by Finance Transform of any term or condition set out in these Terms shall be deemed a
                   further or continuing waiver of such term or condition or a waiver of any other term or condition, and
-                  any failure of the Company to assert a right or provision under these Terms shall not constitute
+                  any failure of Finance Transform to assert a right or provision under these Terms shall not constitute
                   a waiver of such right or provision.
                 </p>
 
                 <h2>15. Entire Agreement</h2>
                 <p>
                   These Terms, our Privacy Policy, and any other agreements expressly incorporated by reference herein
-                  constitute the sole and entire agreement between you and the Company regarding our services and
+                  constitute the sole and entire agreement between you and Finance Transform regarding our services and
                   supersede all prior and contemporaneous understandings, agreements, representations, and warranties,
                   both written and oral.
                 </p>
@@ -161,15 +161,22 @@ export default function TermsOfServicePage() {
                 <h2>16. Contact Information</h2>
                 <p>If you have any questions about these Terms, please contact us at:</p>
                 <p>
-                  the Company
-                  Email: info@techaccountingpro.com
+                  Finance Transform
                   <br />
-                  Phone: +1 (502) 286-0115
+                  123 Finance Street
+                  <br />
+                  New York, NY 10001
+                  <br />
+                  Email: legal@financetransform.com
+                  <br />
+                  Phone: +1 (555) 123-4567
                 </p>
               </div>
             </div>
           </div>
         </div>
+
+        <SiteFooter />
       </div>
     </LayoutWithScroll>
   )

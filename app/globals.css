@@ -4,80 +4,44 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  /* Pure black and white color scheme - no gradients or shadows */
-  --background: hsl(0 0% 100%); /* Pure white */
-  --foreground: hsl(0 0% 0%); /* Pure black */
-  --card: hsl(0 0% 100%); /* White cards */
-  --card-foreground: hsl(0 0% 0%); /* Black text on cards */
-  --popover: hsl(0 0% 100%); /* White popovers */
-  --popover-foreground: hsl(0 0% 0%); /* Black text on popovers */
-  --primary: hsl(0 0% 0%); /* Black primary (buttons) */
-  --primary-foreground: hsl(0 0% 100%); /* White text on black buttons */
-  --secondary: hsl(0 0% 96%); /* Light gray secondary */
-  --secondary-foreground: hsl(0 0% 0%); /* Black text on secondary */
-  --muted: hsl(0 0% 96%); /* Light gray muted */
-  --muted-foreground: hsl(0 0% 40%); /* Dark gray muted text */
-  --accent: hsl(0 0% 96%); /* Light gray accent */
-  --accent-foreground: hsl(0 0% 0%); /* Black text on accent */
-  --destructive: hsl(0 84% 60%); /* Red for destructive actions */
-  --destructive-foreground: hsl(0 0% 100%); /* White text on destructive */
-  --border: hsl(0 0% 0%); /* Black borders */
-  --input: hsl(0 0% 0%); /* Black input borders */
-  --ring: hsl(0 0% 0%); /* Black focus rings */
-  --chart-1: hsl(0 0% 20%);
-  --chart-2: hsl(0 0% 40%);
-  --chart-3: hsl(0 0% 60%);
-  --chart-4: hsl(0 0% 80%);
-  --chart-5: hsl(0 0% 90%);
-  --radius: 0rem; /* No rounded corners for flat design */
-  --sidebar: hsl(0 0% 100%);
-  --sidebar-foreground: hsl(0 0% 0%);
-  --sidebar-primary: hsl(0 0% 0%);
-  --sidebar-primary-foreground: hsl(0 0% 100%);
-  --sidebar-accent: hsl(0 0% 96%);
-  --sidebar-accent-foreground: hsl(0 0% 0%);
-  --sidebar-border: hsl(0 0% 0%);
-  --sidebar-ring: hsl(0 0% 0%);
-}
-
-.dark {
-  /* Dark mode inverted - white text on black background */
-  --background: hsl(0 0% 0%);
-  --foreground: hsl(0 0% 100%);
-  --card: hsl(0 0% 5%);
+  /* Updated background to #0f0f0f to match Framer reference exactly */
+  --background: hsl(0 0% 6%); /* #0f0f0f */
+  --foreground: hsl(0 0% 100%); /* Pure white */
+  --card: hsl(0 0% 9%); /* Slightly lighter than background */
   --card-foreground: hsl(0 0% 100%);
-  --popover: hsl(0 0% 5%);
+  --popover: hsl(0 0% 9%);
   --popover-foreground: hsl(0 0% 100%);
-  --primary: hsl(0 0% 100%);
-  --primary-foreground: hsl(0 0% 0%);
-  --secondary: hsl(0 0% 10%);
+  --primary: hsl(0 0% 100%); /* White primary */
+  --primary-foreground: hsl(0 0% 0%); /* Black text on white buttons */
+  --secondary: hsl(0 0% 14%);
   --secondary-foreground: hsl(0 0% 100%);
-  --muted: hsl(0 0% 10%);
-  --muted-foreground: hsl(0 0% 60%);
-  --accent: hsl(0 0% 10%);
+  --muted: hsl(0 0% 18%);
+  --muted-foreground: hsl(0 0% 65%);
+  --accent: hsl(0 0% 14%);
   --accent-foreground: hsl(0 0% 100%);
   --destructive: hsl(0 84% 60%);
   --destructive-foreground: hsl(0 0% 100%);
-  --border: hsl(0 0% 100%);
-  --input: hsl(0 0% 100%);
+  --border: hsl(0 0% 20%);
+  --input: hsl(0 0% 14%);
   --ring: hsl(0 0% 100%);
   --chart-1: hsl(0 0% 80%);
   --chart-2: hsl(0 0% 60%);
   --chart-3: hsl(0 0% 40%);
   --chart-4: hsl(0 0% 20%);
   --chart-5: hsl(0 0% 10%);
+  /* Set radius to 0 for sharp corners like Framer reference */
+  --radius: 0rem;
   --sidebar: hsl(0 0% 5%);
   --sidebar-foreground: hsl(0 0% 100%);
   --sidebar-primary: hsl(0 0% 100%);
   --sidebar-primary-foreground: hsl(0 0% 0%);
   --sidebar-accent: hsl(0 0% 10%);
   --sidebar-accent-foreground: hsl(0 0% 100%);
-  --sidebar-border: hsl(0 0% 100%);
+  --sidebar-border: hsl(0 0% 20%);
   --sidebar-ring: hsl(0 0% 100%);
 }
 
 @theme inline {
-  /* Semantic design tokens */
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
@@ -98,34 +62,39 @@
   --color-card: var(--card);
   --color-card-foreground: var(--card-foreground);
 
-  /* Corporate grayscale palette */
-  --color-corporate-50: hsl(0 0% 100%);
-  --color-corporate-100: hsl(0 0% 96%);
-  --color-corporate-200: hsl(0 0% 90%);
-  --color-corporate-300: hsl(0 0% 83%);
-  --color-corporate-400: hsl(0 0% 64%);
-  --color-corporate-500: hsl(0 0% 45%);
-  --color-corporate-600: hsl(0 0% 32%);
-  --color-corporate-700: hsl(0 0% 25%);
-  --color-corporate-800: hsl(0 0% 15%);
-  --color-corporate-900: hsl(0 0% 9%);
-  --color-corporate-950: hsl(0 0% 0%);
+  /* Corporate palette for dark theme */
+  --color-corporate-50: hsl(0 0% 6%);
+  --color-corporate-100: hsl(0 0% 10%);
+  --color-corporate-200: hsl(0 0% 15%);
+  --color-corporate-300: hsl(0 0% 25%);
+  --color-corporate-400: hsl(0 0% 40%);
+  --color-corporate-500: hsl(0 0% 55%);
+  --color-corporate-600: hsl(0 0% 70%);
+  --color-corporate-700: hsl(0 0% 80%);
+  --color-corporate-800: hsl(0 0% 90%);
+  --color-corporate-900: hsl(0 0% 100%);
+  --color-corporate-950: hsl(0 0% 100%);
 
-  /* Border radius - flat design */
-  --radius-lg: 0;
-  --radius-md: 0;
-  --radius-sm: 0;
+  /* Accent colors */
+  --color-accent1-100: hsl(0 0% 15%);
+  --color-accent1-200: hsl(0 0% 20%);
+  --color-accent1-500: hsl(0 0% 50%);
+  --color-accent1-600: hsl(0 0% 70%);
+  --color-accent1-700: hsl(0 0% 80%);
+  --color-accent1-800: hsl(0 0% 90%);
+
+  /* All radius values set to 0 for sharp corners */
+  --radius-lg: 0rem;
+  --radius-md: 0rem;
+  --radius-sm: 0rem;
   --radius: 0rem;
+  --radius-xl: 0rem;
 
   --color-chart-1: var(--chart-1);
   --color-chart-2: var(--chart-2);
   --color-chart-3: var(--chart-3);
   --color-chart-4: var(--chart-4);
   --color-chart-5: var(--chart-5);
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
   --color-sidebar: var(--sidebar);
   --color-sidebar-foreground: var(--sidebar-foreground);
   --color-sidebar-primary: var(--sidebar-primary);
@@ -134,6 +103,10 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
+
+  /* Fonts - Inter as per Framer reference */
+  --font-sans: "Inter", "Inter Fallback", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", "JetBrains Mono Fallback", monospace;
 }
 
 @layer base {
@@ -145,20 +118,210 @@
   }
 }
 
-@layer components {
-  /* shared container */
-  .corporate-container {
-    @apply mx-auto max-w-7xl px-4 sm:px-6 lg:px-8;
+/* Animation utilities */
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
   }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
-  /* section title block */
-  .corporate-section-title {
-    @apply max-w-3xl mx-auto text-center;
+@keyframes fade-in {
+  from {
+    opacity: 0;
   }
-  .corporate-section-title > h2 {
-    @apply text-2xl md:text-3xl font-serif text-corporate-900 mb-3;
+  to {
+    opacity: 1;
   }
-  .corporate-section-title > p {
-    @apply text-corporate-600;
+}
+
+@keyframes slide-in-left {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
   }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slide-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Added float animation for subtle movement */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* Added glow pulse for emphasis */
+@keyframes glow-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(255, 255, 255, 0.2);
+  }
+}
+
+/* Added scroll animations for Wall of Love */
+@keyframes scroll-up {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-50%);
+  }
+}
+
+@keyframes scroll-down {
+  0% {
+    transform: translateY(-50%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+/* Added blink animation for mascot eyes */
+@keyframes blink {
+  0%,
+  90%,
+  100% {
+    transform: scaleY(1);
+  }
+  95% {
+    transform: scaleY(0.1);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.6s ease-out forwards;
+}
+
+.animate-fade-in {
+  animation: fade-in 0.5s ease-out forwards;
+}
+
+.animate-slide-in-left {
+  animation: slide-in-left 0.6s ease-out forwards;
+}
+
+.animate-slide-in-right {
+  animation: slide-in-right 0.6s ease-out forwards;
+}
+
+.animate-scale-in {
+  animation: scale-in 0.5s ease-out forwards;
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-glow-pulse {
+  animation: glow-pulse 3s ease-in-out infinite;
+}
+
+.animate-scroll-up {
+  animation: scroll-up linear infinite;
+}
+
+.animate-scroll-down {
+  animation: scroll-down linear infinite;
+}
+
+.animate-blink {
+  animation: blink 4s ease-in-out infinite;
+  transform-origin: center;
+}
+
+/* Staggered animation delays */
+.delay-100 {
+  animation-delay: 100ms;
+}
+.delay-200 {
+  animation-delay: 200ms;
+}
+.delay-300 {
+  animation-delay: 300ms;
+}
+.delay-400 {
+  animation-delay: 400ms;
+}
+.delay-500 {
+  animation-delay: 500ms;
+}
+.delay-600 {
+  animation-delay: 600ms;
+}
+.delay-700 {
+  animation-delay: 700ms;
+}
+.delay-800 {
+  animation-delay: 800ms;
+}
+
+/* Initial state for animations */
+.animate-on-scroll {
+  opacity: 0;
+}
+
+.animate-on-scroll.is-visible {
+  opacity: 1;
+}
+
+/* Custom button styles for sharp corners */
+.btn-sharp {
+  border-radius: 0 !important;
+}
+
+/* Smooth hover transitions */
+.hover-lift {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 40px rgba(255, 255, 255, 0.1);
+}
+
+/* Card hover effect */
+.card-hover {
+  transition: all 0.3s ease;
+}
+
+.card-hover:hover {
+  background-color: hsl(0 0% 12%);
+  border-color: hsl(0 0% 30%);
 }

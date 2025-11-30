@@ -2,9 +2,6 @@
 
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { Textarea } from "@/components/ui/textarea"
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog"
 import { submitWaitlistSignup } from "@/actions/waitlist-actions"
 import { useToast } from "@/hooks/use-toast"
@@ -51,12 +48,12 @@ export default function WaitlistPopup({ isOpen, onClose }: WaitlistPopupProps) {
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="sm:max-w-md">
+      <DialogContent className="sm:max-w-md bg-card border border-white/10">
         <DialogHeader>
-          <DialogTitle className="text-xl font-serif text-corporate-900">
+          <DialogTitle className="text-xl font-semibold text-white">
             Interactive Pre-Assessment Coming Soon!
           </DialogTitle>
-          <DialogDescription className="text-corporate-600">
+          <DialogDescription className="text-white/60">
             We're working hard to bring you an interactive pre-assessment tool that will help you evaluate your
             accounting readiness. Join our waitlist to be the first to know when it's available.
           </DialogDescription>
@@ -74,48 +71,78 @@ export default function WaitlistPopup({ isOpen, onClose }: WaitlistPopupProps) {
 
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <Label htmlFor="first_name" className="text-sm font-medium text-corporate-700">
+              <label htmlFor="first_name" className="text-sm font-medium text-white/80">
                 First Name *
-              </Label>
-              <Input id="first_name" name="first_name" required className="mt-1" placeholder="John" />
+              </label>
+              <input
+                id="first_name"
+                name="first_name"
+                required
+                className="mt-1 w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-white/30 text-white placeholder-white/30"
+                placeholder="John"
+              />
             </div>
             <div>
-              <Label htmlFor="last_name" className="text-sm font-medium text-corporate-700">
+              <label htmlFor="last_name" className="text-sm font-medium text-white/80">
                 Last Name *
-              </Label>
-              <Input id="last_name" name="last_name" required className="mt-1" placeholder="Doe" />
+              </label>
+              <input
+                id="last_name"
+                name="last_name"
+                required
+                className="mt-1 w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-white/30 text-white placeholder-white/30"
+                placeholder="Doe"
+              />
             </div>
           </div>
 
           <div>
-            <Label htmlFor="email" className="text-sm font-medium text-corporate-700">
+            <label htmlFor="email" className="text-sm font-medium text-white/80">
               Email Address *
-            </Label>
-            <Input id="email" name="email" type="email" required className="mt-1" placeholder="john@company.com" />
+            </label>
+            <input
+              id="email"
+              name="email"
+              type="email"
+              required
+              className="mt-1 w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-white/30 text-white placeholder-white/30"
+              placeholder="john@company.com"
+            />
           </div>
 
           <div>
-            <Label htmlFor="company" className="text-sm font-medium text-corporate-700">
+            <label htmlFor="company" className="text-sm font-medium text-white/80">
               Company
-            </Label>
-            <Input id="company" name="company" className="mt-1" placeholder="Your Company" />
+            </label>
+            <input
+              id="company"
+              name="company"
+              className="mt-1 w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-white/30 text-white placeholder-white/30"
+              placeholder="Your Company"
+            />
           </div>
 
           <div>
-            <Label htmlFor="phone" className="text-sm font-medium text-corporate-700">
+            <label htmlFor="phone" className="text-sm font-medium text-white/80">
               Phone Number
-            </Label>
-            <Input id="phone" name="phone" type="tel" className="mt-1" placeholder="+1 (555) 123-4567" />
+            </label>
+            <input
+              id="phone"
+              name="phone"
+              type="tel"
+              className="mt-1 w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-white/30 text-white placeholder-white/30"
+              placeholder="+1 (555) 123-4567"
+            />
           </div>
 
           <div>
-            <Label htmlFor="message" className="text-sm font-medium text-corporate-700">
+            <label htmlFor="message" className="text-sm font-medium text-white/80">
               What specific areas would you like the assessment to cover? (Optional)
-            </Label>
-            <Textarea
+            </label>
+            <textarea
               id="message"
               name="message"
-              className="mt-1"
+              className="mt-1 w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-white/30 text-white placeholder-white/30 resize-none"
               placeholder="e.g., Revenue recognition, lease accounting, crypto transactions..."
               rows={3}
             />
@@ -126,14 +153,14 @@ export default function WaitlistPopup({ isOpen, onClose }: WaitlistPopupProps) {
               type="button"
               variant="outline"
               onClick={onClose}
-              className="flex-1 bg-transparent"
+              className="flex-1 bg-transparent border-white/20 text-white hover:bg-white/10 rounded-full"
               disabled={isSubmitting}
             >
               Cancel
             </Button>
             <Button
               type="submit"
-              className="flex-1 bg-corporate-800 hover:bg-corporate-700 text-white"
+              className="flex-1 bg-white text-black hover:bg-white/90 rounded-full"
               disabled={isSubmitting}
             >
               {isSubmitting ? "Joining..." : "Join Waitlist"}

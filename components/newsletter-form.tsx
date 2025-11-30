@@ -4,9 +4,7 @@ import type React from "react"
 
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
 import { subscribeToNewsletter } from "@/actions/newsletter-actions"
-import { Loader2 } from "lucide-react"
 
 interface NewsletterFormProps {
   source?: string
@@ -44,14 +42,13 @@ export function NewsletterForm({
       setMessage({ type: "error", text: result.message })
     }
 
-    // Clear message after 5 seconds
     setTimeout(() => setMessage(null), 5000)
   }
 
   return (
     <div className="w-full">
       <form onSubmit={handleSubmit} className="flex gap-2">
-        {/* Honeypot field - hidden from users but visible to bots */}
+        {/* Honeypot field */}
         <input
           type="text"
           name="website"
@@ -63,29 +60,26 @@ export function NewsletterForm({
           aria-hidden="true"
         />
 
-        <Input
+        <input
           type="email"
           placeholder={placeholder}
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
           disabled={isSubmitting}
-          className="flex-1 bg-white text-black border-corporate-200"
+          className="flex-1 px-4 py-3 bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-white/30 focus:border-transparent text-white placeholder-white/30 transition-all text-sm"
         />
-        <Button type="submit" disabled={isSubmitting} className="bg-corporate-600 hover:bg-corporate-700 text-white">
-          {isSubmitting ? (
-            <>
-              <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-              Subscribing...
-            </>
-          ) : (
-            buttonText
-          )}
+        <Button
+          type="submit"
+          disabled={isSubmitting}
+          className="bg-white text-black hover:bg-white/90 rounded-lg px-6 font-medium transition-all"
+        >
+          {isSubmitting ? "..." : buttonText}
         </Button>
       </form>
 
       {message && (
-        <p className={`mt-2 text-sm ${message.type === "success" ? "text-green-600" : "text-red-600"}`}>
+        <p className={`mt-3 text-sm ${message.type === "success" ? "text-green-400" : "text-red-400"}`}>
           {message.text}
         </p>
       )}

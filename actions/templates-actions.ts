@@ -30,8 +30,7 @@ export async function getTemplateDownloadUrl(slug: string, fileType: string): Pr
   }
 
   const folder = folderMap[fileType.toLowerCase()] || "pdfs"
-  const returnUrl = downloadUrl ||  `${baseUrl}${folder}/${slug}.${fileType}`
-  return returnUrl
+  return `${baseUrl}${folder}/${slug}.${fileType}`
 }
 
 export async function getPublishedTemplates(): Promise<Template[]> {

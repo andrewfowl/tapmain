@@ -3,12 +3,6 @@
 import Link from "next/link"
 import { NewsletterForm } from "./newsletter-form"
 
-const ArrowUpRight = ({ className }: { className?: string }) => (
-  <svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="m7 17 10-10M17 7H7v10" />
-  </svg>
-)
-
 const Mail = ({ className }: { className?: string }) => (
   <svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24">
     <path
@@ -34,37 +28,30 @@ const Phone = ({ className }: { className?: string }) => (
 
 export function SiteFooter() {
   return (
-    <footer className="bg-white text-black pt-16 pb-8 border-t border-corporate-200">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12 pb-16">
+    <footer className="bg-black text-white pt-20 pb-10 border-t border-white/10">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 pb-16">
           {/* Company Info */}
           <div className="lg:col-span-2">
-            <Link href="/" className="flex items-center gap-2 mb-6">
-              <div className="w-10 h-10 bg-corporate-800 rounded flex items-center justify-center text-white font-bold text-lg">
-                TAP
-              </div>
-              <span className="text-xl font-semibold tracking-tight text-corporate-900">TechAccountingPro</span>
+            <Link href="/" className="inline-block mb-6">
+              <span className="text-2xl font-bold tracking-tight uppercase">TechAccountingPro</span>
             </Link>
-            <p className="text-corporate-600 mb-6 max-w-lg leading-relaxed">
-              Empowering technology startups and crypto accountants with cutting-edge solutions. Our platform provides
-              expert insights, actionable templates, and proven methodologies for modern accounting practices in the
-              digital economy.
+            <p className="text-white/60 mb-8 max-w-lg leading-relaxed">
+              Empowering technology startups and crypto accountants with cutting-edge solutions. Big-4 experience at a
+              fraction of the price.
             </p>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-md">
-              <div className="flex items-center">
-                <Phone className="h-5 w-5 text-corporate-600 mr-3 flex-shrink-0" />
-                <a
-                  href="tel:5022860115"
-                  className="text-corporate-700 text-sm hover:text-corporate-900 transition-colors"
-                >
+            <div className="flex flex-col gap-4">
+              <div className="flex items-center gap-3">
+                <Phone className="h-5 w-5 text-white/40" />
+                <a href="tel:5022860115" className="text-white/70 hover:text-white transition-colors">
                   +1 (502) 286-0115
                 </a>
               </div>
-              <div className="flex items-center">
-                <Mail className="h-5 w-5 text-corporate-600 mr-3 flex-shrink-0" />
+              <div className="flex items-center gap-3">
+                <Mail className="h-5 w-5 text-white/40" />
                 <a
                   href="mailto:info@techaccountingpro.com"
-                  className="text-corporate-700 text-sm hover:text-corporate-900 transition-colors"
+                  className="text-white/70 hover:text-white transition-colors"
                 >
                   info@techaccountingpro.com
                 </a>
@@ -74,26 +61,24 @@ export function SiteFooter() {
 
           {/* Newsletter */}
           <div>
-            <h3 className="text-lg font-medium mb-6 text-corporate-900">Subscribe to Our Newsletter</h3>
-            <p className="text-corporate-600 mb-4 text-sm leading-relaxed">
-              Get the latest insights and trends in technology accounting and crypto finance delivered to your inbox
-              monthly.
+            <h3 className="text-lg font-semibold mb-6">Subscribe to Updates</h3>
+            <p className="text-white/60 mb-6 text-sm leading-relaxed">
+              Get the latest insights in technology accounting and crypto finance.
             </p>
-            <NewsletterForm source="footer" placeholder="Your email address" buttonText="Subscribe" />
-            <p className="text-xs text-corporate-500 mt-3">We respect your privacy. Unsubscribe at any time.</p>
+            <NewsletterForm source="footer" placeholder="Your email" buttonText="Subscribe" />
           </div>
         </div>
 
-        <div className="border-t border-corporate-200 pt-8 mt-8">
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
-            <div className="text-corporate-600 text-sm">
+        <div className="border-t border-white/10 pt-8">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+            <div className="text-white/40 text-sm">
               © {new Date().getFullYear()} TechAccountingPro. All rights reserved.
             </div>
-            <div className="flex flex-wrap gap-6 text-sm">
-              <Link href="/privacy" className="text-corporate-600 hover:text-corporate-900 transition-colors">
+            <div className="flex gap-8 text-sm">
+              <Link href="/privacy" className="text-white/40 hover:text-white transition-colors">
                 Privacy Policy
               </Link>
-              <Link href="/terms" className="text-corporate-600 hover:text-corporate-900 transition-colors">
+              <Link href="/terms" className="text-white/40 hover:text-white transition-colors">
                 Terms of Service
               </Link>
             </div>

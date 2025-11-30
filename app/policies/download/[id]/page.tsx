@@ -31,6 +31,14 @@ const policies = {
     fileSize: "1.5 MB",
     fileType: "PDF",
   },
+  3: {
+    id: 3,
+    title: "Technology Startup Security Policy",
+    description: "Guidelines for securing accounting technology systems and financial data in startup environments.",
+    image: "/placeholder.svg?height=400&width=800&text=Tech+Security+Policy",
+    fileSize: "0.9 MB",
+    fileType: "PDF",
+  },
 }
 
 export default function PolicyDownloadPage() {
@@ -125,6 +133,7 @@ export default function PolicyDownloadPage() {
 
   return (
     <div className="min-h-screen flex flex-col bg-corporate-50">
+      <SiteHeader />
 
       <main className="flex-1 py-12 md:py-16 lg:py-20">
         <div className="corporate-container">

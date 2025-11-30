@@ -120,8 +120,8 @@ export interface Database {
           slug: string
           description: string | null
           content: Json | null
-          published: boolean
           downloadUrl: string | null
+          published: boolean
         }
         Insert: {
           id?: string
@@ -131,8 +131,8 @@ export interface Database {
           slug: string
           description?: string | null
           content?: Json | null
-          published?: boolean
           downloadUrl?: string | null
+          published?: boolean
         }
         Update: {
           id?: string
@@ -142,8 +142,8 @@ export interface Database {
           slug?: string
           description?: string | null
           content?: Json | null
-          published?: boolean
           downloadUrl?: string | null
+          published?: boolean
         }
       }
       profiles: {

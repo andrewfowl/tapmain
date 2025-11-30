@@ -36,10 +36,9 @@ interface EmailCaptureModalProps {
   onSubmit: (email: string) => void
   title: string
   description: string
-  downloadUrl: string
 }
 
-export default function EmailCaptureModal({ isOpen, onClose, onSubmit, title, description, downloadUrl }: EmailCaptureModalProps) {
+export default function EmailCaptureModal({ isOpen, onClose, onSubmit, title, description }: EmailCaptureModalProps) {
   const [email, setEmail] = useState("")
   const [isSubmitting, setIsSubmitting] = useState(false)
 
@@ -49,10 +48,6 @@ export default function EmailCaptureModal({ isOpen, onClose, onSubmit, title, de
 
     setIsSubmitting(true)
     try {
-      if (downloadUrl) {
-          const win = window.open(downloadUrl, "_blank", "noopener,noreferrer")
-          if (!win) window.location.href = downloadUrl // fallback if blocked
-      }
       await onSubmit(email)
       setEmail("")
       onClose()
@@ -65,10 +60,10 @@ export default function EmailCaptureModal({ isOpen, onClose, onSubmit, title, de
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="sm:max-w-md bg-white border border-corporate-200 shadow-elevated">
+      <DialogContent className="sm:max-w-md bg-[#1a1a1a] border border-white/10">
         <DialogHeader className="pb-4">
-          <DialogTitle className="flex items-center gap-3 text-corporate-900">
-            <div className="bg-accent1-100 p-2 rounded-lg text-accent1-600">
+          <DialogTitle className="flex items-center gap-3 text-white">
+            <div className="bg-white/10 p-2 rounded-lg text-white/70">
               <DownloadIcon />
             </div>
             Download Resource
@@ -76,18 +71,18 @@ export default function EmailCaptureModal({ isOpen, onClose, onSubmit, title, de
         </DialogHeader>
 
         <div className="space-y-6">
-          <div className="bg-corporate-50 p-4 rounded-lg">
-            <h4 className="font-semibold text-corporate-900 mb-2">{title}</h4>
-            <p className="text-sm text-corporate-600 leading-relaxed">{description}</p>
+          <div className="bg-white/5 p-4 rounded-lg border border-white/10">
+            <h4 className="font-semibold text-white mb-2">{title}</h4>
+            <p className="text-sm text-white/60 leading-relaxed">{description}</p>
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
-              <Label htmlFor="email" className="text-sm font-medium text-corporate-700 mb-2 block">
+              <Label htmlFor="email" className="text-sm font-medium text-white/70 mb-2 block">
                 Email Address
               </Label>
               <div className="relative">
-                <div className="absolute left-3 top-1/2 transform -translate-y-1/2 text-corporate-400">
+                <div className="absolute left-3 top-1/2 transform -translate-y-1/2 text-white/40">
                   <MailIcon />
                 </div>
                 <Input
@@ -96,11 +91,11 @@ export default function EmailCaptureModal({ isOpen, onClose, onSubmit, title, de
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="Enter your email address"
-                  className="pl-10 border-corporate-300 focus:border-accent1-500 focus:ring-accent1-500"
+                  className="pl-10 bg-black border-white/20 text-white placeholder:text-white/40 focus:border-white/40 focus:ring-0"
                   required
                 />
               </div>
-              <p className="text-xs text-corporate-500 mt-2 leading-relaxed">
+              <p className="text-xs text-white/40 mt-2 leading-relaxed">
                 We'll send you the download link and occasional updates about new resources.
               </p>
             </div>
@@ -110,16 +105,15 @@ export default function EmailCaptureModal({ isOpen, onClose, onSubmit, title, de
                 type="button"
                 variant="outline"
                 onClick={onClose}
-                className="flex-1 bg-transparent border-corporate-300 hover:bg-corporate-50"
+                className="flex-1 bg-transparent border-white/20 text-white hover:bg-white/10"
                 disabled={isSubmitting}
               >
                 Cancel
               </Button>
               <Button
                 type="submit"
-                className="flex-1 bg-corporate-800 hover:bg-corporate-700 text-white shadow-sm hover:shadow-md transition-all duration-300"
+                className="flex-1 bg-white text-black hover:bg-white/90 transition-all duration-300"
                 disabled={isSubmitting || !email}
-                
               >
                 {isSubmitting ? "Processing..." : "Download"}
               </Button>
