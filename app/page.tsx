@@ -4,10 +4,8 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import ContactForm from "@/components/contact-form"
 import InteractiveAssessmentButton from "@/components/interactive-assessment-button"
-import { getPublishedTemplates } from "@/actions/templates-actions"
 import { getPublishedSolutions } from "@/actions/solutions-actions"
 import { getPublishedNews } from "@/actions/news-actions"
-import { getPublishedPolicies } from "@/actions/policies-actions"
 import CombinedResourcesSection from "@/components/combined-resources-section"
 import { Suspense } from "react"
 import SolutionsGrid from "@/components/solutions-grid"
@@ -28,10 +26,10 @@ async function NewsSection() {
   const news = newsResponse.success ? newsResponse.data || [] : []
 
   return (
-    <section className="py-24 bg-black" id="news">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+    <section className="py-32 bg-black" id="news">
+      <div className="max-w-5xl mx-auto px-6 lg:px-8">
         <AnimateOnScroll animation="fade-in-up">
-          <div className="text-center mb-16">
+          <div className="text-center mb-20">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Industry Insights</h2>
             <p className="text-white/60 max-w-2xl mx-auto">
               Expert analysis on digital assets accounting, regulatory updates, and emerging best practices.
@@ -39,7 +37,7 @@ async function NewsSection() {
           </div>
         </AnimateOnScroll>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {news.map((item, index) => (
             <AnimateOnScroll key={item.id} animation="fade-in-up" delay={index * 100}>
               <Card className="bg-card border border-white/10 hover:border-white/30 transition-all duration-300 h-full">
@@ -77,35 +75,12 @@ async function NewsSection() {
   )
 }
 
-async function ResourcesSection() {
-  let templates: any[] = []
-  let policies: any[] = []
-
-  try {
-    templates = await getPublishedTemplates(100)
-  } catch (error) {
-    console.error("[v0] Error loading templates for resources:", error)
-  }
-
-  try {
-    policies = await getPublishedPolicies()
-  } catch (error) {
-    console.error("[v0] Error loading policies for resources:", error)
-  }
-
-  return <CombinedResourcesSection templates={templates} policies={policies} />
-}
-
 export default async function Home() {
-  const allTemplates = await getPublishedTemplates()
-  const allPolicies = await getPublishedPolicies()
-  const templateCount = allTemplates?.length || 0
-
   const stats = [
-    { value: "$282B", label: "Client Assets Under Advisement" },
-    { value: "3+", label: "Years of Specialized Experience" },
-    { value: "25+", label: "Financial Statements Delivered" },
-    { value: `${templateCount}+`, label: "Ready-to-Use Templates" },
+    { value: "100+", label: "Thought Leadership Publications" },
+    { value: "15", label: "Years of Public Accounting Experience" },
+    { value: "100%", label: "Customer Satisfaction Rate" },
+    { value: "20+", label: "Free Resources" },
   ]
 
   const faqs = [
@@ -187,11 +162,11 @@ export default async function Home() {
   return (
     <main className="bg-black min-h-screen">
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center pt-20">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 py-24">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+      <section className="relative min-h-screen flex items-center justify-center pt-24">
+        <div className="max-w-5xl mx-auto px-6 lg:px-8 py-32">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
             {/* Left Column - Hero Content */}
-            <div className="space-y-8">
+            <div className="space-y-10">
               <AnimateOnScroll animation="fade-in-up">
                 <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
                   Technical accounting for digital assets companies
@@ -219,9 +194,9 @@ export default async function Home() {
 
               {/* Trusted By */}
               <AnimateOnScroll animation="fade-in" delay={400}>
-                <div className="pt-8">
+                <div className="pt-10">
                   <p className="text-white/40 text-sm mb-6">Trusted by leading Web3 companies</p>
-                  <div className="flex flex-wrap items-center gap-8">
+                  <div className="flex flex-wrap items-center gap-10">
                     <img
                       src="/images/logos/overclock-logo.svg"
                       alt="Overclock"
@@ -245,7 +220,7 @@ export default async function Home() {
             {/* Right Column - Bento Grid Preview */}
             <AnimateOnScroll animation="slide-in-right" delay={300}>
               <div className="relative">
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid grid-cols-2 gap-6">
                   {/* Template Preview Cards */}
                   <div className="bg-white rounded-xl p-4 transform rotate-2 hover:rotate-0 transition-transform">
                     <div className="text-xs font-mono text-gray-500 mb-2">TOKEN COMPENSATION</div>
@@ -295,10 +270,10 @@ export default async function Home() {
       </section>
 
       {/* Why Choose Us */}
-      <section className="py-24 bg-black">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+      <section className="py-32 bg-black">
+        <div className="max-w-5xl mx-auto px-6 lg:px-8">
           <AnimateOnScroll animation="fade-in-up">
-            <div className="text-center mb-16">
+            <div className="text-center mb-20">
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Why teams choose us</h2>
               <p className="text-white/60 max-w-2xl mx-auto">
                 We bring specialized expertise that general accountants simply don't have.
@@ -306,12 +281,12 @@ export default async function Home() {
             </div>
           </AnimateOnScroll>
 
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
             {/* Card 1 - Large left */}
             <AnimateOnScroll animation="fade-in-up" delay={0} className="md:col-span-7">
               <Card className="bg-card border border-white/10 hover:border-white/20 transition-all duration-300 h-full">
-                <CardContent className="p-8 md:p-10">
-                  <div className="text-5xl font-bold text-white/10 mb-4">01</div>
+                <CardContent className="p-10 md:p-12">
+                  <div className="text-5xl font-bold text-white/10 mb-6">01</div>
                   <h3 className="text-2xl font-semibold text-white mb-4">{whyChooseUs[0].title}</h3>
                   <p className="text-white/60 leading-relaxed text-lg">{whyChooseUs[0].description}</p>
                 </CardContent>
@@ -321,8 +296,8 @@ export default async function Home() {
             {/* Card 2 - Small right */}
             <AnimateOnScroll animation="fade-in-up" delay={100} className="md:col-span-5">
               <Card className="bg-white/5 border border-white/10 hover:border-white/20 transition-all duration-300 h-full">
-                <CardContent className="p-8">
-                  <div className="text-4xl font-bold text-white/10 mb-4">02</div>
+                <CardContent className="p-10">
+                  <div className="text-4xl font-bold text-white/10 mb-6">02</div>
                   <h3 className="text-xl font-semibold text-white mb-3">{whyChooseUs[1].title}</h3>
                   <p className="text-white/60 leading-relaxed">{whyChooseUs[1].description}</p>
                 </CardContent>
@@ -332,8 +307,8 @@ export default async function Home() {
             {/* Card 3 - Small left */}
             <AnimateOnScroll animation="fade-in-up" delay={200} className="md:col-span-5">
               <Card className="bg-white/5 border border-white/10 hover:border-white/20 transition-all duration-300 h-full">
-                <CardContent className="p-8">
-                  <div className="text-4xl font-bold text-white/10 mb-4">03</div>
+                <CardContent className="p-10">
+                  <div className="text-4xl font-bold text-white/10 mb-6">03</div>
                   <h3 className="text-xl font-semibold text-white mb-3">{whyChooseUs[2].title}</h3>
                   <p className="text-white/60 leading-relaxed">{whyChooseUs[2].description}</p>
                 </CardContent>
@@ -343,8 +318,8 @@ export default async function Home() {
             {/* Card 4 - Large right */}
             <AnimateOnScroll animation="fade-in-up" delay={300} className="md:col-span-7">
               <Card className="bg-card border border-white/10 hover:border-white/20 transition-all duration-300 h-full">
-                <CardContent className="p-8 md:p-10">
-                  <div className="text-5xl font-bold text-white/10 mb-4">04</div>
+                <CardContent className="p-10 md:p-12">
+                  <div className="text-5xl font-bold text-white/10 mb-6">04</div>
                   <h3 className="text-2xl font-semibold text-white mb-4">{whyChooseUs[3].title}</h3>
                   <p className="text-white/60 leading-relaxed text-lg">{whyChooseUs[3].description}</p>
                 </CardContent>
@@ -355,25 +330,25 @@ export default async function Home() {
       </section>
 
       {/* How It Works */}
-      <section className="py-24 bg-card">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+      <section className="py-32 bg-card">
+        <div className="max-w-5xl mx-auto px-6 lg:px-8">
           <AnimateOnScroll animation="fade-in-up">
-            <div className="max-w-2xl mb-16">
+            <div className="max-w-2xl mb-20">
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">How it works</h2>
               <p className="text-xl text-white/60">From signup to deliverable in three simple steps.</p>
               <p className="text-white/40 mt-2">No complex onboarding. No lengthy contracts. Just results.</p>
             </div>
           </AnimateOnScroll>
 
-          <div className="space-y-8">
+          <div className="space-y-10">
             {howItWorks.map((item, index) => (
               <AnimateOnScroll key={index} animation="slide-in-left" delay={index * 150}>
-                <div className="flex items-start gap-8 group">
-                  <div className="flex items-center justify-center w-12 h-12 rounded-full border border-white/20 text-white/60 font-mono text-sm group-hover:border-white/40 group-hover:text-white transition-all">
+                <div className="flex items-start gap-10 group">
+                  <div className="flex items-center justify-center w-14 h-14 rounded-full border border-white/20 text-white/60 font-mono text-sm group-hover:border-white/40 group-hover:text-white transition-all">
                     {item.step}
                   </div>
                   <div>
-                    <h3 className="text-xl font-semibold text-white mb-2">{item.title}</h3>
+                    <h3 className="text-xl font-semibold text-white mb-3">{item.title}</h3>
                     <p className="text-white/60">{item.description}</p>
                   </div>
                 </div>
@@ -384,10 +359,10 @@ export default async function Home() {
       </section>
 
       {/* Stats Section */}
-      <section className="py-24 bg-black border-y border-white/10">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+      <section className="py-32 bg-black border-y border-white/10">
+        <div className="max-w-5xl mx-auto px-6 lg:px-8">
           <AnimateOnScroll animation="fade-in-up">
-            <div className="text-center mb-12">
+            <div className="text-center mb-16">
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Our track record</h2>
               <p className="text-white/60 max-w-2xl mx-auto">
                 Numbers that demonstrate our commitment to client success.
@@ -395,11 +370,11 @@ export default async function Home() {
             </div>
           </AnimateOnScroll>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-10">
             {stats.map((stat, index) => (
               <AnimateOnScroll key={index} animation="scale-in" delay={index * 100}>
                 <div className="text-center">
-                  <div className="text-3xl md:text-4xl font-bold text-white mb-2">{stat.value}</div>
+                  <div className="text-3xl md:text-4xl font-bold text-white mb-3">{stat.value}</div>
                   <div className="text-white/40 text-sm">{stat.label}</div>
                 </div>
               </AnimateOnScroll>
@@ -409,10 +384,10 @@ export default async function Home() {
       </section>
 
       {/* Services Section */}
-      <section className="py-24 bg-black" id="services">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+      <section className="py-32 bg-black" id="services">
+        <div className="max-w-5xl mx-auto px-6 lg:px-8">
           <AnimateOnScroll animation="fade-in-up">
-            <div className="text-center mb-16">
+            <div className="text-center mb-20">
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">How do we help businesses?</h2>
               <p className="text-white/60 max-w-2xl mx-auto">
                 From financial reporting to technical crypto accounting, we provide comprehensive support across the
@@ -428,34 +403,34 @@ export default async function Home() {
       <SlackChatAnimation />
 
       {/* Pricing */}
-      <section className="py-24 bg-card" id="pricing">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+      <section className="py-32 bg-card" id="pricing">
+        <div className="max-w-6xl mx-auto px-4 lg:px-6">
           <AnimateOnScroll animation="fade-in-up">
             <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Simple, transparent pricing</h2>
+              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Subscription Plans</h2>
               <p className="text-white/60 max-w-2xl mx-auto">
                 No hidden fees. No long-term contracts. Cancel or change plans anytime.
               </p>
             </div>
           </AnimateOnScroll>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {/* Basic Plan */}
             <AnimateOnScroll animation="fade-in-up" delay={0}>
               <Card className="bg-black border border-white/10 hover:border-white/20 transition-all duration-300 h-full">
                 <CardContent className="p-8 flex flex-col h-full">
-                  <div className="mb-8">
+                  <div className="mb-10">
                     <h3 className="text-xl font-semibold text-white mb-2">Starter</h3>
                     <div className="text-4xl font-bold text-white mb-1">$2,500</div>
                     <div className="text-white/40 text-sm">per month</div>
                   </div>
 
-                  <div className="bg-white/5 rounded-lg p-4 mb-8">
+                  <div className="bg-white/5 rounded-lg p-5 mb-10">
                     <div className="text-lg font-medium text-white">Up to 10 hours/month</div>
                     <div className="text-sm text-white/40">Ideal for seed to Series A</div>
                   </div>
 
-                  <ul className="space-y-3 mb-8 flex-grow">
+                  <ul className="space-y-4 mb-10 flex-grow">
                     {[
                       "Technical accounting advisory",
                       "Monthly strategy call",
@@ -485,18 +460,18 @@ export default async function Home() {
                   <span className="bg-black text-white text-xs px-4 py-1 rounded-full">Most Popular</span>
                 </div>
                 <CardContent className="p-8 flex flex-col h-full">
-                  <div className="mb-8">
+                  <div className="mb-10">
                     <h3 className="text-xl font-semibold text-black mb-2">Growth</h3>
                     <div className="text-4xl font-bold text-black mb-1">$7,000</div>
                     <div className="text-black/40 text-sm">per month</div>
                   </div>
 
-                  <div className="bg-black/5 rounded-lg p-4 mb-8">
+                  <div className="bg-black/5 rounded-lg p-5 mb-10">
                     <div className="text-lg font-medium text-black">Up to 40 hours/month</div>
                     <div className="text-sm text-black/40">Best for Series A to B</div>
                   </div>
 
-                  <ul className="space-y-3 mb-8 flex-grow">
+                  <ul className="space-y-4 mb-10 flex-grow">
                     {[
                       "Everything in Starter",
                       "Priority support (24hr response)",
@@ -524,18 +499,18 @@ export default async function Home() {
             <AnimateOnScroll animation="fade-in-up" delay={200}>
               <Card className="bg-black border border-white/10 hover:border-white/20 transition-all duration-300 h-full">
                 <CardContent className="p-8 flex flex-col h-full">
-                  <div className="mb-8">
+                  <div className="mb-10">
                     <h3 className="text-xl font-semibold text-white mb-2">Scale</h3>
                     <div className="text-4xl font-bold text-white mb-1">$15,000</div>
                     <div className="text-white/40 text-sm">per month</div>
                   </div>
 
-                  <div className="bg-white/5 rounded-lg p-4 mb-8">
+                  <div className="bg-white/5 rounded-lg p-5 mb-10">
                     <div className="text-lg font-medium text-white">Up to 120 hours/month</div>
                     <div className="text-sm text-white/40">Series B+ and public companies</div>
                   </div>
 
-                  <ul className="space-y-3 mb-8 flex-grow">
+                  <ul className="space-y-4 mb-10 flex-grow">
                     {[
                       "Everything in Growth",
                       "Dedicated account manager",
@@ -563,15 +538,15 @@ export default async function Home() {
       </section>
 
       {/* News Section */}
-      <Suspense fallback={<div className="py-24 bg-black" />}>
+      <Suspense fallback={<div className="py-32 bg-black" />}>
         <NewsSection />
       </Suspense>
 
       {/* Resources Section */}
-      <section className="py-24 bg-card">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+      <section className="py-32 bg-card">
+        <div className="max-w-5xl mx-auto px-6 lg:px-8">
           <AnimateOnScroll animation="fade-in-up">
-            <div className="text-center mb-16">
+            <div className="text-center mb-20">
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Free Resources</h2>
               <p className="text-white/60 max-w-2xl mx-auto">
                 Battle-tested templates and policies used by leading crypto companies. Download and use immediately.
@@ -579,9 +554,7 @@ export default async function Home() {
             </div>
           </AnimateOnScroll>
 
-          <Suspense fallback={<div>Loading...</div>}>
-            <ResourcesSection />
-          </Suspense>
+          <CombinedResourcesSection />
         </div>
       </section>
 
@@ -589,11 +562,11 @@ export default async function Home() {
       <WallOfLove />
 
       {/* FAQ */}
-      <section className="py-24 bg-card" id="FAQ">
+      <section className="py-32 bg-card" id="FAQ">
         <div className="max-w-3xl mx-auto px-6 lg:px-8">
           <AnimateOnScroll animation="fade-in-up">
-            <div className="text-center mb-16">
-              <div className="mb-8">
+            <div className="text-center mb-20">
+              <div className="mb-10">
                 <MeshGradientMascot variant="silver" />
               </div>
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Common Objections Library</h2>
@@ -607,10 +580,10 @@ export default async function Home() {
             <Accordion type="single" collapsible className="w-full">
               {faqs.map((faq, index) => (
                 <AccordionItem key={index} value={`item-${index}`} className="border-white/10">
-                  <AccordionTrigger className="text-left font-medium text-white hover:text-white/80 py-6">
+                  <AccordionTrigger className="text-left font-medium text-white hover:text-white/80 py-8">
                     {faq.question}
                   </AccordionTrigger>
-                  <AccordionContent className="text-white/60 pb-6">{faq.answer}</AccordionContent>
+                  <AccordionContent className="text-white/60 pb-8">{faq.answer}</AccordionContent>
                 </AccordionItem>
               ))}
             </Accordion>
@@ -619,8 +592,8 @@ export default async function Home() {
       </section>
 
       {/* Contact Section */}
-      <section className="py-24 bg-black" id="Contact">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+      <section className="py-32 bg-black" id="Contact">
+        <div className="max-w-5xl mx-auto px-6 lg:px-8">
           <ContactForm />
         </div>
       </section>

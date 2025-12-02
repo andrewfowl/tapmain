@@ -1,9 +1,10 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import EmailCaptureModal from "./email-capture-modal"
 import { AnimateOnScroll } from "./animate-on-scroll"
+import { getPublishedResources, type Resource } from "@/actions/resources-actions"
 
 const DownloadIcon = () => (
   <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -16,28 +17,10 @@ const DownloadIcon = () => (
   </svg>
 )
 
-interface Template {
-  id: string
-  title: string
-  description: string
-  category: string
-  downloadUrl?: string
-}
-
-interface Policy {
-  id: string
-  title: string
-  description: string
-  category?: string
-  downloadUrl?: string
-}
-
-interface CombinedResourcesSectionProps {
-  templates?: Template[]
-  policies?: Policy[]
-}
-
-export default function CombinedResourcesSection({ templates = [], policies = [] }: CombinedResourcesSectionProps) {
+export default function CombinedResourcesSection() {
+  const [resources, setResources] = useState<Resource[]>([])
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState<string | null>(null)
   const [showAll, setShowAll] = useState(false)
   const [emailModal, setEmailModal] = useState<{
     isOpen: boolean
@@ -50,15 +33,26 @@ export default function CombinedResourcesSection({ templates = [], policies = []
     description: "",
   })
 
-  // Combine all resources into a single list with type indicator
-  const allResources = [
-    ...templates.map((t) => ({ ...t, type: "Template" as const })),
-    ...policies.map((p) => ({ ...p, type: "Policy" as const })),
-  ]
+  useEffect(() => {
+    async function fetchResources() {
+      console.log("[v0] CombinedResourcesSection: Starting to fetch resources")
+      try {
+        const data = await getPublishedResources()
+        console.log("[v0] CombinedResourcesSection: Received data:", data?.length || 0, "items")
+        setResources(data)
+      } catch (err) {
+        console.error("[v0] CombinedResourcesSection: Error fetching resources:", err)
+        setError(err instanceof Error ? err.message : "Failed to load resources")
+      } finally {
+        setLoading(false)
+      }
+    }
+    fetchResources()
+  }, [])
 
   // Show only 4 initially, then all when expanded
-  const visibleResources = showAll ? allResources : allResources.slice(0, 4)
-  const hasMore = allResources.length > 4
+  const visibleResources = showAll ? resources : resources.slice(0, 4)
+  const hasMore = resources.length > 4
 
   const handleDownloadClick = (title: string, description: string, downloadUrl?: string) => {
     setEmailModal({
@@ -70,32 +64,59 @@ export default function CombinedResourcesSection({ templates = [], policies = []
   }
 
   const handleEmailSubmit = async (email: string) => {
-    console.log("Email captured:", email)
+    console.log("[v0] Email captured:", email)
     if (emailModal.downloadUrl) {
       window.open(emailModal.downloadUrl, "_blank")
     }
   }
 
-  if (allResources.length === 0) {
-    return null
+  // Format type label
+  const getTypeLabel = (type: string) => {
+    return type.charAt(0).toUpperCase() + type.slice(1)
+  }
+
+  if (loading) {
+    return (
+      <div className="space-y-2">
+        <p className="text-white/60 text-center mb-4">Loading resources...</p>
+        {[1, 2, 3, 4].map((i) => (
+          <div key={i} className="py-4 px-5 bg-white/5 animate-pulse">
+            <div className="h-5 bg-white/10 rounded w-1/3"></div>
+          </div>
+        ))}
+      </div>
+    )
+  }
+
+  if (error) {
+    return (
+      <div className="text-center py-8">
+        <p className="text-red-400">Error loading resources: {error}</p>
+      </div>
+    )
+  }
+
+  if (resources.length === 0) {
+    return (
+      <div className="text-center py-8">
+        <p className="text-white/60">No resources available at this time.</p>
+      </div>
+    )
   }
 
   return (
     <>
       <div className="space-y-2">
-        {/* Single combined list */}
         {visibleResources.map((item, index) => (
-          <AnimateOnScroll key={`${item.type}-${item.id}`} animation="fade-in-up" delay={index * 50}>
+          <AnimateOnScroll key={item.id} animation="fade-in-up" delay={index * 50}>
             <div className="flex items-center justify-between py-4 px-5 bg-white/5 hover:bg-white/[0.07] transition-colors duration-200 group">
-              {/* Title and type badge */}
               <div className="flex items-center gap-3">
                 <span className="text-white/80 group-hover:text-white transition-colors duration-200">
                   {item.title}
                 </span>
-                <span className="text-xs text-white/30 bg-white/5 px-2 py-0.5 rounded">{item.type}</span>
+                <span className="text-xs text-white/30 bg-white/5 px-2 py-0.5 rounded">{getTypeLabel(item.type)}</span>
               </div>
 
-              {/* Download button */}
               <Button
                 variant="ghost"
                 size="sm"
@@ -109,7 +130,6 @@ export default function CombinedResourcesSection({ templates = [], policies = []
           </AnimateOnScroll>
         ))}
 
-        {/* Load more button */}
         {hasMore && (
           <div className="pt-6 text-center">
             <Button
@@ -117,7 +137,7 @@ export default function CombinedResourcesSection({ templates = [], policies = []
               onClick={() => setShowAll(!showAll)}
               className="text-white/60 hover:text-white hover:bg-white/10 px-6 py-2"
             >
-              {showAll ? "Show less" : `Load more (${allResources.length - 4} more)`}
+              {showAll ? "Show less" : `Load more (${resources.length - 4} more)`}
             </Button>
           </div>
         )}

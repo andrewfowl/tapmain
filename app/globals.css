@@ -116,6 +116,17 @@
   body {
     @apply bg-background text-foreground;
   }
+
+  /* Reduce all fonts by 15% globally */
+  html {
+    font-size: 85%;
+  }
+
+  @media (min-width: 768px) {
+    html {
+      font-size: 85%;
+    }
+  }
 }
 
 /* Animation utilities */
