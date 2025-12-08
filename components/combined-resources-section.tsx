@@ -151,7 +151,7 @@ export default function CombinedResourcesSection() {
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-6 py-3 bg-white text-black hover:bg-white/90 font-medium rounded-full transition-all hover:scale-105 text-sm whitespace-nowrap"
             >
-              Try Free Tests<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-external-link h-4 w-4"><path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg>
+              Try Free Tests
               <ExternalLink className="h-4 w-4" />
             </a>
           </div>

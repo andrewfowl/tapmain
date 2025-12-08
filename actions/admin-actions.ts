@@ -6,25 +6,45 @@ import { revalidatePath } from "next/cache"
 // Subscriptions
 export async function getPendingSubscriptions() {
   const supabase = createClient()
-  const { data, error } = await supabase
+
+  const { data: subscriptions, error } = await supabase
     .from("subscriptions")
-    .select("*, profiles(*)")
+    .select("*")
     .eq("status", "pending")
     .order("created_at", { ascending: false })
 
-  if (error) return []
-  return data
+  if (error || !subscriptions) return []
+
+  const userIds = subscriptions.map((s) => s.user_id)
+  const { data: profiles } = await supabase.from("profiles").select("*").in("id", userIds)
+
+  return subscriptions.map((sub) => ({
+    ...sub,
+    profiles: profiles?.find((p) => p.id === sub.user_id) || null,
+  }))
 }
 
 export async function getAllSubscriptions() {
   const supabase = createClient()
-  const { data, error } = await supabase
+
+  const { data: subscriptions, error } = await supabase
     .from("subscriptions")
-    .select("*, profiles(*)")
+    .select("*")
     .order("created_at", { ascending: false })
 
-  if (error) return []
-  return data
+  console.log("[v0] getAllSubscriptions - subscriptions:", subscriptions?.length, "error:", error)
+
+  if (error || !subscriptions) return []
+
+  const userIds = subscriptions.map((s) => s.user_id)
+  const { data: profiles } = await supabase.from("profiles").select("*").in("id", userIds)
+
+  console.log("[v0] getAllSubscriptions - profiles:", profiles?.length)
+
+  return subscriptions.map((sub) => ({
+    ...sub,
+    profiles: profiles?.find((p) => p.id === sub.user_id) || null,
+  }))
 }
 
 export async function approveSubscription(subscriptionId: string) {
