@@ -1,6 +1,6 @@
 import type { Metadata } from "next"
 import Link from "next/link"
-import { CheckCircle, Download, Home } from "lucide-react"
+import { CheckCircle, Home } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 
@@ -100,13 +100,6 @@ export default function ThankYouPage({ searchParams }: ThankYouPageProps) {
               <Link href="/">
                 <Home className="mr-2 h-4 w-4" />
                 Return Home
-              </Link>
-            </Button>
-
-            <Button variant="outline" asChild>
-              <Link href="/templates">
-                <Download className="mr-2 h-4 w-4" />
-                Browse Resources
               </Link>
             </Button>
           </div>

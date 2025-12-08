@@ -5,6 +5,7 @@ import Script from "next/script"
 import "./globals.css"
 import { SiteHeader } from "@/components/site-header"
 import { SiteFooter } from "@/components/site-footer"
+import { GrainOverlay } from "@/components/grain-overlay"
 
 const inter = Inter({
   subsets: ["latin"],
@@ -36,7 +37,7 @@ export const metadata: Metadata = {
     site: "@tech_accounting",
     creator: "@tech_accounting",
     title: "TechAccountingPro | Expert Technical Accounting Services Tailored to Your Business Needs.",
-    description: "Unlock Complex Accounting Solutions with TechAccountingPro.",
+    description: "Unlock complex US GAAP and digital assets accounting solutions with TechAccountingPro.",
     images: ["/placeholder-logo.png"],
   },
     generator: 'v0.app'
@@ -114,6 +115,7 @@ export default function RootLayout({
           ></iframe>
         </noscript>
 
+        <GrainOverlay />
         <SiteHeader />
         <main className="min-h-screen">{children}</main>
         <SiteFooter />

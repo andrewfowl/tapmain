@@ -9,12 +9,13 @@ import { getPublishedNews } from "@/actions/news-actions"
 import CombinedResourcesSection from "@/components/combined-resources-section"
 import { Suspense } from "react"
 import SolutionsGrid from "@/components/solutions-grid"
-import { ChevronRight, Check } from "@geist-ui/icons"
+import { ChevronRight, Check } from "lucide-react"
 import { AnimateOnScroll } from "@/components/animate-on-scroll"
 import { SlackChatAnimation } from "@/components/slack-chat-animation"
 import { ServicesSection } from "@/components/services-section"
 import { WallOfLove } from "@/components/wall-of-love"
 import { MeshGradientMascot } from "@/components/mesh-gradient-mascot"
+import { RotatingServices } from "@/components/rotating-services"
 
 async function FeaturedSolutionsContent() {
   const allSolutions = await getPublishedSolutions()
@@ -30,9 +31,10 @@ async function NewsSection() {
       <div className="max-w-5xl mx-auto px-6 lg:px-8">
         <AnimateOnScroll animation="fade-in-up">
           <div className="text-center mb-20">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Industry Insights</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">News and Insights</h2>
             <p className="text-white/60 max-w-2xl mx-auto">
-              Expert analysis on digital assets accounting, regulatory updates, and emerging best practices.
+              Company news and expert analysis on digital assets accounting, regulatory updates, and emerging best
+              practices.
             </p>
           </div>
         </AnimateOnScroll>
@@ -47,7 +49,7 @@ async function NewsSection() {
                   <p className="text-white/60 text-sm mb-4 flex-grow line-clamp-3">{item.summary}</p>
                   <div className="flex items-center justify-between">
                     <span className="text-xs text-white/40">{new Date(item.created_at).toLocaleDateString()}</span>
-                    {item.external_url ? (
+                    {item.external_url && (
                       <a
                         href={item.external_url}
                         target="_blank"
@@ -56,13 +58,6 @@ async function NewsSection() {
                       >
                         Read More <ChevronRight className="w-4 h-4" />
                       </a>
-                    ) : (
-                      <Link
-                        href={`/news/${item.slug}`}
-                        className="text-sm text-white/70 hover:text-white flex items-center gap-1 transition-colors"
-                      >
-                        Read More <ChevronRight className="w-4 h-4" />
-                      </Link>
                     )}
                   </div>
                 </CardContent>
@@ -75,12 +70,12 @@ async function NewsSection() {
   )
 }
 
-export default async function Home() {
+export default function HomePage() {
   const stats = [
-    { value: "100+", label: "Thought Leadership Publications" },
-    { value: "15", label: "Years of Public Accounting Experience" },
-    { value: "100%", label: "Customer Satisfaction Rate" },
-    { value: "20+", label: "Free Resources" },
+    { value: "100+", label: "Thought leadership publications" },
+    { value: "15", label: "Years of experience" },
+    { value: "35+", label: "Happy customers" },
+    { value: "5.0", label: "Average customer rating" },
   ]
 
   const faqs = [
@@ -175,8 +170,8 @@ export default async function Home() {
 
               <AnimateOnScroll animation="fade-in-up" delay={100}>
                 <p className="text-lg text-white/60 max-w-lg">
-                  Big 4 expertise without the Big 4 price tag. We help crypto and blockchain companies navigate complex
-                  accounting challenges—from token compensation to audit readiness.
+                  Big 4 expertise without the price tag. We help crypto and blockchain companies navigate complex
+                  accounting challenges from token compensation to audit readiness.
                 </p>
               </AnimateOnScroll>
 
@@ -200,17 +195,22 @@ export default async function Home() {
                     <img
                       src="/images/logos/overclock-logo.svg"
                       alt="Overclock"
-                      className="h-6 opacity-50 hover:opacity-100 transition-opacity invert"
+                      className="h-6 opacity-50 hover:opacity-100 transition-opacity inverse"
                     />
                     <img
                       src="/images/logos/figment-logo.svg"
                       alt="Figment"
-                      className="h-6 opacity-50 hover:opacity-100 transition-opacity invert"
+                      className="h-6 opacity-50 hover:opacity-100 transition-opacity"
                     />
                     <img
                       src="/images/logos/akash-logo.svg"
                       alt="Akash"
-                      className="h-6 opacity-50 hover:opacity-100 transition-opacity invert"
+                      className="h-6 opacity-50 hover:opacity-100 transition-opacity"
+                    />
+                    <img
+                      src="/images/logos/aragon-logo.svg"
+                      alt="Aragon"
+                      className="h-6 opacity-50 hover:opacity-100 transition-opacity"
                     />
                   </div>
                 </div>
@@ -220,49 +220,7 @@ export default async function Home() {
             {/* Right Column - Bento Grid Preview */}
             <AnimateOnScroll animation="slide-in-right" delay={300}>
               <div className="relative">
-                <div className="grid grid-cols-2 gap-6">
-                  {/* Template Preview Cards */}
-                  <div className="bg-white rounded-xl p-4 transform rotate-2 hover:rotate-0 transition-transform">
-                    <div className="text-xs font-mono text-gray-500 mb-2">TOKEN COMPENSATION</div>
-                    <div className="space-y-1">
-                      <div className="h-2 bg-gray-200 rounded w-full"></div>
-                      <div className="h-2 bg-gray-200 rounded w-3/4"></div>
-                      <div className="h-2 bg-gray-200 rounded w-1/2"></div>
-                    </div>
-                    <div className="mt-4 grid grid-cols-3 gap-2 text-xs">
-                      <div className="text-right font-mono text-gray-600">2,344,497</div>
-                      <div className="text-right font-mono text-gray-600">1,780,849</div>
-                      <div className="text-right font-mono text-gray-600">23,043</div>
-                    </div>
-                  </div>
-
-                  <div className="bg-white rounded-xl p-4 transform -rotate-1 hover:rotate-0 transition-transform mt-8">
-                    <div className="text-xs font-mono text-gray-500 mb-2">ROLL-FORWARD</div>
-                    <div className="space-y-1">
-                      <div className="h-2 bg-gray-200 rounded w-full"></div>
-                      <div className="h-2 bg-gray-200 rounded w-4/5"></div>
-                    </div>
-                    <div className="mt-4 space-y-1 text-xs font-mono text-gray-600">
-                      <div className="flex justify-between">
-                        <span>Beginning</span>
-                        <span>10,630,754</span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span>Accrual</span>
-                        <span>(2,344,497)</span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span>Payment</span>
-                        <span>2,925,209</span>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="col-span-2 bg-gradient-to-br from-blue-900 to-purple-900 rounded-xl p-6 text-white">
-                    <div className="text-sm font-medium mb-2">HELPING CRYPTO TOKEN ISSUERS WITH</div>
-                    <div className="text-2xl font-bold">AUDIT READINESS</div>
-                  </div>
-                </div>
+                <RotatingServices />
               </div>
             </AnimateOnScroll>
           </div>

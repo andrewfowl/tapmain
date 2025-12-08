@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button"
 import EmailCaptureModal from "./email-capture-modal"
 import { AnimateOnScroll } from "./animate-on-scroll"
 import { getPublishedResources, type Resource } from "@/actions/resources-actions"
+import { ExternalLink } from "lucide-react"
 
 const DownloadIcon = () => (
   <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -35,13 +36,10 @@ export default function CombinedResourcesSection() {
 
   useEffect(() => {
     async function fetchResources() {
-      console.log("[v0] CombinedResourcesSection: Starting to fetch resources")
       try {
         const data = await getPublishedResources()
-        console.log("[v0] CombinedResourcesSection: Received data:", data?.length || 0, "items")
         setResources(data)
       } catch (err) {
-        console.error("[v0] CombinedResourcesSection: Error fetching resources:", err)
         setError(err instanceof Error ? err.message : "Failed to load resources")
       } finally {
         setLoading(false)
@@ -64,7 +62,6 @@ export default function CombinedResourcesSection() {
   }
 
   const handleEmailSubmit = async (email: string) => {
-    console.log("[v0] Email captured:", email)
     if (emailModal.downloadUrl) {
       window.open(emailModal.downloadUrl, "_blank")
     }
@@ -141,6 +138,24 @@ export default function CombinedResourcesSection() {
             </Button>
           </div>
         )}
+
+        <div className="pt-8 mt-4 border-t border-zinc-800/50">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+            <p className="text-zinc-400 text-sm">
+              <span className="text-zinc-500">Not ready yet?</span> Test your blockchain knowledge with our free
+              quizzes.
+            </p>
+            <a
+              href="https://allocker.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-white text-black hover:bg-white/90 font-medium rounded-full transition-all hover:scale-105 text-sm whitespace-nowrap"
+            >
+              Try Free Tests<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-external-link h-4 w-4"><path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg>
+              <ExternalLink className="h-4 w-4" />
+            </a>
+          </div>
+        </div>
       </div>
 
       <EmailCaptureModal

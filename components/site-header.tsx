@@ -2,10 +2,14 @@
 
 import { useState, useEffect } from "react"
 import Link from "next/link"
+import { usePathname } from "next/navigation"
 import { Button } from "@/components/ui/button"
 
 export function SiteHeader() {
   const [isScrolled, setIsScrolled] = useState(false)
+  const pathname = usePathname()
+
+  const isDashboardOrAdmin = pathname?.startsWith("/dashboard") || pathname?.startsWith("/admin")
 
   useEffect(() => {
     const handleScroll = () => {
@@ -15,6 +19,10 @@ export function SiteHeader() {
     window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
+
+  if (isDashboardOrAdmin) {
+    return null
+  }
 
   return (
     <header
@@ -29,13 +37,19 @@ export function SiteHeader() {
             <span className="text-xl font-bold text-white tracking-tight uppercase">TechAccountingPro</span>
           </Link>
 
-          {/* CTA Button */}
-          <Button
-            asChild
-            className="bg-white text-black hover:bg-white/90 rounded-full px-6 py-2 font-medium transition-all duration-300 hover:scale-105"
-          >
-            <Link href="#pricing">See plans</Link>
-          </Button>
+          <div className="flex items-center gap-4">
+            <Link href="/auth/signup">
+              <Button variant="outline" className="border-white/20 text-white hover:bg-white/10 bg-transparent">
+                Get Started
+              </Button>
+            </Link>
+            <Button
+              asChild
+              className="bg-white text-black hover:bg-white/90 rounded-full px-6 py-2 font-medium transition-all duration-300 hover:scale-105"
+            >
+              <Link href="#pricing">See plans</Link>
+            </Button>
+          </div>
         </div>
       </div>
     </header>

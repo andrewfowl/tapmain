@@ -3,6 +3,346 @@ export type Json = string | number | boolean | null | { [key: string]: Json | un
 export interface Database {
   public: {
     Tables: {
+      profiles: {
+        Row: {
+          id: string
+          created_at: string
+          updated_at: string
+          full_name: string | null
+          email: string | null
+          company_name: string | null
+          phone: string | null
+          role: string | null
+        }
+        Insert: {
+          id: string
+          created_at?: string
+          updated_at?: string
+          full_name?: string | null
+          email?: string | null
+          company_name?: string | null
+          phone?: string | null
+          role?: string | null
+        }
+        Update: {
+          id?: string
+          created_at?: string
+          updated_at?: string
+          full_name?: string | null
+          email?: string | null
+          company_name?: string | null
+          phone?: string | null
+          role?: string | null
+        }
+      }
+      subscriptions: {
+        Row: {
+          id: string
+          user_id: string
+          status: string
+          rejection_reason: string | null
+          approved_by: string | null
+          approved_at: string | null
+          created_at: string
+          updated_at: string
+        }
+        Insert: {
+          id?: string
+          user_id: string
+          status?: string
+          rejection_reason?: string | null
+          approved_by?: string | null
+          approved_at?: string | null
+          created_at?: string
+          updated_at?: string
+        }
+        Update: {
+          id?: string
+          user_id?: string
+          status?: string
+          rejection_reason?: string | null
+          approved_by?: string | null
+          approved_at?: string | null
+          created_at?: string
+          updated_at?: string
+        }
+      }
+      project_types: {
+        Row: {
+          id: string
+          name: string
+          description: string | null
+          icon: string | null
+          is_active: boolean
+          display_order: number | null
+          created_at: string
+          updated_at: string
+        }
+        Insert: {
+          id?: string
+          name: string
+          description?: string | null
+          icon?: string | null
+          is_active?: boolean
+          display_order?: number | null
+          created_at?: string
+          updated_at?: string
+        }
+        Update: {
+          id?: string
+          name?: string
+          description?: string | null
+          icon?: string | null
+          is_active?: boolean
+          display_order?: number | null
+          created_at?: string
+          updated_at?: string
+        }
+      }
+      project_type_items: {
+        Row: {
+          id: string
+          project_type_id: string
+          name: string
+          description: string | null
+          why_needed: string | null
+          what_we_do: string | null
+          file_types: string[] | null
+          is_required: boolean
+          display_order: number | null
+          created_at: string
+          updated_at: string
+        }
+        Insert: {
+          id?: string
+          project_type_id: string
+          name: string
+          description?: string | null
+          why_needed?: string | null
+          what_we_do?: string | null
+          file_types?: string[] | null
+          is_required?: boolean
+          display_order?: number | null
+          created_at?: string
+          updated_at?: string
+        }
+        Update: {
+          id?: string
+          project_type_id?: string
+          name?: string
+          description?: string | null
+          why_needed?: string | null
+          what_we_do?: string | null
+          file_types?: string[] | null
+          is_required?: boolean
+          display_order?: number | null
+          created_at?: string
+          updated_at?: string
+        }
+      }
+      customer_projects: {
+        Row: {
+          id: string
+          user_id: string
+          project_type_id: string | null
+          name: string
+          description: string | null
+          status: string
+          created_at: string
+          updated_at: string
+        }
+        Insert: {
+          id?: string
+          user_id: string
+          project_type_id?: string | null
+          name: string
+          description?: string | null
+          status?: string
+          created_at?: string
+          updated_at?: string
+        }
+        Update: {
+          id?: string
+          user_id?: string
+          project_type_id?: string | null
+          name?: string
+          description?: string | null
+          status?: string
+          created_at?: string
+          updated_at?: string
+        }
+      }
+      project_files: {
+        Row: {
+          id: string
+          project_id: string
+          item_id: string | null
+          request_id: string | null
+          file_name: string
+          file_url: string
+          file_type: string | null
+          file_size: number | null
+          notes: string | null
+          uploaded_by: string
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          project_id: string
+          item_id?: string | null
+          request_id?: string | null
+          file_name: string
+          file_url: string
+          file_type?: string | null
+          file_size?: number | null
+          notes?: string | null
+          uploaded_by: string
+          created_at?: string
+        }
+        Update: {
+          id?: string
+          project_id?: string
+          item_id?: string | null
+          request_id?: string | null
+          file_name?: string
+          file_url?: string
+          file_type?: string | null
+          file_size?: number | null
+          notes?: string | null
+          uploaded_by?: string
+          created_at?: string
+        }
+      }
+      item_requests: {
+        Row: {
+          id: string
+          project_id: string
+          requested_by: string | null
+          title: string
+          description: string | null
+          why_needed: string | null
+          file_types: string[] | null
+          status: string
+          due_date: string | null
+          fulfilled_at: string | null
+          created_at: string
+          updated_at: string
+        }
+        Insert: {
+          id?: string
+          project_id: string
+          requested_by?: string | null
+          title: string
+          description?: string | null
+          why_needed?: string | null
+          file_types?: string[] | null
+          status?: string
+          due_date?: string | null
+          fulfilled_at?: string | null
+          created_at?: string
+          updated_at?: string
+        }
+        Update: {
+          id?: string
+          project_id?: string
+          requested_by?: string | null
+          title?: string
+          description?: string | null
+          why_needed?: string | null
+          file_types?: string[] | null
+          status?: string
+          due_date?: string | null
+          fulfilled_at?: string | null
+          created_at?: string
+          updated_at?: string
+        }
+      }
+      lead_capture: {
+        Row: {
+          id: string
+          email: string
+          full_name: string | null
+          company_name: string | null
+          phone: string | null
+          source: string | null
+          status: string | null
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          email: string
+          full_name?: string | null
+          company_name?: string | null
+          phone?: string | null
+          source?: string | null
+          status?: string | null
+          created_at?: string
+        }
+        Update: {
+          id?: string
+          email?: string
+          full_name?: string | null
+          company_name?: string | null
+          phone?: string | null
+          source?: string | null
+          status?: string | null
+          created_at?: string
+        }
+      }
+      resources: {
+        Row: {
+          id: string
+          created_at: string
+          updated_at: string
+          title: string
+          slug: string
+          description: string | null
+          category: string | null
+          type: string | null
+          file_type: string | null
+          file_size: number | null
+          preview_image_url: string | null
+          content: Json | null
+          published: boolean
+          created_by: string | null
+          downloadUrl: string | null
+        }
+        Insert: {
+          id?: string
+          created_at?: string
+          updated_at?: string
+          title: string
+          slug: string
+          description?: string | null
+          category?: string | null
+          type?: string | null
+          file_type?: string | null
+          file_size?: number | null
+          preview_image_url?: string | null
+          content?: Json | null
+          published?: boolean
+          created_by?: string | null
+          downloadUrl?: string | null
+        }
+        Update: {
+          id?: string
+          created_at?: string
+          updated_at?: string
+          title?: string
+          slug?: string
+          description?: string | null
+          category?: string | null
+          type?: string | null
+          file_type?: string | null
+          file_size?: number | null
+          preview_image_url?: string | null
+          content?: Json | null
+          published?: boolean
+          created_by?: string | null
+          downloadUrl?: string | null
+        }
+      }
+      // Existing tables below
       downloads: {
         Row: {
           id: number
@@ -146,35 +486,6 @@ export interface Database {
           published?: boolean
         }
       }
-      profiles: {
-        Row: {
-          id: string
-          created_at: string
-          updated_at: string
-          full_name: string | null
-          avatar_url: string | null
-          company: string | null
-          role: string | null
-        }
-        Insert: {
-          id: string
-          created_at?: string
-          updated_at?: string
-          full_name?: string | null
-          avatar_url?: string | null
-          company?: string | null
-          role?: string | null
-        }
-        Update: {
-          id?: string
-          created_at?: string
-          updated_at?: string
-          full_name?: string | null
-          avatar_url?: string | null
-          company?: string | null
-          role?: string | null
-        }
-      }
       service_requests: {
         Row: {
           id: string
@@ -185,6 +496,7 @@ export interface Database {
           company: string | null
           message: string | null
           solution_id: string | null
+          ip_address: string | null
         }
         Insert: {
           id?: string
@@ -195,6 +507,7 @@ export interface Database {
           company?: string | null
           message?: string | null
           solution_id?: string | null
+          ip_address?: string | null
         }
         Update: {
           id?: string
@@ -205,6 +518,7 @@ export interface Database {
           company?: string | null
           message?: string | null
           solution_id?: string | null
+          ip_address?: string | null
         }
       }
       solutions: {
@@ -222,6 +536,8 @@ export interface Database {
           pricing_info: string | null
           published: boolean
           related_template_id: string | null
+          group: string | null
+          downloadUrl: string | null
         }
         Insert: {
           id?: string
@@ -237,6 +553,8 @@ export interface Database {
           pricing_info?: string | null
           published?: boolean
           related_template_id?: string | null
+          group?: string | null
+          downloadUrl?: string | null
         }
         Update: {
           id?: string
@@ -252,6 +570,8 @@ export interface Database {
           pricing_info?: string | null
           published?: boolean
           related_template_id?: string | null
+          group?: string | null
+          downloadUrl?: string | null
         }
       }
       technical_inquiries: {

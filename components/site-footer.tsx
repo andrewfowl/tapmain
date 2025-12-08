@@ -1,6 +1,7 @@
 "use client"
 
 import Link from "next/link"
+import { usePathname } from "next/navigation"
 import { NewsletterForm } from "./newsletter-form"
 
 const Mail = ({ className }: { className?: string }) => (
@@ -27,6 +28,14 @@ const Phone = ({ className }: { className?: string }) => (
 )
 
 export function SiteFooter() {
+  const pathname = usePathname()
+
+  const isDashboardOrAdmin = pathname?.startsWith("/dashboard") || pathname?.startsWith("/admin")
+
+  if (isDashboardOrAdmin) {
+    return null
+  }
+
   return (
     <footer className="bg-black text-white pt-20 pb-10 border-t border-white/10">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
@@ -61,7 +70,7 @@ export function SiteFooter() {
 
           {/* Newsletter */}
           <div>
-            <h3 className="text-lg font-semibold mb-6">Subscribe to Updates</h3>
+            <h3 className="text-lg font-semibold mb-6">Subscribe to our newsletter</h3>
             <p className="text-white/60 mb-6 text-sm leading-relaxed">
               Get the latest insights in technology accounting and crypto finance.
             </p>
