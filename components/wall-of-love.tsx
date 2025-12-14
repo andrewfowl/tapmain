@@ -1,6 +1,8 @@
 "use client"
 
 import { AnimateOnScroll } from "@/components/animate-on-scroll"
+import { useState } from "react"
+import { Play } from "lucide-react"
 
 interface Testimonial {
   id: number
@@ -8,11 +10,20 @@ interface Testimonial {
   role: string
   company: string
   content: string
+  videoUrl?: string
 }
 
 const testimonials: Testimonial[] = [
   {
     id: 1,
+    name: "Alex Johnson",
+    role: "CFO",
+    company: "Tech Innovations Inc",
+    content: "TechAccountingPro's expertise in finance transformation has been invaluable to our company's growth.",
+    videoUrl: "/testimonial-video.mp4",
+  },
+  {
+    id: 2,
     name: "Sarah Chen",
     role: "CFO",
     company: "BlockFi Labs",
@@ -20,7 +31,7 @@ const testimonials: Testimonial[] = [
       "TechAccountingPro transformed our financial reporting. Their expertise in crypto accounting saved us months of work before our Series B.",
   },
   {
-    id: 2,
+    id: 3,
     name: "Michael Torres",
     role: "Head of Finance",
     company: "DeFi Protocol",
@@ -28,21 +39,21 @@ const testimonials: Testimonial[] = [
       "Finally, accountants who actually understand token compensation and staking rewards. Game changer for our audit prep.",
   },
   {
-    id: 3,
+    id: 4,
     name: "Emily Watson",
     role: "CEO",
     company: "Web3 Ventures",
     content: "The team's responsiveness via Slack is incredible. Complex questions answered within hours, not days.",
   },
   {
-    id: 4,
+    id: 5,
     name: "David Park",
     role: "Controller",
     company: "CryptoTrade Inc",
     content: "Their templates alone saved us $50k in consulting fees. The quality rivals Big 4 deliverables.",
   },
   {
-    id: 5,
+    id: 6,
     name: "Lisa Zhang",
     role: "VP Finance",
     company: "NFT Marketplace",
@@ -50,7 +61,7 @@ const testimonials: Testimonial[] = [
       "We went from messy spreadsheets to audit-ready financials in 6 weeks. Highly recommend for any crypto company.",
   },
   {
-    id: 6,
+    id: 7,
     name: "James Miller",
     role: "Founder",
     company: "DAO Treasury",
@@ -58,21 +69,21 @@ const testimonials: Testimonial[] = [
       "Best decision we made was bringing in TechAccountingPro before our token launch. They caught issues we never would have found.",
   },
   {
-    id: 7,
+    id: 8,
     name: "Anna Kowalski",
     role: "Finance Director",
     company: "Stablecoin Co",
     content: "Their deep knowledge of ASC 842 and crypto-specific guidance is unmatched. True experts in the space.",
   },
   {
-    id: 8,
+    id: 9,
     name: "Robert Kim",
     role: "COO",
     company: "Layer2 Solutions",
     content: "From chaotic books to clean financials in record time. The weekly check-ins kept us on track throughout.",
   },
   {
-    id: 9,
+    id: 10,
     name: "Nicole Adams",
     role: "Finance Lead",
     company: "MetaDAO",
@@ -81,6 +92,74 @@ const testimonials: Testimonial[] = [
   },
 ]
 
+function VideoTestimonialCard({ testimonial }: { testimonial: Testimonial }) {
+  const [isPlaying, setIsPlaying] = useState(false)
+  const [videoError, setVideoError] = useState(false)
+
+  const initials = testimonial.name
+    .split(" ")
+    .map((n) => n[0])
+    .join("")
+
+  if (videoError || !testimonial.videoUrl) {
+    return <TestimonialCard testimonial={testimonial} />
+  }
+
+  return (
+    <div
+      className="bg-white/5 border border-white/10 hover:border-white/20 hover:bg-white/[0.07] transition-all duration-300 mb-4 overflow-hidden"
+      style={{ borderRadius: "var(--radius-card)" }}
+    >
+      <div className="relative aspect-video bg-black/50">
+        {!isPlaying ? (
+          <>
+            <video
+              src={testimonial.videoUrl}
+              className="w-full h-full object-cover"
+              preload="metadata"
+              onError={() => setVideoError(true)}
+              playsInline
+            />
+            <button
+              onClick={() => setIsPlaying(true)}
+              className="absolute inset-0 flex items-center justify-center bg-black/40 hover:bg-black/30 transition-colors group"
+              aria-label="Play video testimonial"
+            >
+              <div className="w-16 h-16 rounded-full bg-white/90 group-hover:bg-white flex items-center justify-center transition-all group-hover:scale-110">
+                <Play className="w-6 h-6 text-black ml-1" fill="currentColor" />
+              </div>
+            </button>
+          </>
+        ) : (
+          <video
+            src={testimonial.videoUrl}
+            className="w-full h-full object-cover"
+            controls
+            autoPlay
+            preload="auto"
+            onError={() => setVideoError(true)}
+            playsInline
+          />
+        )}
+      </div>
+
+      <div className="p-6">
+        <div className="flex items-center gap-3">
+          <div className="w-10 h-10 rounded-full bg-gradient-to-br from-white/20 to-white/5 flex items-center justify-center text-white/80 text-sm font-medium">
+            {initials}
+          </div>
+          <div>
+            <p className="text-white font-medium text-sm">{testimonial.name}</p>
+            <p className="text-white/40 text-xs">
+              {testimonial.role}, {testimonial.company}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
 function TestimonialCard({ testimonial }: { testimonial: Testimonial }) {
   const initials = testimonial.name
     .split(" ")
@@ -88,7 +167,10 @@ function TestimonialCard({ testimonial }: { testimonial: Testimonial }) {
     .join("")
 
   return (
-    <div className="bg-white/5 border border-white/10 p-6 hover:border-white/20 hover:bg-white/[0.07] transition-all duration-300 mb-4">
+    <div
+      className="bg-white/5 border border-white/10 p-6 hover:border-white/20 hover:bg-white/[0.07] transition-all duration-300 mb-4"
+      style={{ borderRadius: "var(--radius-card)" }}
+    >
       <p className="text-white/80 text-base leading-relaxed mb-6">"{testimonial.content}"</p>
       <div className="flex items-center gap-3">
         <div className="w-10 h-10 rounded-full bg-gradient-to-br from-white/20 to-white/5 flex items-center justify-center text-white/80 text-sm font-medium">
@@ -122,12 +204,10 @@ function ScrollingColumn({
   speed?: number
   reverse?: boolean
 }) {
-  // Duplicate for seamless loop
   const duplicated = [...testimonials, ...testimonials]
 
   return (
     <div className="h-[600px] overflow-hidden relative">
-      {/* Fade overlays */}
       <div className="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-[#0a0a0a] to-transparent z-10 pointer-events-none" />
       <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-[#0a0a0a] to-transparent z-10 pointer-events-none" />
 
@@ -135,9 +215,13 @@ function ScrollingColumn({
         className={`flex flex-col ${reverse ? "animate-scroll-down" : "animate-scroll-up"}`}
         style={{ animationDuration: `${speed}s` }}
       >
-        {duplicated.map((testimonial, index) => (
-          <TestimonialCard key={`${testimonial.id}-${index}`} testimonial={testimonial} />
-        ))}
+        {duplicated.map((testimonial, index) =>
+          testimonial.videoUrl ? (
+            <VideoTestimonialCard key={`${testimonial.id}-${index}`} testimonial={testimonial} />
+          ) : (
+            <TestimonialCard key={`${testimonial.id}-${index}`} testimonial={testimonial} />
+          ),
+        )}
       </div>
     </div>
   )

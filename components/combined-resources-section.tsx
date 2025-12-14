@@ -1,11 +1,32 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import EmailCaptureModal from "./email-capture-modal"
 import { AnimateOnScroll } from "./animate-on-scroll"
-import { getPublishedResources, type Resource } from "@/actions/resources-actions"
 import { ExternalLink } from "lucide-react"
+
+export interface Resource {
+  id: string
+  title: string
+  slug: string
+  description: string
+  category?: string
+  type: "template" | "policy" | "framework"
+  content?: any
+  preview_image_url?: string
+  file_type?: string
+  file_size?: number
+  downloadUrl?: string
+  published: boolean
+  created_at: string
+  updated_at: string
+  created_by?: string
+}
+
+interface CombinedResourcesSectionProps {
+  resources: Resource[]
+}
 
 const DownloadIcon = () => (
   <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -18,10 +39,7 @@ const DownloadIcon = () => (
   </svg>
 )
 
-export default function CombinedResourcesSection() {
-  const [resources, setResources] = useState<Resource[]>([])
-  const [loading, setLoading] = useState(true)
-  const [error, setError] = useState<string | null>(null)
+export default function CombinedResourcesSection({ resources }: CombinedResourcesSectionProps) {
   const [showAll, setShowAll] = useState(false)
   const [emailModal, setEmailModal] = useState<{
     isOpen: boolean
@@ -33,20 +51,6 @@ export default function CombinedResourcesSection() {
     title: "",
     description: "",
   })
-
-  useEffect(() => {
-    async function fetchResources() {
-      try {
-        const data = await getPublishedResources()
-        setResources(data)
-      } catch (err) {
-        setError(err instanceof Error ? err.message : "Failed to load resources")
-      } finally {
-        setLoading(false)
-      }
-    }
-    fetchResources()
-  }, [])
 
   // Show only 4 initially, then all when expanded
   const visibleResources = showAll ? resources : resources.slice(0, 4)
@@ -70,27 +74,6 @@ export default function CombinedResourcesSection() {
   // Format type label
   const getTypeLabel = (type: string) => {
     return type.charAt(0).toUpperCase() + type.slice(1)
-  }
-
-  if (loading) {
-    return (
-      <div className="space-y-2">
-        <p className="text-white/60 text-center mb-4">Loading resources...</p>
-        {[1, 2, 3, 4].map((i) => (
-          <div key={i} className="py-4 px-5 bg-white/5 animate-pulse">
-            <div className="h-5 bg-white/10 rounded w-1/3"></div>
-          </div>
-        ))}
-      </div>
-    )
-  }
-
-  if (error) {
-    return (
-      <div className="text-center py-8">
-        <p className="text-red-400">Error loading resources: {error}</p>
-      </div>
-    )
   }
 
   if (resources.length === 0) {
@@ -142,7 +125,7 @@ export default function CombinedResourcesSection() {
         <div className="pt-8 mt-4 border-t border-zinc-800/50">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
             <p className="text-zinc-400 text-sm">
-              <span className="text-zinc-500">Not ready yet?</span> Test your blockchain knowledge with our free
+              <span className="text-zinc-500">Ready to test your knowledge?</span> Test your blockchain knowledge with our free
               quizzes.
             </p>
             <a

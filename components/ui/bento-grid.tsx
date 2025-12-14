@@ -33,7 +33,7 @@ const BentoCard = ({
   <div
     key={name}
     className={cn(
-      "group relative col-span-3 flex flex-col justify-between overflow-hidden rounded-none",
+      "group relative col-span-3 flex flex-col justify-between overflow-hidden rounded-[var(--radius-card)]",
       "bg-[#1a1a1a] [box-shadow:0_0_0_1px_rgba(255,255,255,.1)]",
       "transform-gpu dark:[border:1px_solid_rgba(255,255,255,.1)] dark:[box-shadow:0_-20px_80px_-20px_#ffffff1f_inset]",
       className,

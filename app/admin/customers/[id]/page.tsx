@@ -1,23 +1,60 @@
 import { notFound } from "next/navigation"
 import Link from "next/link"
-import { createClient } from "@/lib/supabase/server"
-import { getCustomerProjects, getAllProjectTypes } from "@/actions/admin-actions"
+import { getCustomerById, getCustomerProjects, getAllProjectTypes } from "@/actions/admin-actions"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { ArrowLeft, User, FolderOpen, Mail, Building, Phone, CheckCircle, Clock, XCircle } from "lucide-react"
+import {
+  ArrowLeft,
+  User,
+  FolderOpen,
+  Mail,
+  Building,
+  Phone,
+  CheckCircle,
+  Clock,
+  XCircle,
+  Snowflake,
+} from "lucide-react"
 import { AdminCreateProjectForm } from "@/components/admin-create-project-form"
+import { CustomerDetailActions } from "@/components/customer-detail-actions"
 
-export default async function CustomerDetailPage({ params }: { params: { id: string } }) {
-  const supabase = createClient()
+export default async function CustomerDetailPage({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params
 
-  const { data: customer } = await supabase.from("profiles").select("*, subscriptions(*)").eq("id", params.id).single()
+  const customer = await getCustomerById(id)
 
   if (!customer) {
     notFound()
   }
 
-  const projects = await getCustomerProjects(params.id)
+  const projects = await getCustomerProjects(id)
   const projectTypes = await getAllProjectTypes()
   const subscription = customer.subscriptions?.[0]
+
+  const getStatusIcon = (status?: string) => {
+    switch (status) {
+      case "approved":
+        return <CheckCircle className="h-4 w-4" />
+      case "pending":
+        return <Clock className="h-4 w-4" />
+      case "frozen":
+        return <Snowflake className="h-4 w-4" />
+      default:
+        return <XCircle className="h-4 w-4" />
+    }
+  }
+
+  const getStatusStyle = (status?: string) => {
+    switch (status) {
+      case "approved":
+        return "bg-white/20 text-white"
+      case "pending":
+        return "bg-white/10 text-white/80"
+      case "frozen":
+        return "bg-white/10 text-white/60"
+      default:
+        return "bg-white/5 text-white/60"
+    }
+  }
 
   return (
     <div className="p-8">
@@ -41,23 +78,20 @@ export default async function CustomerDetailPage({ params }: { params: { id: str
                 <CardTitle className="text-2xl text-white">{customer.full_name || "Unknown"}</CardTitle>
                 <CardDescription className="text-white/60">Customer Details</CardDescription>
               </div>
-              <div>
-                {subscription?.status === "approved" ? (
-                  <span className="flex items-center gap-2 px-4 py-2 rounded-full bg-green-500/20 text-green-500">
-                    <CheckCircle className="h-4 w-4" />
-                    Approved
-                  </span>
-                ) : subscription?.status === "pending" ? (
-                  <span className="flex items-center gap-2 px-4 py-2 rounded-full bg-yellow-500/20 text-yellow-500">
-                    <Clock className="h-4 w-4" />
-                    Pending
-                  </span>
-                ) : (
-                  <span className="flex items-center gap-2 px-4 py-2 rounded-full bg-red-500/20 text-red-500">
-                    <XCircle className="h-4 w-4" />
-                    Rejected
-                  </span>
-                )}
+              <div className="flex items-center gap-2">
+                <span
+                  className={`flex items-center gap-2 px-4 py-2 rounded-none ${getStatusStyle(subscription?.status)}`}
+                >
+                  {getStatusIcon(subscription?.status)}
+                  {subscription?.status
+                    ? subscription.status.charAt(0).toUpperCase() + subscription.status.slice(1)
+                    : "No Subscription"}
+                </span>
+                <CustomerDetailActions
+                  customerId={customer.id}
+                  customerName={customer.full_name || customer.email}
+                  subscription={subscription}
+                />
               </div>
             </div>
           </CardHeader>
@@ -90,7 +124,7 @@ export default async function CustomerDetailPage({ params }: { params: { id: str
 
         <div className="mb-6">
           <AdminCreateProjectForm
-            userId={params.id}
+            userId={id}
             customerName={customer.full_name || customer.email || "Customer"}
             projectTypes={projectTypes.map((pt) => ({
               id: pt.id,
@@ -119,7 +153,7 @@ export default async function CustomerDetailPage({ params }: { params: { id: str
                   <Link
                     key={project.id}
                     href={`/admin/projects/${project.id}`}
-                    className="block p-4 rounded-lg bg-white/5 border border-white/10 hover:border-white/20 transition-colors"
+                    className="block p-4 rounded-none bg-white/5 border border-white/10 hover:border-white/20 transition-colors"
                   >
                     <div className="flex items-center justify-between">
                       <div>
@@ -129,14 +163,14 @@ export default async function CustomerDetailPage({ params }: { params: { id: str
                       <div className="flex items-center gap-4">
                         <span className="text-sm text-white/40">{project.project_files?.[0]?.count || 0} files</span>
                         <span
-                          className={`px-3 py-1 text-xs rounded-full ${
+                          className={`px-3 py-1 text-xs rounded-none ${
                             project.status === "completed"
-                              ? "bg-green-500/20 text-green-500"
+                              ? "bg-white/20 text-white"
                               : project.status === "in_progress"
-                                ? "bg-blue-500/20 text-blue-500"
+                                ? "bg-white/10 text-white/80"
                                 : project.status === "review"
-                                  ? "bg-yellow-500/20 text-yellow-500"
-                                  : "bg-white/10 text-white/60"
+                                  ? "bg-white/10 text-white/80"
+                                  : "bg-white/5 text-white/60"
                           }`}
                         >
                           {project.status.replace("_", " ")}

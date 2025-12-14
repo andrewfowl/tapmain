@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     url: "https://techaccountingpro.com/",
     title: "TechAccountingPro | Your Technical Accounting Expert.",
     description: "Solve complex crypto accounting questions with TechAccountingPro.",
-    images: ["/placeholder-logo.png"],
+    images: ["/images/logos/tap-logo.png"],
     siteName: "TechAccountingPro",
     locale: "en_US",
     type: "website",
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     creator: "@tech_accounting",
     title: "TechAccountingPro | Expert Technical Accounting Services Tailored to Your Business Needs.",
     description: "Unlock complex US GAAP and digital assets accounting solutions with TechAccountingPro.",
-    images: ["/placeholder-logo.png"],
+    images: ["/images/logos/tap-logo.png"],
   },
     generator: 'v0.app'
 }

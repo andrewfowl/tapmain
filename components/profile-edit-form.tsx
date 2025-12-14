@@ -61,7 +61,7 @@ export function ProfileEditForm({ profile, email }: ProfileEditFormProps) {
   }
 
   return (
-    <div className="bg-[#1a1a1a] border border-white/10 rounded-lg p-6">
+    <div className="bg-[#1a1a1a] border border-white/10 rounded-none p-6">
       <div className="flex items-center justify-between mb-4">
         <h2 className="text-lg font-semibold text-white">Personal Information</h2>
         {!isEditing && (
@@ -69,7 +69,7 @@ export function ProfileEditForm({ profile, email }: ProfileEditFormProps) {
             variant="outline"
             size="sm"
             onClick={() => setIsEditing(true)}
-            className="border-white/20 text-white hover:bg-white/10"
+            className="border-white/20 text-white hover:bg-white/10 rounded-none"
           >
             Edit
           </Button>
@@ -77,14 +77,14 @@ export function ProfileEditForm({ profile, email }: ProfileEditFormProps) {
       </div>
 
       {success && (
-        <div className="mb-4 p-3 bg-green-500/10 border border-green-500/20 rounded-lg flex items-center gap-2 text-green-400 text-sm">
+        <div className="mb-4 p-3 bg-white/10 border border-white/20 rounded-none flex items-center gap-2 text-white text-sm">
           <Check className="h-4 w-4" />
           Profile updated successfully
         </div>
       )}
 
       {error && (
-        <div className="mb-4 p-3 bg-red-500/10 border border-red-500/20 rounded-lg text-red-400 text-sm">{error}</div>
+        <div className="mb-4 p-3 bg-white/5 border border-white/10 rounded-none text-white/60 text-sm">{error}</div>
       )}
 
       <form onSubmit={handleSubmit} className="space-y-4">
@@ -97,7 +97,7 @@ export function ProfileEditForm({ profile, email }: ProfileEditFormProps) {
               id="fullName"
               value={fullName}
               onChange={(e) => setFullName(e.target.value)}
-              className="bg-white/5 border-white/10 text-white mt-1"
+              className="bg-white/5 border-white/10 text-white mt-1 rounded-none"
               placeholder="Enter your full name"
             />
           ) : (
@@ -114,7 +114,7 @@ export function ProfileEditForm({ profile, email }: ProfileEditFormProps) {
               id="companyName"
               value={companyName}
               onChange={(e) => setCompanyName(e.target.value)}
-              className="bg-white/5 border-white/10 text-white mt-1"
+              className="bg-white/5 border-white/10 text-white mt-1 rounded-none"
               placeholder="Enter your company name"
             />
           ) : (
@@ -132,7 +132,7 @@ export function ProfileEditForm({ profile, email }: ProfileEditFormProps) {
               type="tel"
               value={phone}
               onChange={(e) => setPhone(e.target.value)}
-              className="bg-white/5 border-white/10 text-white mt-1"
+              className="bg-white/5 border-white/10 text-white mt-1 rounded-none"
               placeholder="Enter your phone number"
             />
           ) : (
@@ -142,7 +142,7 @@ export function ProfileEditForm({ profile, email }: ProfileEditFormProps) {
 
         {isEditing && (
           <div className="flex gap-3 pt-2">
-            <Button type="submit" disabled={isLoading} className="bg-white text-black hover:bg-white/90">
+            <Button type="submit" disabled={isLoading} className="bg-white text-black hover:bg-white/90 rounded-none">
               {isLoading ? (
                 <>
                   <Loader2 className="mr-2 h-4 w-4 animate-spin" />
@@ -156,7 +156,7 @@ export function ProfileEditForm({ profile, email }: ProfileEditFormProps) {
               type="button"
               variant="outline"
               onClick={handleCancel}
-              className="border-white/20 text-white hover:bg-white/10 bg-transparent"
+              className="border-white/20 text-white hover:bg-white/10 bg-transparent rounded-none"
             >
               Cancel
             </Button>

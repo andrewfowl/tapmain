@@ -7,6 +7,7 @@ import { uploadProjectFile } from "@/actions/dashboard-actions"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Loader2, Upload, CheckCircle } from "lucide-react"
+import { ExistingFileSelector } from "@/components/existing-file-selector"
 
 interface FileUploadFormProps {
   projectId: string
@@ -14,6 +15,8 @@ interface FileUploadFormProps {
   requestId?: string
   acceptedTypes?: string[]
   label?: string
+  showExistingFiles?: boolean
+  inline?: boolean
 }
 
 export function FileUploadForm({
@@ -21,7 +24,9 @@ export function FileUploadForm({
   itemId,
   requestId,
   acceptedTypes,
-  label = "Upload file",
+  label = "Upload",
+  showExistingFiles = true,
+  inline = false,
 }: FileUploadFormProps) {
   const [isUploading, setIsUploading] = useState(false)
   const [success, setSuccess] = useState(false)
@@ -54,39 +59,92 @@ export function FileUploadForm({
     setIsUploading(false)
   }
 
-  return (
-    <form ref={formRef} onSubmit={handleSubmit} className="flex items-center gap-3">
-      <Input
-        type="file"
-        name="file"
-        accept={acceptString}
-        required
-        className="bg-white/5 border-white/10 text-white file:bg-white/10 file:text-white file:border-0 file:mr-3 file:px-3 file:py-1 file:rounded"
-      />
-      <Button
-        type="submit"
-        size="sm"
-        disabled={isUploading}
-        className={success ? "bg-green-500 hover:bg-green-600" : "bg-white text-black hover:bg-white/90"}
-      >
-        {isUploading ? (
+  function handleFileAssigned() {
+    setSuccess(true)
+    setTimeout(() => setSuccess(false), 3000)
+  }
+
+  if (inline) {
+    return (
+      <div className="flex items-center gap-3 flex-wrap">
+        <form ref={formRef} onSubmit={handleSubmit} className="flex items-center gap-2">
+          <Input
+            type="file"
+            name="file"
+            accept={acceptString}
+            required
+            className="bg-white/5 border-white/10 text-white text-sm h-8 w-auto max-w-[200px] file:bg-white/10 file:text-white file:border-0 file:mr-2 file:px-2 file:py-0.5 file:text-xs file:rounded"
+          />
+          <Button
+            type="submit"
+            size="sm"
+            disabled={isUploading}
+            className={`h-8 px-3 rounded-none ${success ? "bg-white/20 text-white" : "bg-white text-black hover:bg-white/90"}`}
+          >
+            {isUploading ? (
+              <Loader2 className="h-3.5 w-3.5 animate-spin" />
+            ) : success ? (
+              <CheckCircle className="h-3.5 w-3.5" />
+            ) : (
+              <>
+                <Upload className="h-3.5 w-3.5 mr-1" />
+                {label}
+              </>
+            )}
+          </Button>
+        </form>
+        {showExistingFiles && requestId && (
           <>
-            <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-            Uploading...
-          </>
-        ) : success ? (
-          <>
-            <CheckCircle className="mr-2 h-4 w-4" />
-            Uploaded
-          </>
-        ) : (
-          <>
-            <Upload className="mr-2 h-4 w-4" />
-            {label}
+            <span className="text-white/40 text-xs">or</span>
+            <ExistingFileSelector projectId={projectId} requestId={requestId} onFileAssigned={handleFileAssigned} />
           </>
         )}
-      </Button>
-      {error && <span className="text-sm text-red-500">{error}</span>}
-    </form>
+        {error && <span className="text-xs text-white/60">{error}</span>}
+      </div>
+    )
+  }
+
+  return (
+    <div className="space-y-2">
+      <form ref={formRef} onSubmit={handleSubmit} className="flex items-center gap-3">
+        <Input
+          type="file"
+          name="file"
+          accept={acceptString}
+          required
+          className="bg-white/5 border-white/10 text-white file:bg-white/10 file:text-white file:border-0 file:mr-3 file:px-3 file:py-1 file:rounded"
+        />
+        <Button
+          type="submit"
+          size="sm"
+          disabled={isUploading}
+          className={success ? "bg-white/20 text-white" : "bg-white text-black hover:bg-white/90"}
+        >
+          {isUploading ? (
+            <>
+              <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+              Uploading...
+            </>
+          ) : success ? (
+            <>
+              <CheckCircle className="mr-2 h-4 w-4" />
+              Done
+            </>
+          ) : (
+            <>
+              <Upload className="mr-2 h-4 w-4" />
+              {label}
+            </>
+          )}
+        </Button>
+      </form>
+      {showExistingFiles && requestId && (
+        <div className="flex items-center gap-2">
+          <span className="text-white/40 text-xs">or</span>
+          <ExistingFileSelector projectId={projectId} requestId={requestId} onFileAssigned={handleFileAssigned} />
+        </div>
+      )}
+      {error && <span className="text-sm text-white/60">{error}</span>}
+    </div>
   )
 }

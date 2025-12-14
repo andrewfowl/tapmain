@@ -31,6 +31,9 @@
   --chart-5: hsl(0 0% 10%);
   /* Set radius to 0 for sharp corners like Framer reference */
   --radius: 0rem;
+  /* Added card radius token for dashboard cards */
+  --radius-card: 45px;
+  --radius-card-inner: 30px;
   --sidebar: hsl(0 0% 5%);
   --sidebar-foreground: hsl(0 0% 100%);
   --sidebar-primary: hsl(0 0% 100%);

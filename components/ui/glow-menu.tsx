@@ -43,17 +43,6 @@ const glowVariants = {
   },
 }
 
-const navGlowVariants = {
-  initial: { opacity: 0 },
-  hover: {
-    opacity: 1,
-    transition: {
-      duration: 0.5,
-      ease: [0.4, 0, 0.2, 1],
-    },
-  },
-}
-
 const sharedTransition = {
   type: "spring",
   stiffness: 100,
@@ -62,7 +51,7 @@ const sharedTransition = {
 }
 
 const neutralGradient =
-  "radial-gradient(circle, rgba(255,255,255,0.12) 0%, rgba(255,255,255,0.04) 50%, rgba(255,255,255,0) 100%)"
+  "radial-gradient(circle, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.02) 50%, rgba(255,255,255,0) 100%)"
 
 function MenuItemSkeleton() {
   return (
@@ -80,7 +69,7 @@ export const MenuBar = React.forwardRef<HTMLDivElement, MenuBarProps>(
         <nav
           ref={ref}
           className={cn(
-            "p-2 rounded-none bg-gradient-to-b from-[#1a1a1a]/80 to-[#1a1a1a]/40 backdrop-blur-lg border border-white/10 shadow-lg",
+            "p-2 rounded-none bg-[#1a1a1a]/80 backdrop-blur-lg border border-white/10 shadow-lg",
             className,
           )}
           {...props}
@@ -100,17 +89,13 @@ export const MenuBar = React.forwardRef<HTMLDivElement, MenuBarProps>(
       <motion.nav
         ref={ref}
         className={cn(
-          "p-2 rounded-none bg-gradient-to-b from-[#1a1a1a]/80 to-[#1a1a1a]/40 backdrop-blur-lg border border-white/10 shadow-lg relative overflow-hidden",
+          "p-2 rounded-none bg-[#1a1a1a]/80 backdrop-blur-lg border border-white/10 shadow-lg relative overflow-hidden",
           className,
         )}
         initial="initial"
         whileHover="hover"
         {...props}
       >
-        <motion.div
-          className="absolute -inset-2 bg-gradient-radial from-transparent via-white/5 to-transparent rounded-none z-0 pointer-events-none"
-          variants={navGlowVariants}
-        />
         <ul className="flex flex-col gap-3 relative z-10">
           {items.map((item) => {
             const Icon = item.icon
@@ -126,7 +111,10 @@ export const MenuBar = React.forwardRef<HTMLDivElement, MenuBarProps>(
                     initial="initial"
                   >
                     <motion.div
-                      className="absolute inset-0 z-0 pointer-events-none"
+                      className={cn(
+                        "flex items-center gap-3 px-4 py-4 relative z-10 bg-transparent transition-colors rounded-none",
+                        isActive ? "text-white" : "text-white/60 group-hover:text-white",
+                      )}
                       variants={glowVariants}
                       animate={isActive ? "hover" : "initial"}
                       style={{
@@ -156,7 +144,7 @@ export const MenuBar = React.forwardRef<HTMLDivElement, MenuBarProps>(
                         <Icon className="h-5 w-5" />
                       </span>
                       <span className="flex-1">{item.label}</span>
-                      {item.badge && item.badge > 0 && (
+                      {typeof item.badge === "number" && item.badge > 0 && (
                         <span className="bg-white/20 text-white text-xs px-2 py-0.5 rounded-none">{item.badge}</span>
                       )}
                     </motion.div>
@@ -182,7 +170,7 @@ export const MenuBar = React.forwardRef<HTMLDivElement, MenuBarProps>(
                         <Icon className="h-5 w-5" />
                       </span>
                       <span className="flex-1">{item.label}</span>
-                      {item.badge && item.badge > 0 && (
+                      {typeof item.badge === "number" && item.badge > 0 && (
                         <span className="bg-white/20 text-white text-xs px-2 py-0.5 rounded-none">{item.badge}</span>
                       )}
                     </motion.div>

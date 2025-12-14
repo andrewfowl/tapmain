@@ -110,6 +110,21 @@ export default function InfiniteSolutionsCarousel({ solutions }: InfiniteSolutio
 
   return (
     <div className="relative w-full border-2 border-black p-4">
+      <style
+        dangerouslySetInnerHTML={{
+          __html: `
+          @keyframes carousel-scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(calc(-100% / 3)); }
+          }
+          .carousel-scrollbar-hide::-webkit-scrollbar { display: none; }
+          .carousel-scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+          .carousel-animate { animation: carousel-scroll 60s linear infinite; }
+          .carousel-paused { animation: none; }
+        `,
+        }}
+      />
+
       <Button
         variant="outline"
         size="icon"
@@ -130,51 +145,23 @@ export default function InfiniteSolutionsCarousel({ solutions }: InfiniteSolutio
 
       <div
         ref={scrollContainerRef}
-        className="overflow-x-auto overflow-y-hidden scrollbar-hide"
+        className="overflow-x-auto overflow-y-hidden carousel-scrollbar-hide"
         onMouseEnter={() => setIsPaused(true)}
         onMouseLeave={() => setIsPaused(false)}
       >
         <div className="space-y-4">
           {/* Top Row */}
-          <div
-            className="flex gap-4 w-fit"
-            style={{
-              animation: isPaused ? "none" : "scroll 60s linear infinite",
-            }}
-          >
+          <div className={`flex gap-4 w-fit ${isPaused ? "carousel-paused" : "carousel-animate"}`}>
             {duplicatedTopRow.map((solution, index) => renderSolutionCard(solution, index, "top"))}
           </div>
 
           {/* Bottom Row */}
-          <div
-            className="flex gap-4 w-fit"
-            style={{
-              animation: isPaused ? "none" : "scroll 60s linear infinite",
-            }}
-          >
+          <div className={`flex gap-4 w-fit ${isPaused ? "carousel-paused" : "carousel-animate"}`}>
             {duplicatedBottomRow.map((solution, index) => renderSolutionCard(solution, index, "bottom"))}
           </div>
         </div>
-        {/* </CHANGE> */}
       </div>
-
-      <style jsx>{`
-        @keyframes scroll {
-          0% {
-            transform: translateX(0);
-          }
-          100% {
-            transform: translateX(calc(-100% / 3));
-          }
-        }
-        .scrollbar-hide::-webkit-scrollbar {
-          display: none;
-        }
-        .scrollbar-hide {
-          -ms-overflow-style: none;
-          scrollbar-width: none;
-        }
-      `}</style>
+      {/* Removed style jsx block */}
     </div>
   )
 }

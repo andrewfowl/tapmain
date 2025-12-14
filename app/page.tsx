@@ -16,6 +16,7 @@ import { ServicesSection } from "@/components/services-section"
 import { WallOfLove } from "@/components/wall-of-love"
 import { MeshGradientMascot } from "@/components/mesh-gradient-mascot"
 import { RotatingServices } from "@/components/rotating-services"
+import { getPublishedResources } from "@/actions/resources-actions"
 
 async function FeaturedSolutionsContent() {
   const allSolutions = await getPublishedSolutions()
@@ -65,6 +66,27 @@ async function NewsSection() {
             </AnimateOnScroll>
           ))}
         </div>
+      </div>
+    </section>
+  )
+}
+
+async function ResourcesSection() {
+  const resources = await getPublishedResources()
+
+  return (
+    <section className="py-32 bg-card">
+      <div className="max-w-5xl mx-auto px-6 lg:px-8">
+        <AnimateOnScroll animation="fade-in-up">
+          <div className="text-center mb-20">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Free Resources</h2>
+            <p className="text-white/60 max-w-2xl mx-auto">
+              Battle-tested templates and policies used by leading crypto companies. Download and use immediately.
+            </p>
+          </div>
+        </AnimateOnScroll>
+
+        <CombinedResourcesSection resources={resources} />
       </div>
     </section>
   )
@@ -492,29 +514,86 @@ export default function HomePage() {
               </Card>
             </AnimateOnScroll>
           </div>
-        </div>
-      </section>
 
-      {/* News Section */}
-      <Suspense fallback={<div className="py-32 bg-black" />}>
-        <NewsSection />
-      </Suspense>
-
-      {/* Resources Section */}
-      <section className="py-32 bg-card">
-        <div className="max-w-5xl mx-auto px-6 lg:px-8">
-          <AnimateOnScroll animation="fade-in-up">
-            <div className="text-center mb-20">
-              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Free Resources</h2>
-              <p className="text-white/60 max-w-2xl mx-auto">
-                Battle-tested templates and policies used by leading crypto companies. Download and use immediately.
+          <AnimateOnScroll animation="fade-in-up" delay={300}>
+            <div className="text-center mt-12 pt-12 border-t border-white/10">
+              <p className="text-white/70 max-w-2xl mx-auto">
+                We also accept cryptocurrency payments. Please{" "}
+                <a href="#contact" className="text-white hover:underline font-medium">
+                  reach out via our contact form below
+                </a>{" "}
+                for further details.
               </p>
             </div>
           </AnimateOnScroll>
-
-          <CombinedResourcesSection />
         </div>
       </section>
+
+      {/* One-Time Engagements Section */}
+      <section className="py-24 bg-black">
+        <div className="max-w-4xl mx-auto px-4 lg:px-6">
+          <AnimateOnScroll animation="fade-in-up">
+            <Card className="bg-white/5 border border-white/10 overflow-hidden">
+              <CardContent className="p-8 md:p-12">
+                <div className="text-center mb-8">
+                  <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">
+                    Not Ready for a Long-Term Commitment?
+                  </h3>
+                  <p className="text-white/60 max-w-2xl mx-auto mb-6">
+                    We also offer one-time test engagements to help you get started:
+                  </p>
+                </div>
+
+                <div className="flex flex-wrap justify-center gap-2 mb-10">
+                  {[
+                    "Customer contract review",
+                    "Lease schedule calculation",
+                    "Cash flows statement preparation",
+                    "Token compensation expense accrual",
+                    "Stock-based compensation expense",
+                    "Financial model review",
+                    "Financial statements preparation",
+                    "Cap table update",
+                    "Workiva Implementation",
+                    "Technical accounting peer review",
+                  ].map((service, i) => (
+                    <span
+                      key={i}
+                      className="px-3 py-1.5 bg-white/5 border border-white/10 rounded-full text-sm text-white/70"
+                    >
+                      {service}
+                    </span>
+                  ))}
+                  <span className="px-3 py-1.5 bg-white/10 border border-white/20 rounded-full text-sm text-white/80 font-medium">
+                    and more...
+                  </span>
+                </div>
+
+                <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+                  <Button asChild className="w-full sm:w-auto bg-white text-black hover:bg-white/90 rounded-full px-8">
+                    <Link href="/auth/signup">Sign Up</Link>
+                  </Button>
+                  <span className="text-white/40">or</span>
+                  <Button
+                    asChild
+                    variant="outline"
+                    className="w-full sm:w-auto border-white/20 text-white hover:bg-white/10 rounded-full px-8 bg-transparent"
+                  >
+                    <a href="https://cal.com/andrew-belonogov/30min" target="_blank" rel="noopener noreferrer">
+                      Schedule a Call
+                    </a>
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
+          </AnimateOnScroll>
+        </div>
+      </section>
+
+      {/* Resources Section */}
+      <Suspense fallback={<div className="py-32 bg-card" />}>
+        <ResourcesSection />
+      </Suspense>
 
       {/* Wall of Love Section */}
       <WallOfLove />

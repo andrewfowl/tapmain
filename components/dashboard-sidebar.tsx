@@ -5,7 +5,7 @@ import Link from "next/link"
 import { MenuBar } from "@/components/ui/glow-menu"
 import { signOut } from "@/actions/auth-actions"
 import { Button } from "@/components/ui/button"
-import { LayoutDashboard, FolderOpen, Bell, LogOut, User } from "lucide-react"
+import { LayoutDashboard, FolderOpen, Bell, LogOut, User, Shield } from "lucide-react"
 
 interface DashboardSidebarProps {
   profile: any
@@ -30,6 +30,11 @@ const menuItems = [
     label: "Requests",
     href: "/dashboard/requests",
   },
+  {
+    icon: Shield,
+    label: "Trust Center",
+    href: "/dashboard/trust",
+  },
 ]
 
 export function DashboardSidebar({ profile, subscription, pendingRequests, loading = false }: DashboardSidebarProps) {
@@ -40,6 +45,7 @@ export function DashboardSidebar({ profile, subscription, pendingRequests, loadi
     if (pathname === "/dashboard") return "Dashboard"
     if (pathname.startsWith("/dashboard/projects")) return "Projects"
     if (pathname.startsWith("/dashboard/requests")) return "Requests"
+    if (pathname.startsWith("/dashboard/trust")) return "Trust Center"
     return "Dashboard"
   }
 

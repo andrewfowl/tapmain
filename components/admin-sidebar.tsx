@@ -5,7 +5,7 @@ import Link from "next/link"
 import { MenuBar } from "@/components/ui/glow-menu"
 import { signOut } from "@/actions/auth-actions"
 import { Button } from "@/components/ui/button"
-import { LayoutDashboard, Users, Settings, LogOut, Shield, Clock } from "lucide-react"
+import { LayoutDashboard, Users, Settings, LogOut, Shield, Clock, FolderOpen, Package } from "lucide-react"
 
 interface AdminSidebarProps {
   profile: any
@@ -23,6 +23,16 @@ const menuItems = [
     icon: Clock,
     label: "Subscriptions",
     href: "/admin/subscriptions",
+  },
+  {
+    icon: FolderOpen,
+    label: "Projects",
+    href: "/admin/projects",
+  },
+  {
+    icon: Package,
+    label: "Deliverables",
+    href: "/admin/deliverables",
   },
   {
     icon: Users,
@@ -43,6 +53,8 @@ export function AdminSidebar({ profile, pendingSubscriptions, loading = false }:
   const getActiveItem = () => {
     if (pathname === "/admin") return "Dashboard"
     if (pathname.startsWith("/admin/subscriptions")) return "Subscriptions"
+    if (pathname.startsWith("/admin/projects")) return "Projects"
+    if (pathname.startsWith("/admin/deliverables")) return "Deliverables"
     if (pathname.startsWith("/admin/customers")) return "Customers"
     if (pathname.startsWith("/admin/project-types")) return "Project Types"
     return "Dashboard"
