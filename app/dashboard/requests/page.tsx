@@ -20,7 +20,7 @@ export default async function RequestsPage() {
       <div className="p-8">
         <div className="max-w-4xl mx-auto">
           <h1 className="text-3xl font-bold text-white mb-8">Requests</h1>
-          <Card className="bg-[#1a1a1a] border-white/10">
+          <Card className="bg-[#1a1a1a] border-white/10 rounded-[var(--radius-card)]">
             <CardContent className="text-center py-16">
               <Bell className="h-16 w-16 text-white/20 mx-auto mb-4" />
               <h2 className="text-xl font-semibold text-white mb-2">No requests</h2>
@@ -69,31 +69,31 @@ export default async function RequestsPage() {
 
         {/* Summary Cards */}
         <div className="grid grid-cols-3 gap-4 mb-8">
-          <Card className="bg-[#1a1a1a] border-white/10">
+          <Card className="bg-[#1a1a1a] border-white/10 rounded-[var(--radius-card)]">
             <CardContent className="p-4 text-center">
-              <AlertCircle className="h-8 w-8 text-red-500 mx-auto mb-2" />
+              <AlertCircle className="h-8 w-8 text-white/60 mx-auto mb-2" />
               <p className="text-2xl font-bold text-white">{pendingRequests.length}</p>
               <p className="text-sm text-white/60">Pending Upload</p>
             </CardContent>
           </Card>
-          <Card className="bg-yellow-500/10 border-yellow-500/30">
+          <Card className="bg-white/5 border-white/20 rounded-[var(--radius-card)]">
             <CardContent className="p-4 text-center">
-              <Clock className="h-8 w-8 text-yellow-500 mx-auto mb-2" />
-              <p className="text-2xl font-bold text-yellow-500">{providedRequests.length}</p>
-              <p className="text-sm text-yellow-500/80">Awaiting Review</p>
+              <Clock className="h-8 w-8 text-white/80 mx-auto mb-2" />
+              <p className="text-2xl font-bold text-white">{providedRequests.length}</p>
+              <p className="text-sm text-white/60">Awaiting Review</p>
             </CardContent>
           </Card>
-          <Card className="bg-green-500/10 border-green-500/30">
+          <Card className="bg-white/10 border-white/30 rounded-[var(--radius-card)]">
             <CardContent className="p-4 text-center">
-              <CheckCircle className="h-8 w-8 text-green-500 mx-auto mb-2" />
-              <p className="text-2xl font-bold text-green-500">{acceptedRequests.length}</p>
-              <p className="text-sm text-green-500/80">Accepted</p>
+              <CheckCircle className="h-8 w-8 text-white mx-auto mb-2" />
+              <p className="text-2xl font-bold text-white">{acceptedRequests.length}</p>
+              <p className="text-sm text-white/60">Accepted</p>
             </CardContent>
           </Card>
         </div>
 
         {/* Requests by Project */}
-        <Card className="bg-[#1a1a1a] border-white/10 mb-6">
+        <Card className="bg-[#1a1a1a] border-white/10 mb-6 rounded-[var(--radius-card)]">
           <CardHeader>
             <CardTitle className="text-white flex items-center gap-2">
               <FileText className="h-5 w-5" />
@@ -110,40 +110,43 @@ export default async function RequestsPage() {
             ) : (
               <div className="space-y-6">
                 {projectRequestsStatus.map(({ project, requests, pendingCount, providedCount, acceptedCount }: any) => (
-                  <div key={project.id} className="border border-white/10 rounded-lg overflow-hidden">
+                  <div
+                    key={project.id}
+                    className="border border-white/10 rounded-[var(--radius-card-inner)] overflow-hidden"
+                  >
                     <div className="p-4 bg-white/5 flex items-center justify-between">
                       <div>
                         <h4 className="font-medium text-white">{project.name}</h4>
                         <p className="text-sm text-white/60">{project.project_types?.name}</p>
                       </div>
                       <div className="flex items-center gap-3 text-sm">
-                        {pendingCount > 0 && <span className="text-red-500">{pendingCount} pending</span>}
-                        {providedCount > 0 && <span className="text-yellow-500">{providedCount} in review</span>}
-                        {acceptedCount > 0 && <span className="text-green-500">{acceptedCount} accepted</span>}
+                        {pendingCount > 0 && <span className="text-white/60">{pendingCount} pending</span>}
+                        {providedCount > 0 && <span className="text-white/80">{providedCount} in review</span>}
+                        {acceptedCount > 0 && <span className="text-white">{acceptedCount} accepted</span>}
                       </div>
                     </div>
                     <div className="divide-y divide-white/10">
                       {requests.map((request: any) => {
                         const statusColor =
                           request.status === "accepted"
-                            ? "bg-green-500/5"
+                            ? "bg-white/10"
                             : request.status === "provided"
-                              ? "bg-yellow-500/5"
-                              : "bg-red-500/5"
+                              ? "bg-white/5"
+                              : "bg-transparent"
                         const statusIcon =
                           request.status === "accepted" ? (
-                            <CheckCircle className="h-5 w-5 text-green-500" />
+                            <CheckCircle className="h-5 w-5 text-white" />
                           ) : request.status === "provided" ? (
-                            <Clock className="h-5 w-5 text-yellow-500" />
+                            <Clock className="h-5 w-5 text-white/80" />
                           ) : (
-                            <AlertCircle className="h-5 w-5 text-red-500" />
+                            <AlertCircle className="h-5 w-5 text-white/60" />
                           )
                         const statusBadge =
                           request.status === "accepted"
-                            ? "bg-green-500/20 text-green-500"
+                            ? "bg-white/20 text-white"
                             : request.status === "provided"
-                              ? "bg-yellow-500/20 text-yellow-500"
-                              : "bg-red-500/20 text-red-500"
+                              ? "bg-white/10 text-white/80"
+                              : "bg-white/5 text-white/60"
                         const statusLabel =
                           request.status === "accepted"
                             ? "Accepted"

@@ -3,6 +3,7 @@ import { redirect } from "next/navigation"
 import { createClient } from "@/lib/supabase/server"
 import { getPendingRequestsCount } from "@/actions/dashboard-actions"
 import { DashboardSidebar } from "@/components/dashboard-sidebar"
+import { Breadcrumbs } from "@/components/breadcrumbs"
 
 export default async function DashboardLayout({ children }: { children: React.ReactNode }) {
   const supabase = createClient()
@@ -23,7 +24,12 @@ export default async function DashboardLayout({ children }: { children: React.Re
   return (
     <div className="min-h-screen bg-[#0f0f0f] flex">
       <DashboardSidebar profile={profile} subscription={subscription} pendingRequests={pendingRequests} />
-      <main className="flex-1 overflow-auto">{children}</main>
+      <main className="flex-1 overflow-auto">
+        <div className="p-6">
+          <Breadcrumbs baseRoute="dashboard" />
+          {children}
+        </div>
+      </main>
     </div>
   )
 }

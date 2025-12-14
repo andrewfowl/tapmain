@@ -26,18 +26,18 @@ export default async function ProfilePage() {
           <ProfileEditForm profile={profile} email={user.email || ""} />
 
           {/* Subscription Status */}
-          <div className="bg-[#1a1a1a] border border-white/10 rounded-lg p-6">
+          <div className="bg-[#1a1a1a] border border-white/10 rounded-[var(--radius-card)] p-6">
             <h2 className="text-lg font-semibold text-white mb-4">Subscription Status</h2>
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-white/60 text-sm">Current Status</p>
                 <p className="text-white font-medium">
                   {subscription?.status === "approved" ? (
-                    <span className="text-green-400">Active</span>
+                    <span className="text-white">Active</span>
                   ) : subscription?.status === "pending" ? (
-                    <span className="text-yellow-400">Pending Approval</span>
+                    <span className="text-white/80">Pending Approval</span>
                   ) : subscription?.status === "rejected" ? (
-                    <span className="text-red-400">Rejected</span>
+                    <span className="text-white/60">Rejected</span>
                   ) : (
                     <span className="text-white/40">No Subscription</span>
                   )}
@@ -46,7 +46,7 @@ export default async function ProfilePage() {
               {subscription?.status === "rejected" && subscription.rejection_reason && (
                 <div className="text-right">
                   <p className="text-white/60 text-sm">Reason</p>
-                  <p className="text-red-400 text-sm">{subscription.rejection_reason}</p>
+                  <p className="text-white/60 text-sm">{subscription.rejection_reason}</p>
                 </div>
               )}
             </div>
@@ -58,7 +58,7 @@ export default async function ProfilePage() {
           </div>
 
           {/* Account Info */}
-          <div className="bg-[#1a1a1a] border border-white/10 rounded-lg p-6">
+          <div className="bg-[#1a1a1a] border border-white/10 rounded-[var(--radius-card)] p-6">
             <h2 className="text-lg font-semibold text-white mb-4">Account Information</h2>
             <div className="space-y-3">
               <div>

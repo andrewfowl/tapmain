@@ -82,7 +82,7 @@ export default function NewProjectPage() {
 
         <form onSubmit={handleSubmit}>
           {/* Step 1: Select Project Type */}
-          <Card className="bg-[#1a1a1a] border-white/10 mb-6">
+          <Card className="bg-[#1a1a1a] border-white/10 mb-6 rounded-[45px]">
             <CardHeader>
               <CardTitle className="text-white">1. Select Project Type</CardTitle>
               <CardDescription className="text-white/60">Choose the type of project you want to create</CardDescription>
@@ -99,14 +99,14 @@ export default function NewProjectPage() {
                       key={type.id}
                       type="button"
                       onClick={() => setSelectedType(type.id)}
-                      className={`p-4 rounded-lg border text-left transition-all ${
+                      className={`p-4 rounded-[30px] border text-left transition-all ${
                         selectedType === type.id
                           ? "border-white bg-white/10"
                           : "border-white/10 hover:border-white/30 bg-white/5"
                       }`}
                     >
                       <div className="flex items-start gap-3">
-                        <div className="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                        <div className="w-10 h-10 bg-white/10 rounded-[20px] flex items-center justify-center flex-shrink-0">
                           <FileText className="h-5 w-5 text-white/60" />
                         </div>
                         <div className="flex-1">
@@ -125,7 +125,7 @@ export default function NewProjectPage() {
           </Card>
 
           {/* Step 2: Project Details */}
-          <Card className="bg-[#1a1a1a] border-white/10 mb-6">
+          <Card className="bg-[#1a1a1a] border-white/10 mb-6 rounded-[45px]">
             <CardHeader>
               <CardTitle className="text-white">2. Project Details</CardTitle>
               <CardDescription className="text-white/60">Provide information about your project</CardDescription>
@@ -160,7 +160,7 @@ export default function NewProjectPage() {
 
           {/* Required Items Preview */}
           {selectedTypeData?.project_type_items?.length > 0 && (
-            <Card className="bg-[#1a1a1a] border-white/10 mb-6">
+            <Card className="bg-[#1a1a1a] border-white/10 mb-6 rounded-[45px]">
               <CardHeader>
                 <CardTitle className="text-white">Required Items</CardTitle>
                 <CardDescription className="text-white/60">
@@ -172,7 +172,7 @@ export default function NewProjectPage() {
                   {selectedTypeData.project_type_items
                     .sort((a: any, b: any) => a.display_order - b.display_order)
                     .map((item: any) => (
-                      <div key={item.id} className="p-4 rounded-lg bg-white/5 border border-white/10">
+                      <div key={item.id} className="p-4 rounded-[30px] bg-white/5 border border-white/10">
                         <div className="flex items-start gap-3">
                           <div
                             className={`w-2 h-2 rounded-full mt-2 ${item.is_required ? "bg-red-500" : "bg-white/40"}`}
