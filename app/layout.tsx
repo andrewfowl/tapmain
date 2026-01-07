@@ -19,6 +19,8 @@ const jetbrainsMono = JetBrains_Mono({
   display: "swap",
 })
 
+
+
 export const metadata: Metadata = {
   title: "TechAccountingPro | Expert Technical Accounting Services Tailored to Your Business Needs.",
   description:
@@ -40,7 +42,8 @@ export const metadata: Metadata = {
     description: "Unlock complex US GAAP and digital assets accounting solutions with TechAccountingPro.",
     images: ["/images/logos/tap-logo.png"],
   },
-    generator: 'v0.app'
+    generator: 'v0.app',
+    other: {'base:app_id': '695dd7f6646908900bbdaa0d',},
 }
 
 export default function RootLayout({
