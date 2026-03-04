@@ -16,79 +16,59 @@ interface Testimonial {
 const testimonials: Testimonial[] = [
   {
     id: 1,
-    name: "Alex Johnson",
-    role: "CFO",
-    company: "Tech Innovations Inc",
-    content: "TechAccountingPro's expertise in finance transformation has been invaluable to our company's growth.",
+    name: "John L.",
+    role: "CEO",
+    company: "Litrivis CPA",
+    content: "Andrei at Tech Accounting Pros provided excellent support on complex accounting issues and helped automate a key journal entry process for me. He’s a highly skilled technical accountant, exceptionally knowledgeable and consistently delivering reliable, high-quality work. Highly recommend.",
     videoUrl: "/testimonial-video.mp4",
   },
   {
     id: 2,
-    name: "Sarah Chen",
+    name: "Ashley R.",
     role: "CFO",
-    company: "BlockFi Labs",
+    company: "The Ready",
     content:
-      "TechAccountingPro transformed our financial reporting. Their expertise in crypto accounting saved us months of work before our Series B.",
+      "Andrei did an excellent job on our crypto wallet reconciliation project. He worked independently, requiring minimal oversight, and demonstrated great attention to detail. All calculations and journal entries were meticulously prepared and supported with thorough backup documentation.
+Upon completing the work, Andrei proactively sought feedback and followed up to ensure there were no issues with our tax filings, showcasing both his commitment to quality and his integrity. His expertise and professionalism made this a seamless experience, and I would definitely work with him again.
+Highly recommended!",
   },
   {
     id: 3,
-    name: "Michael Torres",
-    role: "Head of Finance",
-    company: "DeFi Protocol",
+    name: "Robert S.",
+    role: "Advisory Board",
+    company: "Acxtus Fund Advisory",
     content:
-      "Finally, accountants who actually understand token compensation and staking rewards. Game changer for our audit prep.",
+      "Throughout our working together, Andrew was an experienced and hands on member, knowledgeable, a creative problem solver, and someone who always conducted himself with a unique blend of both humility and quiet confidence. Andrew is someone who commands respect for his knowledge and pioneering of new financial models and approaches in general business oversight.",
   },
   {
     id: 4,
-    name: "Emily Watson",
-    role: "CEO",
-    company: "Web3 Ventures",
-    content: "The team's responsiveness via Slack is incredible. Complex questions answered within hours, not days.",
+    name: "Elliott D.",
+    role: "Co-Founder",
+    company: "Switch",
+    content: "I hired Andrei to help with FASB ASC 842. Not only was he extremely detailed but he was also a great communicator and his prices are reasonable. I highly trust Andrei and have continued working with him. He's an excellent problem solver and technical accountant.",
   },
   {
     id: 5,
-    name: "David Park",
-    role: "Controller",
-    company: "CryptoTrade Inc",
-    content: "Their templates alone saved us $50k in consulting fees. The quality rivals Big 4 deliverables.",
+    name: "Lea M",
+    role: "CPA",
+    company: "Solopreneur",
+    content: "Andrei was a pleasure to work with. Very thorough and complete reporting for my crypto transactions. I fully intend to work with him again in the future!",
   },
   {
     id: 6,
-    name: "Lisa Zhang",
-    role: "VP Finance",
-    company: "NFT Marketplace",
+    name: "Dan G",
+    role: "Founder",
+    company: "Self-employed",
     content:
-      "We went from messy spreadsheets to audit-ready financials in 6 weeks. Highly recommend for any crypto company.",
+      "Andrei was a pleasure to work with. Very thorough and complete reporting for my crypto transactions. I fully intend to work with him again in the future!,
   },
   {
     id: 7,
-    name: "James Miller",
+    name: "Lea M",
     role: "Founder",
-    company: "DAO Treasury",
+    company: "Sole Practitioner",
     content:
-      "Best decision we made was bringing in TechAccountingPro before our token launch. They caught issues we never would have found.",
-  },
-  {
-    id: 8,
-    name: "Anna Kowalski",
-    role: "Finance Director",
-    company: "Stablecoin Co",
-    content: "Their deep knowledge of ASC 842 and crypto-specific guidance is unmatched. True experts in the space.",
-  },
-  {
-    id: 9,
-    name: "Robert Kim",
-    role: "COO",
-    company: "Layer2 Solutions",
-    content: "From chaotic books to clean financials in record time. The weekly check-ins kept us on track throughout.",
-  },
-  {
-    id: 10,
-    name: "Nicole Adams",
-    role: "Finance Lead",
-    company: "MetaDAO",
-    content:
-      "Their understanding of DAO treasury management is exceptional. They helped us establish proper controls and reporting.",
+      "I have worked with Andrei on multiple projects now, and couldn't be happier. This project involved technical accounting with regard to a complex lease, which I quickly learned Andrei has expertise in. He was highly communicative, explaining accounting concepts I was unfamiliar with and keeping me informed of the work being done. The resulting spreadsheet was clear, well-organized, and extremely helpful. I would absolutely work with Andrei again",
   },
 ]
 
