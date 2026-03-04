@@ -28,9 +28,7 @@ const testimonials: Testimonial[] = [
     role: "CFO",
     company: "The Ready",
     content:
-      "Andrei did an excellent job on our crypto wallet reconciliation project. He worked independently, requiring minimal oversight, and demonstrated great attention to detail. All calculations and journal entries were meticulously prepared and supported with thorough backup documentation.
-Upon completing the work, Andrei proactively sought feedback and followed up to ensure there were no issues with our tax filings, showcasing both his commitment to quality and his integrity. His expertise and professionalism made this a seamless experience, and I would definitely work with him again.
-Highly recommended!",
+      "[TAP] did an excellent job on our crypto wallet reconciliation project. He worked independently, requiring minimal oversight, and demonstrated great attention to detail. All calculations and journal entries were meticulously prepared and supported with thorough backup documentation. Upon completing the work, Andrei proactively sought feedback and followed up to ensure there were no issues with our tax filings, showcasing both his commitment to quality and his integrity. His expertise and professionalism made this a seamless experience, and I would definitely work with him again. Highly recommended!"
   },
   {
     id: 3,
@@ -38,21 +36,21 @@ Highly recommended!",
     role: "Advisory Board",
     company: "Acxtus Fund Advisory",
     content:
-      "Throughout our working together, Andrew was an experienced and hands on member, knowledgeable, a creative problem solver, and someone who always conducted himself with a unique blend of both humility and quiet confidence. Andrew is someone who commands respect for his knowledge and pioneering of new financial models and approaches in general business oversight.",
+      "Throughout our working together, [TAP] was an experienced and hands on member, knowledgeable, a creative problem solver, and someone who always conducted himself with a unique blend of both humility and quiet confidence. [TAP] is someone who commands respect for his knowledge and pioneering of new financial models and approaches in general business oversight."
   },
   {
     id: 4,
     name: "Elliott D.",
     role: "Co-Founder",
     company: "Switch",
-    content: "I hired Andrei to help with FASB ASC 842. Not only was he extremely detailed but he was also a great communicator and his prices are reasonable. I highly trust Andrei and have continued working with him. He's an excellent problem solver and technical accountant.",
+    content: "I hired [TAP] to help with FASB ASC 842. Not only was he extremely detailed but he was also a great communicator and his prices are reasonable. I highly trust Andrei and have continued working with him. He's an excellent problem solver and technical accountant."
   },
   {
     id: 5,
     name: "Lea M",
     role: "CPA",
     company: "Solopreneur",
-    content: "Andrei was a pleasure to work with. Very thorough and complete reporting for my crypto transactions. I fully intend to work with him again in the future!",
+    content: "[TAP] was a pleasure to work with. Very thorough and complete reporting for my crypto transactions. I fully intend to work with him again in the future!"
   },
   {
     id: 6,
@@ -60,7 +58,7 @@ Highly recommended!",
     role: "Founder",
     company: "Self-employed",
     content:
-      "Andrei was a pleasure to work with. Very thorough and complete reporting for my crypto transactions. I fully intend to work with him again in the future!,
+      "Andrei was a pleasure to work with. Very thorough and complete reporting for my crypto transactions. I fully intend to work with him again in the future!"
   },
   {
     id: 7,
@@ -68,7 +66,7 @@ Highly recommended!",
     role: "Founder",
     company: "Sole Practitioner",
     content:
-      "I have worked with Andrei on multiple projects now, and couldn't be happier. This project involved technical accounting with regard to a complex lease, which I quickly learned Andrei has expertise in. He was highly communicative, explaining accounting concepts I was unfamiliar with and keeping me informed of the work being done. The resulting spreadsheet was clear, well-organized, and extremely helpful. I would absolutely work with Andrei again",
+      "I have worked with Andrei on multiple projects now, and couldn't be happier. This project involved technical accounting with regard to a complex lease, which I quickly learned Andrei has expertise in. He was highly communicative, explaining accounting concepts I was unfamiliar with and keeping me informed of the work being done. The resulting spreadsheet was clear, well-organized, and extremely helpful. I would absolutely work with Andrei again"
   },
 ]
 
