@@ -1,35 +1,36 @@
-import type React from "react"
-import type { Metadata } from "next"
-import { Inter, JetBrains_Mono } from "next/font/google"
-import Script from "next/script"
-import { Analytics } from "@vercel/analytics/next"
-import "./globals.css"
-import { SiteHeader } from "@/components/site-header"
-import { SiteFooter } from "@/components/site-footer"
-import { GrainOverlay } from "@/components/grain-overlay"
+import type React from "react";
+import type { Metadata } from "next";
+import { Inter, JetBrains_Mono } from "next/font/google";
+import Script from "next/script";
+import { Analytics } from "@vercel/analytics/next";
+import "./globals.css";
+import { SiteHeader } from "@/components/site-header";
+import { SiteFooter } from "@/components/site-footer";
+import { GrainOverlay } from "@/components/grain-overlay";
+import { ClarityInit } from "@/components/clarity-init";
 
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
   display: "swap",
-})
+});
 
 const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
   variable: "--font-jetbrains-mono",
   display: "swap",
-})
-
-
+});
 
 export const metadata: Metadata = {
-  title: "TechAccountingPro | Expert Technical Accounting Services Tailored to Your Business Needs.",
+  title:
+    "TechAccountingPro | Expert Technical Accounting Services Tailored to Your Business Needs.",
   description:
     "Solve complex crypto accounting questions with TechAccountingPro. Access expert insights, actionable templates, and proven methodologies to modernize your accounting practices with cutting-edge technology.",
   openGraph: {
     url: "https://techaccountingpro.com/",
     title: "TechAccountingPro | Your Technical Accounting Expert.",
-    description: "Solve complex crypto accounting questions with TechAccountingPro.",
+    description:
+      "Solve complex crypto accounting questions with TechAccountingPro.",
     images: ["/images/logos/tap-logo.png"],
     siteName: "TechAccountingPro",
     locale: "en_US",
@@ -39,18 +40,20 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     site: "@tech_accounting",
     creator: "@tech_accounting",
-    title: "TechAccountingPro | Expert Technical Accounting Services Tailored to Your Business Needs.",
-    description: "Unlock complex US GAAP and digital assets accounting solutions with TechAccountingPro.",
+    title:
+      "TechAccountingPro | Expert Technical Accounting Services Tailored to Your Business Needs.",
+    description:
+      "Unlock complex US GAAP and digital assets accounting solutions with TechAccountingPro.",
     images: ["/images/logos/tap-logo.png"],
   },
-    generator: 'v0.app',
-    other: {'base:app_id': '695dd7f6646908900bbdaa0d',},
-}
+  generator: "v0.app",
+  other: { "base:app_id": "695dd7f6646908900bbdaa0d" },
+};
 
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode
+  children: React.ReactNode;
 }>) {
   return (
     <html lang="en">
@@ -67,7 +70,10 @@ export default function RootLayout({
           }}
         />
 
-        <Script async src="https://www.googletagmanager.com/gtag/js?id=G-YBDYMPZ471" />
+        <Script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-YBDYMPZ471"
+        />
         <Script
           id="gtag-init"
           strategy="afterInteractive"
@@ -124,6 +130,7 @@ export default function RootLayout({
         <main className="min-h-screen">{children}</main>
         <SiteFooter />
         <Analytics />
+        <ClarityInit projectId="fvy5wscm05" />
 
         <Script
           id="linkedin-insight"
@@ -164,5 +171,5 @@ export default function RootLayout({
         </noscript>
       </body>
     </html>
-  )
+  );
 }
