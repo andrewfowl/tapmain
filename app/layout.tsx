@@ -7,7 +7,7 @@ import "./globals.css";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { GrainOverlay } from "@/components/grain-overlay";
-import { ClarityInit } from "@/components/clarity-init";
+import ClientAppWrapper from "@/components/client-app-wrapper";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -116,21 +116,22 @@ export default function RootLayout({
         </noscript>
       </head>
       <body className={`${inter.variable} ${jetbrainsMono.variable} font-sans`}>
-        <noscript>
-          <iframe
-            src="https://www.googletagmanager.com/ns.html?id=GTM-NVT9NSG"
-            height="0"
-            width="0"
-            style={{ display: "none", visibility: "hidden" }}
-          ></iframe>
-        </noscript>
+        <ClientAppWrapper>
+          <noscript>
+            <iframe
+              src="https://www.googletagmanager.com/ns.html?id=GTM-NVT9NSG"
+              height="0"
+              width="0"
+              style={{ display: "none", visibility: "hidden" }}
+            ></iframe>
+          </noscript>
 
-        <GrainOverlay />
-        <SiteHeader />
-        <main className="min-h-screen">{children}</main>
-        <SiteFooter />
-        <Analytics />
-        <ClarityInit projectId="fvy5wscm05" />
+          <GrainOverlay />
+          <SiteHeader />
+          <main className="min-h-screen">{children}</main>
+          <SiteFooter />
+          <Analytics />
+        </ClientAppWrapper>
 
         <Script
           id="linkedin-insight"
