@@ -38,7 +38,7 @@ export function SiteHeader() {
           </Link>
 
           <div className="flex items-center gap-4">
-            <Link href="/auth/signup">
+            <Link href="https://cal.com/andrew-belonogov/30min">
               <Button variant="outline" className="border-white/20 text-white hover:bg-white/10 bg-transparent">
                 Get Started
               </Button>

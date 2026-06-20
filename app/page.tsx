@@ -570,10 +570,6 @@ export default function HomePage() {
                 </div>
 
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                  <Button asChild className="w-full sm:w-auto bg-white text-black hover:bg-white/90 rounded-full px-8">
-                    <Link href="/auth/signup">Sign Up</Link>
-                  </Button>
-                  <span className="text-white/40">or</span>
                   <Button
                     asChild
                     variant="outline"
