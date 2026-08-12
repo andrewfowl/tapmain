@@ -103,11 +103,7 @@ export function WelcomeChat() {
 
           {status === "submitted" && (
             <Bubble role="assistant">
-              <span className="inline-flex gap-1">
-                <Dot delay={0} />
-                <Dot delay={150} />
-                <Dot delay={300} />
-              </span>
+              <Caret />
             </Bubble>
           )}
         </div>
@@ -145,9 +141,9 @@ export function WelcomeChat() {
 function Bubble({ role, children }: { role: "user" | "assistant"; children: React.ReactNode }) {
   const isUser = role === "user"
   return (
-    <div className={`flex ${isUser ? "justify-end" : "justify-start"}`}>
+    <div className="flex justify-center">
       <div
-        className={`max-w-[90%] whitespace-pre-wrap text-balance text-xl leading-relaxed sm:text-2xl md:text-3xl md:leading-[1.4] ${
+        className={`max-w-[90%] whitespace-pre-wrap text-balance text-center text-xl leading-relaxed sm:text-2xl md:text-3xl md:leading-[1.4] ${
           isUser
             ? "rounded-2xl bg-white/90 px-5 py-3 text-black shadow-[0_0_40px_rgba(255,255,255,0.15)]"
             : "font-light text-white/70 [text-shadow:0_0_30px_rgba(150,190,255,0.25)]"
@@ -160,14 +156,7 @@ function Bubble({ role, children }: { role: "user" | "assistant"; children: Reac
 }
 
 function Caret() {
-  return <span className="ml-0.5 inline-block h-4 w-[2px] translate-y-0.5 animate-pulse bg-white/70" />
-}
-
-function Dot({ delay }: { delay: number }) {
   return (
-    <span
-      className="h-1.5 w-1.5 animate-bounce rounded-full bg-white/50"
-      style={{ animationDelay: `${delay}ms` }}
-    />
+    <span className="ml-1 inline-block h-6 w-[3px] translate-y-1 animate-pulse rounded-full bg-white/70 shadow-[0_0_12px_rgba(150,190,255,0.6)] md:h-8" />
   )
 }
