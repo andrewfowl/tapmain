@@ -53,9 +53,14 @@ export function WelcomeChat() {
   if (!open) return null
 
   return (
-    <div className="fixed inset-0 z-[100] flex flex-col bg-[#0a0a0a]">
+    <div className="fixed inset-0 z-[100] flex flex-col overflow-hidden bg-[#0a0a0a]">
+      {/* Shine light */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute left-1/2 top-0 h-[60vh] w-[120vw] -translate-x-1/2 -translate-y-1/3 rounded-full bg-[radial-gradient(ellipse_at_center,rgba(120,180,255,0.18),rgba(80,120,255,0.06)_40%,transparent_70%)] blur-2xl"
+      />
       {/* Header */}
-      <header className="flex items-center justify-between border-b border-white/10 px-5 py-4">
+      <header className="relative flex items-center justify-between border-b border-white/10 px-5 py-4">
         <div className="flex items-center gap-3">
           <span className="relative flex h-2.5 w-2.5">
             <span className="absolute inline-flex h-2.5 w-2.5 animate-ping rounded-full bg-emerald-400/60" />
@@ -76,8 +81,8 @@ export function WelcomeChat() {
       </header>
 
       {/* Messages */}
-      <div ref={scrollRef} className="flex-1 overflow-y-auto">
-        <div className="mx-auto w-full max-w-2xl space-y-6 px-5 py-8">
+      <div ref={scrollRef} className="relative flex-1 overflow-y-auto">
+        <div className="mx-auto flex min-h-full w-full max-w-3xl flex-col justify-center space-y-8 px-6 py-10">
           <Bubble role="assistant">
             {greeting}
             {greeting.length < GREETING.length && <Caret />}
@@ -109,13 +114,13 @@ export function WelcomeChat() {
       </div>
 
       {/* Input */}
-      <div className="border-t border-white/10">
+      <div className="relative border-t border-white/10">
         <form
           onSubmit={(e) => {
             e.preventDefault()
             submit(input)
           }}
-          className="mx-auto flex w-full max-w-2xl items-end gap-2 px-5 py-4"
+          className="mx-auto flex w-full max-w-3xl items-end gap-2 px-6 py-5"
         >
           <input
             value={input}
@@ -142,10 +147,10 @@ function Bubble({ role, children }: { role: "user" | "assistant"; children: Reac
   return (
     <div className={`flex ${isUser ? "justify-end" : "justify-start"}`}>
       <div
-        className={`max-w-[85%] whitespace-pre-wrap text-[15px] leading-relaxed ${
+        className={`max-w-[90%] whitespace-pre-wrap text-balance text-xl leading-relaxed sm:text-2xl md:text-3xl md:leading-[1.4] ${
           isUser
-            ? "rounded-2xl bg-white px-4 py-2.5 text-black"
-            : "text-white/90"
+            ? "rounded-2xl bg-white/90 px-5 py-3 text-black shadow-[0_0_40px_rgba(255,255,255,0.15)]"
+            : "font-light text-white/70 [text-shadow:0_0_30px_rgba(150,190,255,0.25)]"
         }`}
       >
         {children}
