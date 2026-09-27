@@ -17,6 +17,7 @@ import { WallOfLove } from "@/components/wall-of-love"
 import { MeshGradientMascot } from "@/components/mesh-gradient-mascot"
 import { RotatingServices } from "@/components/rotating-services"
 import { getPublishedResources } from "@/actions/resources-actions"
+import { AboutSection } from "@/components/about-section"
 
 async function FeaturedSolutionsContent() {
   const allSolutions = await getPublishedSolutions()
@@ -362,6 +363,9 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* About */}
+      <AboutSection />
 
       {/* Services Section */}
       <section className="py-32 bg-black" id="services">

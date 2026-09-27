@@ -27,7 +27,7 @@ export const CHAT_RESOURCES = {
   about: {
     title: "About TechAccountingPro",
     description: "Meet founder Andrei Belonogov, PhD, CPA, FCCA, and how we work.",
-    href: "/about",
+    href: "/#about",
   },
   contact: {
     title: "Talk to the Team",

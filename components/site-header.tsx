@@ -39,10 +39,8 @@ export function SiteHeader() {
 
           <div className="flex items-center gap-4">
             <Link
-              href="/about"
-              className={`hidden text-sm font-medium transition-colors sm:inline ${
-                pathname === "/about" ? "text-white" : "text-white/70 hover:text-white"
-              }`}
+              href="/#about"
+              className="hidden text-sm font-medium text-white/70 transition-colors hover:text-white sm:inline"
             >
               About
             </Link>

@@ -84,7 +84,7 @@ export function SiteFooter() {
               © {new Date().getFullYear()} TechAccountingPro. All rights reserved.
             </div>
             <div className="flex gap-8 text-sm">
-              <Link href="/about" className="text-white/40 hover:text-white transition-colors">
+              <Link href="/#about" className="text-white/40 hover:text-white transition-colors">
                 About Us
               </Link>
               <Link href="/privacy" className="text-white/40 hover:text-white transition-colors">
