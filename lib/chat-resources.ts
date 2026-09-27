@@ -24,6 +24,11 @@ export const CHAT_RESOURCES = {
     description: "Guidance on digital asset accounting and reporting.",
     href: "/#news",
   },
+  about: {
+    title: "About TechAccountingPro",
+    description: "Meet founder Andrei Belonogov, PhD, CPA, FCCA, and how we work.",
+    href: "/about",
+  },
   contact: {
     title: "Talk to the Team",
     description: "Book time with a Big 4-trained technical accountant.",

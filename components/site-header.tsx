@@ -38,6 +38,14 @@ export function SiteHeader() {
           </Link>
 
           <div className="flex items-center gap-4">
+            <Link
+              href="/about"
+              className={`hidden text-sm font-medium transition-colors sm:inline ${
+                pathname === "/about" ? "text-white" : "text-white/70 hover:text-white"
+              }`}
+            >
+              About
+            </Link>
             <Link href="https://cal.com/andrew-belonogov/30min">
               <Button variant="outline" className="border-white/20 text-white hover:bg-white/10 bg-transparent">
                 Get Started
@@ -47,7 +55,7 @@ export function SiteHeader() {
               asChild
               className="bg-white text-black hover:bg-white/90 rounded-full px-6 py-2 font-medium transition-all duration-300 hover:scale-105"
             >
-              <Link href="#pricing">See plans</Link>
+              <Link href="/#pricing">See plans</Link>
             </Button>
           </div>
         </div>
