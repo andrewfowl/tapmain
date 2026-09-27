@@ -13,6 +13,15 @@ const STORAGE_KEY = "tap_welcome_seen"
 const GREETING =
   "Hi, I'm the TechAccountingPro assistant. We bring Big 4 accounting expertise to crypto and Web3 startups. What are you working on?"
 
+const TRUST_POINTS = ["15 years of experience", "35+ Web3 clients", "Big 4 expertise"]
+
+const STARTERS = [
+  { label: "Getting audit-ready", message: "We need to get ready for an audit." },
+  { label: "Token compensation", message: "I have questions about accounting for token compensation." },
+  { label: "Revenue recognition", message: "I need help with revenue recognition." },
+  { label: "Just exploring", message: "Just exploring. What do you help with?" },
+]
+
 export function WelcomeChat() {
   const [open, setOpen] = useState(false)
   const [ready, setReady] = useState(false)
@@ -28,6 +37,8 @@ export function WelcomeChat() {
   const waiting = status === "submitted" || status === "streaming"
   const userTurns = messages.filter((m) => m.role === "user").length
   const limitReached = userTurns >= CHAT_LIMITS.maxUserTurns
+  const glowOpacity = Math.min(0.55 + userTurns * 0.12, 1)
+  const showStarters = greetingDone && messages.length === 0 && !waiting
 
   const send = (text: string, viaVoice = false) => {
     const value = text.trim().slice(0, CHAT_LIMITS.maxMessageChars)
@@ -118,32 +129,46 @@ export function WelcomeChat() {
       role="dialog"
       aria-modal="true"
       aria-label="Chat with TechAccountingPro assistant"
-      className="fixed inset-0 z-[100] flex flex-col overflow-hidden bg-[#0a0a0a]"
+      className="fixed inset-x-0 top-0 z-[100] flex h-dvh flex-col overflow-hidden bg-[#0a0a0a]"
     >
       <div
         aria-hidden
-        className="pointer-events-none absolute left-1/2 top-0 h-[60vh] w-[120vw] -translate-x-1/2 -translate-y-1/3 rounded-full bg-[radial-gradient(ellipse_at_center,rgba(120,180,255,0.18),rgba(80,120,255,0.06)_40%,transparent_70%)] blur-2xl"
+        style={{ opacity: glowOpacity }}
+        className="pointer-events-none absolute left-1/2 top-0 h-[60vh] w-[120vw] -translate-x-1/2 -translate-y-1/3 rounded-full bg-[radial-gradient(ellipse_at_center,rgba(120,180,255,0.24),rgba(80,120,255,0.08)_40%,transparent_70%)] blur-2xl transition-opacity duration-1000"
       />
 
-      <header className="relative flex items-center justify-between px-5 py-4 md:px-8 md:py-6">
-        <div className="flex items-center gap-2.5">
-          <Image
-            src="/images/logos/tap-logo.png"
-            alt=""
-            width={28}
-            height={28}
-            className="h-7 w-7 rounded-md object-contain"
-          />
-          <span className="text-sm font-medium tracking-tight text-white/80">TechAccountingPro</span>
+      <header className="relative flex items-start justify-between gap-4 px-5 py-4 md:px-8 md:py-6">
+        <div className="flex flex-col gap-1.5">
+          <div className="flex items-center gap-2.5">
+            <Image
+              src="/images/logos/tap-logo.png"
+              alt=""
+              width={28}
+              height={28}
+              className="h-7 w-7 rounded-md object-contain"
+            />
+            <span className="text-sm font-medium tracking-tight text-white/80">TechAccountingPro</span>
+          </div>
+          <ul className="flex flex-wrap items-center gap-x-2 text-xs text-white/35" aria-label="About us">
+            {TRUST_POINTS.map((point, i) => (
+              <li key={point} className="flex items-center gap-2">
+                {i > 0 && <span aria-hidden>·</span>}
+                {point}
+              </li>
+            ))}
+          </ul>
         </div>
-        <button
-          type="button"
-          onClick={minimize}
-          className="group flex items-center gap-1.5 text-sm text-white/50 transition-colors hover:text-white"
-        >
-          Continue to site
-          <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" aria-hidden />
-        </button>
+        <div className="flex flex-col items-end gap-1">
+          <button
+            type="button"
+            onClick={minimize}
+            className="group flex items-center gap-1.5 whitespace-nowrap text-sm text-white/50 transition-colors hover:text-white"
+          >
+            Continue to site
+            <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" aria-hidden />
+          </button>
+          <span className="hidden text-xs text-white/30 sm:block">Pick this chat up anytime from the corner button</span>
+        </div>
       </header>
 
       <div ref={scrollRef} className="relative flex-1 overflow-y-auto">
@@ -155,6 +180,25 @@ export function WelcomeChat() {
             {greeting}
             {!greetingDone && <Caret />}
           </Bubble>
+
+          {showStarters && (
+            <div
+              className="animate-chat-in flex flex-wrap justify-center gap-2"
+              role="group"
+              aria-label="Suggested topics"
+            >
+              {STARTERS.map((starter) => (
+                <button
+                  key={starter.label}
+                  type="button"
+                  onClick={() => send(starter.message)}
+                  className="rounded-full border border-white/15 px-4 py-2 text-sm text-white/70 transition-colors hover:border-sky-300/50 hover:bg-sky-300/10 hover:text-white md:text-base"
+                >
+                  {starter.label}
+                </button>
+              ))}
+            </div>
+          )}
 
           {messages.map((message) => (
             <MessageView key={message.id} message={message} />
@@ -184,7 +228,7 @@ export function WelcomeChat() {
                   e.preventDefault()
                   send(input)
                 }}
-                className="flex justify-center"
+                className="sticky bottom-0 -mx-6 flex justify-center bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a] to-transparent px-6 pb-2 pt-6 md:static md:mx-0 md:bg-none md:p-0"
               >
                 <label htmlFor="welcome-chat-input" className="sr-only">
                   Your message
@@ -274,7 +318,7 @@ function MessageView({ message }: { message: ChatMessage }) {
           const id = (part.input as { id?: string }).id
           if (id && id in CHAT_RESOURCES) {
             return (
-              <div key={i} className="flex justify-center">
+              <div key={i} className="animate-chat-in flex justify-center">
                 <ResourceCard id={id as ChatResourceId} />
               </div>
             )
@@ -310,7 +354,7 @@ function ResourceCard({ id }: { id: ChatResourceId }) {
 function Bubble({ role, children }: { role: "user" | "assistant"; children: React.ReactNode }) {
   const isUser = role === "user"
   return (
-    <div className="flex justify-center">
+    <div className="animate-chat-in flex justify-center">
       <div
         className={`max-w-[90%] whitespace-pre-wrap text-balance text-center text-xl leading-relaxed sm:text-2xl md:text-3xl md:leading-[1.4] ${
           isUser
