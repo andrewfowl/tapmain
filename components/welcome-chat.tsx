@@ -2,7 +2,6 @@
 
 import { useEffect, useRef, useState } from "react"
 import Link from "next/link"
-import Image from "next/image"
 import { useChat } from "@ai-sdk/react"
 import { ArrowRight, ArrowUpRight, MessageCircle, Mic, Square } from "lucide-react"
 import { CHAT_LIMITS, CHAT_RESOURCES, type ChatResourceId } from "@/lib/chat-resources"
@@ -140,13 +139,12 @@ export function WelcomeChat() {
       <header className="relative flex items-start justify-between gap-4 px-5 py-4 md:px-8 md:py-6">
         <div className="flex flex-col gap-1.5">
           <div className="flex items-center gap-2.5">
-            <Image
-              src="/images/logos/tap-logo.png"
-              alt=""
-              width={28}
-              height={28}
-              className="h-7 w-7 rounded-md object-contain"
-            />
+            <span
+              aria-hidden
+              className="flex h-8 items-center rounded-md bg-[#231f20] px-2 text-sm font-black tracking-tight text-[#FFDF1B] ring-1 ring-white/10"
+            >
+              TAP
+            </span>
             <span className="text-sm font-medium tracking-tight text-white/80">TechAccountingPro</span>
           </div>
           <ul className="flex flex-wrap items-center gap-x-2 text-xs text-white/35" aria-label="About us">
@@ -262,16 +260,21 @@ export function WelcomeChat() {
             disabled={waiting}
             aria-pressed={speech.listening}
             aria-label={speech.listening ? "Stop listening" : "Talk instead of typing"}
-            className={`relative flex h-14 w-14 items-center justify-center rounded-full border transition-all disabled:opacity-40 ${
+            className={`relative flex h-16 items-center justify-center gap-3 rounded-full px-8 text-base font-medium transition-all disabled:opacity-40 md:h-20 md:px-10 md:text-lg ${
               speech.listening
-                ? "border-sky-300/60 bg-sky-300/15 text-sky-200 shadow-[0_0_40px_rgba(120,180,255,0.5)]"
-                : "border-white/15 text-white/70 hover:border-white/30 hover:text-white"
+                ? "bg-sky-300 text-[#0a0a0a] shadow-[0_0_60px_rgba(120,180,255,0.6)]"
+                : "bg-white text-[#0a0a0a] shadow-[0_0_40px_rgba(255,255,255,0.18)] hover:scale-105 hover:shadow-[0_0_60px_rgba(120,180,255,0.45)]"
             }`}
           >
             {speech.listening && (
-              <span aria-hidden className="absolute inset-0 animate-ping rounded-full border border-sky-300/40" />
+              <span aria-hidden className="absolute inset-0 animate-ping rounded-full border-2 border-sky-300/50" />
             )}
-            {speech.listening ? <Square className="h-4 w-4 fill-current" /> : <Mic className="h-5 w-5" />}
+            {speech.listening ? (
+              <Square className="h-5 w-5 fill-current md:h-6 md:w-6" aria-hidden />
+            ) : (
+              <Mic className="h-6 w-6 md:h-7 md:w-7" aria-hidden />
+            )}
+            <span aria-hidden>{speech.listening ? "Listening... tap to stop" : "Tap to talk"}</span>
           </button>
         )}
         <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-xs text-white/30">
