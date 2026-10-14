@@ -87,7 +87,7 @@ export function ServicesSection() {
             </div>
             <ul className="p-6 space-y-2 flex-1">
               {service.items.map((item, itemIndex) => (
-                <li key={itemIndex} className="text-white/60 text-sm flex items-start gap-2">
+                <li key={itemIndex} className="text-white/60 text-base flex items-start gap-2">
                   <span className="w-1 h-1 rounded-full bg-white/40 mt-2 flex-shrink-0" />
                   {item}
                 </li>
