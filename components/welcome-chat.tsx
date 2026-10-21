@@ -80,12 +80,17 @@ export function WelcomeChat() {
   useEffect(() => {
     if (!open || greetingDone) return
     let i = greeting.length
-    const id = setInterval(() => {
+    let id: number
+    const tick = () => {
       i += 1
       setGreeting(GREETING.slice(0, i))
-      if (i >= GREETING.length) clearInterval(id)
-    }, 45)
-    return () => clearInterval(id)
+      if (i >= GREETING.length) return
+      const prev = GREETING[i - 1]
+      const pause = /[.?!]/.test(prev) ? 380 : prev === "," ? 180 : prev === " " ? 60 : 0
+      id = window.setTimeout(tick, 22 + Math.random() * 40 + pause)
+    }
+    id = window.setTimeout(tick, 600)
+    return () => window.clearTimeout(id)
     // Only restart when the overlay opens; the greeting types once per session.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [open])
@@ -218,15 +223,15 @@ export function WelcomeChat() {
             </div>
           )}
 
-          {messages.map((message) => (
-            <MessageView key={message.id} message={message} />
+          {messages.map((message, i) => (
+            <MessageView
+              key={message.id}
+              message={message}
+              streaming={status === "streaming" && i === messages.length - 1}
+            />
           ))}
 
-          {status === "submitted" && (
-            <Bubble role="assistant">
-              <Caret />
-            </Bubble>
-          )}
+          {status === "submitted" && <TypingDots />}
 
           {error && !waiting && (
             <p className="text-center text-sm text-white/50">
@@ -321,12 +326,14 @@ function textOf(message: ChatMessage) {
     .join("")
 }
 
-function MessageView({ message }: { message: ChatMessage }) {
+function MessageView({ message, streaming }: { message: ChatMessage; streaming: boolean }) {
   const role = message.role === "user" ? "user" : "assistant"
   const parts = [
     ...message.parts.filter((p) => p.type === "text"),
     ...message.parts.filter((p) => p.type !== "text"),
   ]
+  const lastTextIndex = parts.findLastIndex((p) => p.type === "text")
+  if (streaming && role === "assistant" && lastTextIndex === -1) return <TypingDots />
   return (
     <>
       {parts.map((part, i) => {
@@ -334,6 +341,7 @@ function MessageView({ message }: { message: ChatMessage }) {
           return (
             <Bubble key={i} role={role}>
               {part.text}
+              {streaming && i === lastTextIndex && <Caret />}
             </Bubble>
           )
         }
@@ -386,6 +394,22 @@ function Bubble({ role, children }: { role: "user" | "assistant"; children: Reac
         }`}
       >
         {children}
+      </div>
+    </div>
+  )
+}
+
+function TypingDots() {
+  return (
+    <div className="animate-chat-in flex justify-center" role="status" aria-label="Assistant is typing">
+      <div className="flex items-center gap-2 py-3">
+        {[0, 160, 320].map((delay) => (
+          <span
+            key={delay}
+            style={{ animationDelay: `${delay}ms` }}
+            className="h-2.5 w-2.5 animate-bounce rounded-full bg-white/60 shadow-[0_0_12px_rgba(150,190,255,0.6)]"
+          />
+        ))}
       </div>
     </div>
   )

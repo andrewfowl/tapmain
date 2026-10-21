@@ -1,5 +1,6 @@
 import {
   streamText,
+  smoothStream,
   type UIMessage,
   convertToModelMessages,
   tool,
@@ -131,6 +132,7 @@ export async function POST(req: Request) {
     messages: await convertToModelMessages(messages.slice(-24)),
     maxOutputTokens: 200,
     stopWhen: stepCountIs(4),
+    experimental_transform: smoothStream({ delayInMs: 35, chunking: "word" }),
     tools: {
       recommendResource: tool({
         description:
