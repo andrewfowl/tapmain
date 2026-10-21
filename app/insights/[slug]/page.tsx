@@ -1,4 +1,6 @@
+import type { Metadata } from "next"
 import { notFound } from "next/navigation"
+import { FOUNDER, JsonLd, SITE_URL } from "@/lib/structured-data"
 import Link from "next/link"
 import { ArrowLeft, Calendar, Clock, Share2 } from "lucide-react"
 import { Button } from "@/components/ui/button"
@@ -18,6 +20,26 @@ export async function generateStaticParams() {
   }))
 }
 
+export async function generateMetadata({ params }: InsightPageProps): Promise<Metadata> {
+  const { slug } = await params
+  const insight = await getInsightBySlug(slug)
+  if (!insight) return {}
+  return {
+    title: insight.title,
+    description: insight.hook,
+    alternates: { canonical: `/insights/${slug}` },
+    authors: [{ name: FOUNDER.name, url: FOUNDER.url }],
+    openGraph: {
+      type: "article",
+      title: insight.title,
+      description: insight.hook,
+      publishedTime: insight.created_at,
+      modifiedTime: insight.updated_at,
+      ...(insight.image_url && { images: [insight.image_url] }),
+    },
+  }
+}
+
 export default async function InsightPage({ params }: InsightPageProps) {
   const insight = await getInsightBySlug(params.slug)
 
@@ -27,6 +49,20 @@ export default async function InsightPage({ params }: InsightPageProps) {
 
   return (
     <main className="flex min-h-screen flex-col">
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "Article",
+          headline: insight.title,
+          description: insight.hook,
+          datePublished: insight.created_at,
+          dateModified: insight.updated_at,
+          author: FOUNDER,
+          publisher: { "@id": `${SITE_URL}/#organization` },
+          mainEntityOfPage: `${SITE_URL}/insights/${insight.slug}`,
+          ...(insight.image_url && { image: insight.image_url }),
+        }}
+      />
       {/* Back Navigation */}
       <section className="bg-white border-b border-corporate-100 pt-20">
         <div className="corporate-container py-4">
@@ -52,6 +88,21 @@ export default async function InsightPage({ params }: InsightPageProps) {
             </div>
 
             <div className="flex flex-wrap items-center gap-6 text-sm text-corporate-500 mb-8">
+              <span>
+                By{" "}
+                <Link href="/#about" className="font-medium text-corporate-800 hover:underline">
+                  {FOUNDER.name}
+                </Link>
+                , {FOUNDER.honorificSuffix}
+              </span>
+              <span>
+                Last reviewed{" "}
+                {new Date(insight.updated_at).toLocaleDateString("en-US", {
+                  year: "numeric",
+                  month: "long",
+                  day: "numeric",
+                })}
+              </span>
               <div className="flex items-center">
                 <Calendar className="h-4 w-4 mr-2" />
                 <span>

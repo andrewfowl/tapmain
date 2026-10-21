@@ -1,3 +1,4 @@
+import type { Metadata } from "next"
 import { notFound } from "next/navigation"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
@@ -16,6 +17,24 @@ async function getNewsBySlug(slug: string) {
   const { data: news } = await supabase.from("news").select("*").eq("slug", slug).eq("published", true).single()
 
   return news
+}
+
+export async function generateMetadata({ params }: NewsPageProps): Promise<Metadata> {
+  const { slug } = await params
+  const news = await getNewsBySlug(slug)
+  if (!news) return {}
+  return {
+    title: news.title,
+    description: news.excerpt,
+    alternates: { canonical: `/news/${slug}` },
+    openGraph: {
+      type: "article",
+      title: news.title,
+      description: news.excerpt,
+      publishedTime: news.created_at,
+      ...(news.image_url && { images: [news.image_url] }),
+    },
+  }
 }
 
 export default async function NewsPage({ params }: NewsPageProps) {

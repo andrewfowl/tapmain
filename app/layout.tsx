@@ -8,6 +8,7 @@ import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { GrainOverlay } from "@/components/grain-overlay";
 import ClientAppWrapper from "@/components/client-app-wrapper";
+import { JsonLd, ORGANIZATION } from "@/lib/structured-data";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -21,16 +22,19 @@ const jetbrainsMono = JetBrains_Mono({
   display: "swap",
 });
 
+const SITE_TITLE = "Crypto & Digital Asset Technical Accounting | US GAAP, Audit Readiness – TechAccountingPro"
+const SITE_DESCRIPTION =
+  "Audit-ready US GAAP reporting for crypto and Web3 companies, led by a former KPMG PhD, CPA. Token compensation, revenue recognition, technical memos and audit support on a simple subscription."
+
 export const metadata: Metadata = {
-  title:
-    "TechAccountingPro | Expert Technical Accounting Services Tailored to Your Business Needs.",
-  description:
-    "Solve complex crypto accounting questions with TechAccountingPro. Access expert insights, actionable templates, and proven methodologies to modernize your accounting practices with cutting-edge technology.",
+  metadataBase: new URL("https://techaccountingpro.com"),
+  title: { default: SITE_TITLE, template: "%s | TechAccountingPro" },
+  description: SITE_DESCRIPTION,
+  alternates: { canonical: "/" },
   openGraph: {
     url: "https://techaccountingpro.com/",
-    title: "TechAccountingPro | Your Technical Accounting Expert.",
-    description:
-      "Solve complex crypto accounting questions with TechAccountingPro.",
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
     images: ["/images/logos/tap-logo.png"],
     siteName: "TechAccountingPro",
     locale: "en_US",
@@ -40,10 +44,8 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     site: "@tech_accounting",
     creator: "@tech_accounting",
-    title:
-      "TechAccountingPro | Expert Technical Accounting Services Tailored to Your Business Needs.",
-    description:
-      "Unlock complex US GAAP and digital assets accounting solutions with TechAccountingPro.",
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
     images: ["/images/logos/tap-logo.png"],
   },
   generator: "v0.app",
@@ -116,6 +118,7 @@ export default function RootLayout({
         </noscript>
       </head>
       <body className={`${inter.variable} ${jetbrainsMono.variable} font-sans`}>
+        <JsonLd data={ORGANIZATION} />
         <ClientAppWrapper>
           <noscript>
             <iframe

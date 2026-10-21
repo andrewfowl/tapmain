@@ -1,3 +1,4 @@
+import type { Metadata } from "next"
 import Link from "next/link"
 import { Mail, MapPin, Phone, Clock, ArrowRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
@@ -6,6 +7,13 @@ import { SiteHeader } from "@/components/site-header"
 import { SiteFooter } from "@/components/site-footer"
 import { Badge } from "@/components/ui/badge"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
+
+export const metadata: Metadata = {
+  title: "Contact a Crypto Technical Accountant",
+  description:
+    "Talk to TechAccountingPro about US GAAP reporting, audit readiness, token compensation or a technical accounting memo. Replies within one business day.",
+  alternates: { canonical: "/contact" },
+}
 
 export default function ContactPage() {
   const faqs = [

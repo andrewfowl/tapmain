@@ -8,6 +8,7 @@ import { CHAT_LIMITS, CHAT_RESOURCES, type ChatResourceId } from "@/lib/chat-res
 import { useSpeechInput } from "@/hooks/use-speech-input"
 
 const STORAGE_KEY = "tap_welcome_seen"
+const AUTO_OPEN_DELAY_MS = 8000
 
 const GREETING =
   "Hi, I'm the TechAccountingPro assistant. We bring Big 4 accounting expertise to crypto and Web3 startups. What are you working on?"
@@ -52,9 +53,28 @@ export function WelcomeChat() {
     onFinal: (text) => send(text, true),
   })
 
+  // Let the page load first (Google penalizes instant full-screen interstitials);
+  // never auto-open for paid traffic so ad landings show the headline.
   useEffect(() => {
-    if (!localStorage.getItem(STORAGE_KEY)) setOpen(true)
     setReady(true)
+    if (localStorage.getItem(STORAGE_KEY)) return
+    if (/[?&](gclid|gbraid|wbraid|fbclid|msclkid)=|utm_medium=(cpc|ppc|paid)/i.test(window.location.search)) return
+
+    const show = () => {
+      cleanup()
+      setOpen(true)
+    }
+    const onScroll = () => {
+      const half = (document.documentElement.scrollHeight - window.innerHeight) / 2
+      if (window.scrollY > half) show()
+    }
+    const timer = window.setTimeout(show, AUTO_OPEN_DELAY_MS)
+    window.addEventListener("scroll", onScroll, { passive: true })
+    function cleanup() {
+      window.clearTimeout(timer)
+      window.removeEventListener("scroll", onScroll)
+    }
+    return cleanup
   }, [])
 
   useEffect(() => {

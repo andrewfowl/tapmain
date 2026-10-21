@@ -1,0 +1,18 @@
+# TechAccountingPro
+
+> Technical accounting firm for crypto, Web3 and digital asset companies. Big 4 (KPMG) trained, led by founder Andrei Belonogov (PhD, CPA, FCCA). US GAAP reporting, technical accounting memos, audit readiness and token accounting, delivered on a subscription basis. Founded March 2022, headquartered in Louisville, KY, serving clients worldwide.
+
+## Services
+- [Services overview](https://techaccountingpro.com/#services): financial reporting, technical accounting (ASC 606, going concern), transaction support (business combinations, SAFEs, consolidation), technical crypto accounting (token grants, SAFTs, token compensation, staking, DAO/foundation consolidation), change management (IFRS to US GAAP, ERP conversion), process and governance.
+- [Subscription plans](https://techaccountingpro.com/#pricing)
+- [FAQ](https://techaccountingpro.com/#FAQ)
+- [About the founder](https://techaccountingpro.com/#about)
+
+## Free resources
+- [Audit Readiness Checklist for Web3 Startups](https://techaccountingpro.com/checklist)
+- [Accounting templates](https://techaccountingpro.com/templates)
+- [Technical accounting publication](https://blog.techaccountingpro.com/)
+
+## Contact
+- [Contact](https://techaccountingpro.com/contact)
+- Email: info@techaccountingpro.com

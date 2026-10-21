@@ -18,6 +18,7 @@ import { MeshGradientMascot } from "@/components/mesh-gradient-mascot"
 import { RotatingServices } from "@/components/rotating-services"
 import { getPublishedResources } from "@/actions/resources-actions"
 import { AboutSection } from "@/components/about-section"
+import { JsonLd } from "@/lib/structured-data"
 
 async function FeaturedSolutionsContent() {
   const allSolutions = await getPublishedSolutions()
@@ -372,10 +373,12 @@ export default function HomePage() {
         <div className="max-w-5xl mx-auto px-6 lg:px-8">
           <AnimateOnScroll animation="fade-in-up">
             <div className="text-center mb-20">
-              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">How do we help businesses?</h2>
+              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">What does a crypto technical accountant do?</h2>
               <p className="text-white/60 max-w-2xl mx-auto">
-                From financial reporting to technical crypto accounting, we provide comprehensive support across the
-                entire finance function.
+                A crypto technical accountant applies US GAAP to transactions standard playbooks don&apos;t cover: token
+                grants and compensation, SAFTs, staking rewards, digital assets under ASC 350-60, and DAO or foundation
+                consolidation. We write the accounting memos, prepare audit-ready financial statements, and work with your
+                auditors so your numbers hold up.
               </p>
             </div>
           </AnimateOnScroll>
@@ -600,6 +603,17 @@ export default function HomePage() {
 
       {/* FAQ */}
       <section className="py-32 bg-card" id="FAQ">
+        <JsonLd
+          data={{
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: faqs.map((faq) => ({
+              "@type": "Question",
+              name: faq.question,
+              acceptedAnswer: { "@type": "Answer", text: faq.answer },
+            })),
+          }}
+        />
         <div className="max-w-3xl mx-auto px-6 lg:px-8">
           <AnimateOnScroll animation="fade-in-up">
             <div className="text-center mb-20">
