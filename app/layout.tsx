@@ -9,6 +9,7 @@ import { SiteFooter } from "@/components/site-footer";
 import { GrainOverlay } from "@/components/grain-overlay";
 import ClientAppWrapper from "@/components/client-app-wrapper";
 import { JsonLd, ORGANIZATION } from "@/lib/structured-data";
+import { AttributionCapture } from "@/components/attribution-capture";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -35,7 +36,7 @@ export const metadata: Metadata = {
     url: "https://techaccountingpro.com/",
     title: SITE_TITLE,
     description: SITE_DESCRIPTION,
-    images: ["/images/logos/tap-logo.png"],
+    images: [{ url: "/images/og-image.png", width: 1200, height: 630, alt: "TechAccountingPro" }],
     siteName: "TechAccountingPro",
     locale: "en_US",
     type: "website",
@@ -46,7 +47,7 @@ export const metadata: Metadata = {
     creator: "@tech_accounting",
     title: SITE_TITLE,
     description: SITE_DESCRIPTION,
-    images: ["/images/logos/tap-logo.png"],
+    images: ["/images/og-image.png"],
   },
   generator: "v0.app",
   other: { "base:app_id": "695dd7f6646908900bbdaa0d" },
@@ -134,6 +135,7 @@ export default function RootLayout({
           <main className="min-h-screen">{children}</main>
           <SiteFooter />
           <Analytics />
+          <AttributionCapture />
         </ClientAppWrapper>
 
         <Script

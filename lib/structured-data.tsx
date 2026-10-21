@@ -1,3 +1,5 @@
+import { SERVICES } from "@/lib/services"
+
 export const SITE_URL = "https://techaccountingpro.com"
 
 export const FOUNDER = {
@@ -35,14 +37,10 @@ export const ORGANIZATION = {
   hasOfferCatalog: {
     "@type": "OfferCatalog",
     name: "Technical accounting services",
-    itemListElement: [
-      "Financial Reporting",
-      "Technical Accounting",
-      "Transaction Support",
-      "Technical Crypto Accounting",
-      "Change Management",
-      "Process & Governance",
-    ].map((name) => ({ "@type": "Offer", itemOffered: { "@type": "Service", name } })),
+    itemListElement: SERVICES.map((s) => ({
+      "@type": "Offer",
+      itemOffered: { "@type": "Service", name: s.title, url: `${SITE_URL}/services/${s.slug}` },
+    })),
   },
 }
 

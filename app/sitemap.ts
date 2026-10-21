@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next"
 import { createStaticClient } from "@/lib/supabase/server"
+import { SERVICES } from "@/lib/services"
 
 const baseUrl = "https://techaccountingpro.com"
 
@@ -15,6 +16,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   const staticPages: MetadataRoute.Sitemap = [
     { url: baseUrl, changeFrequency: "weekly", priority: 1 },
+    ...SERVICES.map((s) => ({
+      url: `${baseUrl}/services/${s.slug}`,
+      changeFrequency: "monthly" as const,
+      priority: 0.9,
+    })),
+    { url: `${baseUrl}/insights`, changeFrequency: "weekly", priority: 0.8 },
     { url: `${baseUrl}/checklist`, changeFrequency: "monthly", priority: 0.8 },
     { url: `${baseUrl}/templates`, changeFrequency: "weekly", priority: 0.8 },
     { url: `${baseUrl}/contact`, changeFrequency: "monthly", priority: 0.7 },

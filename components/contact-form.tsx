@@ -198,6 +198,21 @@ export default function ContactForm() {
               }`}
             >
               {submitMessage.text}
+              {submitMessage.type === "success" && (
+                <>
+                  {" "}
+                  Want to talk sooner?{" "}
+                  <a
+                    href="https://cal.com/andrew-belonogov/30min"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-medium underline hover:text-green-300"
+                  >
+                    Book a 30-min call
+                  </a>
+                  .
+                </>
+              )}
             </div>
           )}
 

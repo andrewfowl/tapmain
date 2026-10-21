@@ -2,6 +2,7 @@
 
 import { createClient } from "@/lib/supabase/server"
 import { headers } from "next/headers"
+import { getAttribution } from "@/lib/attribution"
 
 interface ContactSubmission {
   firstName: string
@@ -94,9 +95,10 @@ export async function submitContactForm(submission: ContactSubmission): Promise<
     const fullName = `${submission.firstName.trim()} ${submission.lastName.trim()}`
 
     // Combine subject and message
-    const fullMessage = submission.subject
-      ? `Subject: ${submission.subject}\n\n${submission.message}`
-      : submission.message
+    const attribution = await getAttribution()
+    const fullMessage =
+      (submission.subject ? `Subject: ${submission.subject}\n\n${submission.message}` : submission.message) +
+      (attribution ? `\n\nSource: ${attribution}` : "")
 
     // Insert contact submission into service_requests table
     const { error } = await supabase.from("service_requests").insert({

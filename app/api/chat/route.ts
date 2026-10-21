@@ -9,6 +9,7 @@ import {
 } from "ai"
 import { z } from "zod"
 import { captureAssessmentLead } from "@/actions/lead-capture-actions"
+import { getAttribution } from "@/lib/attribution"
 import { CHAT_LIMITS, CHAT_RESOURCE_IDS, CHAT_RESOURCES } from "@/lib/chat-resources"
 
 export const maxDuration = 30
@@ -152,7 +153,7 @@ export async function POST(req: Request) {
             email,
             full_name,
             company_name,
-            source: "welcome_chat",
+            source: ["welcome_chat", await getAttribution()].filter(Boolean).join(" | "),
           })
           return res.success ? { status: "saved" } : { status: "error" }
         },

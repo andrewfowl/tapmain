@@ -251,6 +251,57 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Stats Section */}
+      <section className="py-32 bg-black border-y border-white/10">
+        <div className="max-w-5xl mx-auto px-6 lg:px-8">
+          <AnimateOnScroll animation="fade-in-up">
+            <div className="text-center mb-16">
+              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Our track record</h2>
+              <p className="text-white/60 max-w-2xl mx-auto">
+                Numbers that demonstrate our commitment to client success.
+              </p>
+            </div>
+          </AnimateOnScroll>
+
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-10">
+            {stats.map((stat, index) => (
+              <AnimateOnScroll key={index} animation="scale-in" delay={index * 100}>
+                <div className="text-center">
+                  <div className="text-3xl md:text-4xl font-bold text-white mb-3">{stat.value}</div>
+                  <div className="text-white/40 text-sm">{stat.label}</div>
+                </div>
+              </AnimateOnScroll>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Services Section */}
+      <section className="py-32 bg-black" id="services">
+        <div className="max-w-5xl mx-auto px-6 lg:px-8">
+          <AnimateOnScroll animation="fade-in-up">
+            <div className="text-center mb-20">
+              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">What does a crypto technical accountant do?</h2>
+              <p className="text-white/60 max-w-2xl mx-auto">
+                A crypto technical accountant applies US GAAP to transactions standard playbooks don&apos;t cover: token
+                grants and compensation, SAFTs, staking rewards, digital assets under ASC 350-60, and DAO or foundation
+                consolidation. We write the accounting memos, prepare audit-ready financial statements, and work with your
+                auditors so your numbers hold up.
+              </p>
+            </div>
+          </AnimateOnScroll>
+          <ServicesSection />
+        </div>
+      </section>
+
+      {/* About */}
+      <AboutSection />
+
+      {/* Resources Section */}
+      <Suspense fallback={<div className="py-32 bg-card" />}>
+        <ResourcesSection />
+      </Suspense>
+
       {/* Why Choose Us */}
       <section className="py-32 bg-black">
         <div className="max-w-5xl mx-auto px-6 lg:px-8">
@@ -337,52 +388,6 @@ export default function HomePage() {
               </AnimateOnScroll>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* Stats Section */}
-      <section className="py-32 bg-black border-y border-white/10">
-        <div className="max-w-5xl mx-auto px-6 lg:px-8">
-          <AnimateOnScroll animation="fade-in-up">
-            <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Our track record</h2>
-              <p className="text-white/60 max-w-2xl mx-auto">
-                Numbers that demonstrate our commitment to client success.
-              </p>
-            </div>
-          </AnimateOnScroll>
-
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-10">
-            {stats.map((stat, index) => (
-              <AnimateOnScroll key={index} animation="scale-in" delay={index * 100}>
-                <div className="text-center">
-                  <div className="text-3xl md:text-4xl font-bold text-white mb-3">{stat.value}</div>
-                  <div className="text-white/40 text-sm">{stat.label}</div>
-                </div>
-              </AnimateOnScroll>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* About */}
-      <AboutSection />
-
-      {/* Services Section */}
-      <section className="py-32 bg-black" id="services">
-        <div className="max-w-5xl mx-auto px-6 lg:px-8">
-          <AnimateOnScroll animation="fade-in-up">
-            <div className="text-center mb-20">
-              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">What does a crypto technical accountant do?</h2>
-              <p className="text-white/60 max-w-2xl mx-auto">
-                A crypto technical accountant applies US GAAP to transactions standard playbooks don&apos;t cover: token
-                grants and compensation, SAFTs, staking rewards, digital assets under ASC 350-60, and DAO or foundation
-                consolidation. We write the accounting memos, prepare audit-ready financial statements, and work with your
-                auditors so your numbers hold up.
-              </p>
-            </div>
-          </AnimateOnScroll>
-          <ServicesSection />
         </div>
       </section>
 
@@ -592,11 +597,6 @@ export default function HomePage() {
           </AnimateOnScroll>
         </div>
       </section>
-
-      {/* Resources Section */}
-      <Suspense fallback={<div className="py-32 bg-card" />}>
-        <ResourcesSection />
-      </Suspense>
 
       {/* Wall of Love Section */}
       <WallOfLove />
