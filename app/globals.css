@@ -80,6 +80,9 @@
 }
 
 @theme inline {
+  /* Brand yellow is ~12.2:1 on charcoal but ~1.34:1 on white: only pair it with charcoal text or backgrounds. */
+  --color-brand: #ffdf1b;
+  --color-brand-charcoal: #231f20;
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);

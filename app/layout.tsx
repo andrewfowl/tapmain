@@ -74,12 +74,12 @@ export default function RootLayout({
         />
 
         <Script
-          async
           src="https://www.googletagmanager.com/gtag/js?id=G-YBDYMPZ471"
+          strategy="lazyOnload"
         />
         <Script
           id="gtag-init"
-          strategy="afterInteractive"
+          strategy="lazyOnload"
           dangerouslySetInnerHTML={{
             __html: `
             window.dataLayer = window.dataLayer || [];
@@ -92,7 +92,7 @@ export default function RootLayout({
 
         <Script
           id="fb-pixel"
-          strategy="afterInteractive"
+          strategy="lazyOnload"
           dangerouslySetInnerHTML={{
             __html: `
             !function(f,b,e,v,n,t,s)
@@ -140,7 +140,7 @@ export default function RootLayout({
 
         <Script
           id="linkedin-insight"
-          strategy="afterInteractive"
+          strategy="lazyOnload"
           dangerouslySetInnerHTML={{
             __html: `
             _linkedin_partner_id = "8130930";
@@ -151,7 +151,7 @@ export default function RootLayout({
         />
         <Script
           id="linkedin-init"
-          strategy="afterInteractive"
+          strategy="lazyOnload"
           dangerouslySetInnerHTML={{
             __html: `
             (function(l) {

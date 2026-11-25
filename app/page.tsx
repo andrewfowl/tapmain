@@ -15,7 +15,8 @@ import { SlackChatAnimation } from "@/components/slack-chat-animation"
 import { ServicesSection } from "@/components/services-section"
 import { WallOfLove } from "@/components/wall-of-love"
 import { MeshGradientMascot } from "@/components/mesh-gradient-mascot"
-import { RotatingServices } from "@/components/rotating-services"
+import { EngagementExample } from "@/components/engagement-example"
+import { BOOKING_URL } from "@/lib/site"
 import { getPublishedResources } from "@/actions/resources-actions"
 import { AboutSection } from "@/components/about-section"
 import { JsonLd } from "@/lib/structured-data"
@@ -200,14 +201,27 @@ export default function HomePage() {
               </AnimateOnScroll>
 
               <AnimateOnScroll animation="fade-in-up" delay={200}>
-                <div className="flex flex-col sm:flex-row gap-4">
-                  <Button
-                    asChild
-                    className="bg-white text-black hover:bg-white/90 rounded-full px-8 py-6 text-base font-medium transition-all hover:scale-105"
-                  >
-                    <Link href="#pricing">See plans</Link>
-                  </Button>
-                  <InteractiveAssessmentButton />
+                <div className="flex flex-col gap-4">
+                  <div className="flex flex-col sm:flex-row gap-4">
+                    <Button
+                      asChild
+                      className="bg-brand text-brand-charcoal hover:bg-brand/90 rounded-full px-8 py-6 text-base font-semibold transition-colors"
+                    >
+                      <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer">
+                        Book a consultation
+                      </a>
+                    </Button>
+                    <Button
+                      asChild
+                      variant="outline"
+                      className="border-white/20 text-white hover:bg-white/10 bg-transparent rounded-full px-8 py-6 text-base font-medium"
+                    >
+                      <Link href="#pricing">See plans</Link>
+                    </Button>
+                  </div>
+                  <div>
+                    <InteractiveAssessmentButton />
+                  </div>
                 </div>
               </AnimateOnScroll>
 
@@ -241,11 +255,9 @@ export default function HomePage() {
               </AnimateOnScroll>
             </div>
 
-            {/* Right Column - Bento Grid Preview */}
+            {/* Right Column - Engagement example */}
             <AnimateOnScroll animation="slide-in-right" delay={300}>
-              <div className="relative">
-                <RotatingServices />
-              </div>
+              <EngagementExample />
             </AnimateOnScroll>
           </div>
         </div>
