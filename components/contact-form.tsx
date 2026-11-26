@@ -79,7 +79,7 @@ export default function ContactForm() {
     <div className="space-y-12 py-8">
       <div className="text-center space-y-4">
         <h2 className="text-4xl font-bold text-white">Get in touch</h2>
-        <p className="text-white/60 text-lg max-w-xl mx-auto">Tell us about your finance transformation needs</p>
+        <p className="text-white/60 text-lg max-w-xl mx-auto">Tell us about your accounting question or upcoming audit</p>
       </div>
 
       <div className="max-w-2xl mx-auto">
