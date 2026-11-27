@@ -99,83 +99,82 @@ export default function HomePage() {
   const stats = [
     { value: "100+", label: "Thought leadership publications" },
     { value: "15", label: "Years of experience" },
-    { value: "35+", label: "Happy customers" },
-    { value: "5.0", label: "Average customer rating" },
+    { value: "35+", label: "Clients served" },
+    { value: "5.0", label: "Average client rating" },
   ]
 
   const faqs = [
     {
       question: "We already have an accounting team.",
       answer:
-        "Great! We complement your team with specialized digital assets expertise. Your accountants handle day-to-day operations while we tackle the complex technical accounting challenges that require deep blockchain knowledge. Most of our clients see us as an extension of their existing team.",
+        "Good. We work alongside it. Your team runs the close and the day-to-day books, and we take the transactions that need research and a written position: a token grant, a SAFE conversion, a usage-based customer contract.",
     },
     {
       question: "This seems expensive for our stage.",
       answer:
-        "Consider the alternative: one audit finding or investor concern about your financial reporting can cost 10x our annual fees. We've helped clients avoid six-figure restatements and maintain investor confidence. Our tiered plans ensure you only pay for what you need.",
+        "Compare it with the cost of getting a position wrong. An audit adjustment or a restatement costs more in fees and delay than a few months of a plan, and it tends to surface during a raise or a first audit. The Starter plan is sized for seed-stage budgets.",
     },
     {
       question: "We're not ready for this level of complexity.",
       answer:
-        "That's precisely when you need us most. Building the right foundation now prevents painful (and expensive) corrections later. We've seen companies spend 3x more fixing problems than they would have spent preventing them.",
+        "Early is when an accounting position is cheapest to set. A token grant or a revenue policy documented when it's signed takes one memo. The same question reconstructed two years later, in the middle of an audit, becomes a project.",
     },
     {
       question: "We can figure this out internally.",
       answer:
-        "Digital assets accounting evolves weekly—new tokens, new regulations, new FASB guidance. Our team lives and breathes this space daily. We bring insights from working with dozens of similar companies that internal teams simply can't replicate.",
+        "You might. The guidance keeps moving, though. ASU 2023-08 changed how crypto assets are measured, and credit-based or usage-based AI pricing raises ASC 606 questions most teams haven't documented before. We research these questions every week, so you start from a finished memo instead of a blank page.",
     },
     {
       question: "We need to think about it.",
       answer:
-        "Of course. While you're evaluating, download our free guides to see our approach firsthand. Many clients tell us those resources alone saved them significant time and helped them make a more informed decision.",
+        "Take the time you need. The audit readiness checklist and the template library are free, and they show how we approach the work before you commit to anything.",
     },
     {
       question: "We're too small for this service.",
       answer:
-        "We work with companies from seed stage to Series C and beyond. In fact, starting early often saves the most money—you build correctly from day one rather than retrofitting later. Our Basic Plan is designed specifically for earlier-stage teams.",
+        "We work with companies from seed through Series C and later. Starting early usually costs less, because you set each policy once instead of retrofitting it before an audit. The Starter plan is built for early teams.",
     },
   ]
 
   const whyChooseUs = [
     {
-      title: "Audit-Ready from Day One",
+      title: "Written for the auditor who reads it",
       description:
-        "Sleep soundly knowing your books will withstand any audit. We build documentation and processes that satisfy even the most rigorous Big 4 scrutiny.",
+        "Every position comes with the memo, the supporting calculation, the journal entries, and the disclosure. Andrei trained at KPMG, so the work is prepared the way a Big 4 reviewer expects to see it.",
     },
     {
-      title: "Predictable Monthly Investment",
+      title: "A set monthly fee",
       description:
-        "No surprise invoices. Our flat-rate plans let you budget with confidence and scale services as your needs evolve.",
+        "Each plan has a fixed price and an hour allowance, so you know the cost before the month starts.",
     },
     {
-      title: "Flex with Your Business",
+      title: "Sized to the quarter you're in",
       description:
-        "Launching a new token? Preparing for a raise? Our engagement adapts to your priorities—ramp up or down as needed.",
+        "A token launch, a priced round, or a first audit can change the workload for a few months. Move up a plan for that stretch and back down when it's over.",
     },
     {
-      title: "Direct Partner Access",
+      title: "You work with the founder",
       description:
-        "Skip the junior staff. Every client gets direct access to our senior leadership for strategic decisions and complex questions.",
+        "Andrei handles every engagement himself. The person who researches your question is the person who explains the answer to your auditor.",
     },
   ]
 
   const howItWorks = [
     {
       step: "01",
-      title: "Choose your plan",
-      description:
-        "Select the tier that matches your current needs. Upgrade or downgrade anytime as your business evolves.",
+      title: "Choose a plan",
+      description: "Pick the tier that fits this quarter's workload. You can change it at the start of any month.",
     },
     {
       step: "02",
-      title: "Submit your request",
-      description: "Tell us what you need and when. Our team triages within 24 hours and assigns the right expertise.",
+      title: "Send the request",
+      description: "Tell us what you need and when you need it. We reply within 24 hours with a scope and a delivery date.",
     },
     {
       step: "03",
-      title: "Receive your deliverable",
+      title: "Get the deliverable",
       description:
-        "We work transparently, keeping you updated until you have exactly what you need—on time, every time.",
+        "You receive the memo, schedule, or financial statements, and we stay on the thread until your auditor has no further questions.",
     },
   ]
 
@@ -201,14 +200,14 @@ export default function HomePage() {
                   Helping accountants get it right
                 </p>
                 <h1 className="font-display text-6xl md:text-7xl lg:text-8xl text-white leading-[0.92] tracking-wide text-balance">
-                  Technical accounting for digital assets companies
+                  Technical accounting for digital companies
                 </h1>
               </AnimateOnScroll>
 
               <AnimateOnScroll animation="fade-in-up" delay={100}>
                 <p className="text-lg text-white/60 max-w-lg">
-                  Big 4 expertise without the price tag. We help crypto and blockchain companies navigate complex
-                  accounting challenges from token compensation to audit readiness.
+                  Big 4 expertise without the Big 4 price tag. We help Web3 protocols and AI startups get token grants,
+                  usage-based revenue, and first audits right under US GAAP.
                 </p>
               </AnimateOnScroll>
 
@@ -240,7 +239,7 @@ export default function HomePage() {
               {/* Trusted By */}
               <AnimateOnScroll animation="fade-in" delay={400}>
                 <div className="pt-10">
-                  <p className="text-white/40 text-sm mb-6">Trusted by leading Web3 companies</p>
+                  <p className="text-white/40 text-sm mb-6">Trusted by teams at</p>
                   <div className="flex flex-wrap items-center gap-10">
                     <img
                       src="/images/logos/overclock-logo.svg"
@@ -286,9 +285,7 @@ export default function HomePage() {
           <AnimateOnScroll animation="fade-in-up">
             <div className="text-center mb-16">
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Our track record</h2>
-              <p className="text-white/60 max-w-2xl mx-auto">
-                Numbers that demonstrate our commitment to client success.
-              </p>
+              <p className="text-white/60 max-w-2xl mx-auto">Since founding the practice in March 2022.</p>
             </div>
           </AnimateOnScroll>
 
@@ -310,12 +307,13 @@ export default function HomePage() {
         <div className="max-w-5xl mx-auto px-6 lg:px-8">
           <AnimateOnScroll animation="fade-in-up">
             <div className="text-center mb-20">
-              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">What does a crypto technical accountant do?</h2>
+              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">What does a technical accountant do for a digital company?</h2>
               <p className="text-white/60 max-w-2xl mx-auto">
-                A crypto technical accountant applies US GAAP to transactions standard playbooks don&apos;t cover: token
-                grants and compensation, SAFTs, staking rewards, digital assets under ASC 350-60, and DAO or foundation
-                consolidation. We write the accounting memos, prepare audit-ready financial statements, and work with your
-                auditors so your numbers hold up.
+                A technical accountant applies US GAAP to transactions the standard playbook doesn&apos;t cover. For Web3
+                teams, that means token grants, SAFTs, staking rewards, and digital assets under ASC 350-60. For AI and
+                software companies, it means usage-based and credit-based revenue under ASC 606, capitalized development
+                costs, compute commitments, and SAFEs. We write the memos, prepare audit-ready financial statements, and
+                work with your auditors until the numbers are signed off.
               </p>
             </div>
           </AnimateOnScroll>
@@ -338,7 +336,8 @@ export default function HomePage() {
             <div className="text-center mb-20">
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Why teams choose us</h2>
               <p className="text-white/60 max-w-2xl mx-auto">
-                We bring specialized expertise that general accountants simply don't have.
+                A general accountant keeps your books. We handle the transactions that need research, a written
+                position, and an auditor&apos;s sign-off.
               </p>
             </div>
           </AnimateOnScroll>
@@ -397,8 +396,8 @@ export default function HomePage() {
           <AnimateOnScroll animation="fade-in-up">
             <div className="max-w-2xl mb-20">
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">How it works</h2>
-              <p className="text-xl text-white/60">From signup to deliverable in three simple steps.</p>
-              <p className="text-white/40 mt-2">No complex onboarding. No lengthy contracts. Just results.</p>
+              <p className="text-xl text-white/60">Three steps from signup to your first deliverable.</p>
+              <p className="text-white/40 mt-2">Plans run month to month.</p>
             </div>
           </AnimateOnScroll>
 
@@ -428,9 +427,9 @@ export default function HomePage() {
         <div className="max-w-6xl mx-auto px-4 lg:px-6">
           <AnimateOnScroll animation="fade-in-up">
             <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Subscription Plans</h2>
+              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Subscription plans</h2>
               <p className="text-white/60 max-w-2xl mx-auto">
-                No hidden fees. No long-term contracts. Cancel or change plans anytime.
+                A fixed monthly price and a set number of hours. Change or cancel your plan at the start of any month.
               </p>
             </div>
           </AnimateOnScroll>
@@ -467,7 +466,7 @@ export default function HomePage() {
 
                   <Button asChild className="w-full bg-white text-black hover:bg-white/90 rounded-full">
                     <a href="https://buy.stripe.com/cN2eWK4Fqbo24vudQT" target="_blank" rel="noopener noreferrer">
-                      Get Started
+                      Choose Starter
                     </a>
                   </Button>
                 </CardContent>
@@ -478,7 +477,7 @@ export default function HomePage() {
             <AnimateOnScroll animation="fade-in-up" delay={100}>
               <Card className="bg-white border-0 relative h-full">
                 <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                  <span className="bg-black text-white text-xs px-4 py-1 rounded-full">Most Popular</span>
+                  <span className="bg-black text-white text-xs px-4 py-1 rounded-full">Most popular</span>
                 </div>
                 <CardContent className="p-8 flex flex-col h-full">
                   <div className="mb-10">
@@ -509,7 +508,7 @@ export default function HomePage() {
 
                   <Button asChild className="w-full bg-black text-white hover:bg-black/90 rounded-full">
                     <a href="https://buy.stripe.com/5kA7ui8VG1NsaTS7sw" target="_blank" rel="noopener noreferrer">
-                      Get Started
+                      Choose Growth
                     </a>
                   </Button>
                 </CardContent>
@@ -548,7 +547,7 @@ export default function HomePage() {
 
                   <Button asChild className="w-full bg-white text-black hover:bg-white/90 rounded-full">
                     <a href="https://buy.stripe.com/fZe6qe7RC8bQgec28a" target="_blank" rel="noopener noreferrer">
-                      Get Started
+                      Choose Scale
                     </a>
                   </Button>
                 </CardContent>
@@ -559,11 +558,11 @@ export default function HomePage() {
           <AnimateOnScroll animation="fade-in-up" delay={300}>
             <div className="text-center mt-12 pt-12 border-t border-white/10">
               <p className="text-white/70 max-w-2xl mx-auto">
-                We also accept cryptocurrency payments. Please{" "}
-                <a href="#contact" className="text-white hover:underline font-medium">
-                  reach out via our contact form below
+                You can also pay in cryptocurrency.{" "}
+                <a href="#Contact" className="text-white hover:underline font-medium">
+                  Ask through the contact form
                 </a>{" "}
-                for further details.
+                and we&apos;ll send the details.
               </p>
             </div>
           </AnimateOnScroll>
@@ -578,16 +577,18 @@ export default function HomePage() {
               <CardContent className="p-8 md:p-12">
                 <div className="text-center mb-8">
                   <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">
-                    Not Ready for a Long-Term Commitment?
+                    Start with a single project
                   </h3>
                   <p className="text-white/60 max-w-2xl mx-auto mb-6">
-                    We also offer one-time test engagements to help you get started:
+                    Fixed-scope engagements for teams that want to see the work before subscribing.
                   </p>
                 </div>
 
                 <div className="flex flex-wrap justify-center gap-2 mb-10">
                   {[
                     "Customer contract review",
+                    "Usage-based revenue memo (ASC 606)",
+                    "Software capitalization memo",
                     "Lease schedule calculation",
                     "Cash flows statement preparation",
                     "Token compensation expense accrual",
@@ -595,7 +596,7 @@ export default function HomePage() {
                     "Financial model review",
                     "Financial statements preparation",
                     "Cap table update",
-                    "Workiva Implementation",
+                    "Workiva implementation",
                     "Technical accounting peer review",
                   ].map((service, i) => (
                     <span
@@ -606,7 +607,7 @@ export default function HomePage() {
                     </span>
                   ))}
                   <span className="px-3 py-1.5 bg-white/10 border border-white/20 rounded-full text-sm text-white/80 font-medium">
-                    and more...
+                    Other projects on request
                   </span>
                 </div>
 
@@ -617,7 +618,7 @@ export default function HomePage() {
                     className="w-full sm:w-auto border-white/20 text-white hover:bg-white/10 rounded-full px-8 bg-transparent"
                   >
                     <a href="https://cal.com/andrew-belonogov/30min" target="_blank" rel="noopener noreferrer">
-                      Schedule a Call
+                      Scope a project
                     </a>
                   </Button>
                 </div>
@@ -649,9 +650,9 @@ export default function HomePage() {
               <div className="mb-10">
                 <MeshGradientMascot variant="silver" />
               </div>
-              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Common Objections Library</h2>
+              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Questions teams ask before signing</h2>
               <p className="text-white/60 max-w-2xl mx-auto">
-                We've heard it all. Here's what we tell prospective clients who are on the fence.
+                The concerns that come up most on intro calls, and how we answer them.
               </p>
             </div>
           </AnimateOnScroll>

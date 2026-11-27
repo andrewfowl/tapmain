@@ -46,8 +46,8 @@ export function SiteFooter() {
               <span className="text-2xl font-bold tracking-tight uppercase">TechAccountingPro</span>
             </Link>
             <p className="text-white/60 mb-8 max-w-lg leading-relaxed">
-              Empowering technology startups and crypto accountants with cutting-edge solutions. Big-4 experience at a
-              fraction of the price.
+              Technical accounting and financial reporting for Web3 and AI companies. Big 4 experience, delivered by
+              the founder on a monthly plan.
             </p>
             <div className="flex flex-col gap-4">
               <div className="flex items-center gap-3">
@@ -72,7 +72,7 @@ export function SiteFooter() {
           <div>
             <h3 className="text-lg font-semibold mb-6">Subscribe to our newsletter</h3>
             <p className="text-white/60 mb-6 text-sm leading-relaxed">
-              Get the latest insights in technology accounting and crypto finance.
+              New posts on accounting for digital assets, AI, and software companies.
             </p>
             <NewsletterForm source="footer" placeholder="Your email" buttonText="Subscribe" />
           </div>

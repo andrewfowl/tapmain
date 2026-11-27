@@ -14,6 +14,8 @@ const segments = [
   "Protocol developers",
   "Foundations & DAOs",
   "Proof-of-stake validators",
+  "AI startups",
+  "SaaS and software companies",
   "Accounting firms",
   "Fractional CFOs",
 ]
@@ -52,8 +54,8 @@ export function AboutSection() {
             </h2>
             <p className="mt-6 text-lg leading-relaxed text-white/60">
               TechAccountingPro is an independent technical accounting and financial reporting practice for digital
-              asset and technology businesses. We connect accounting research with the documentation, calculations, and
-              implementation needed to move forward.
+              companies: Web3 protocols, AI startups, and the software businesses around them. We connect accounting
+              research with the documentation, calculations, and implementation needed to move forward.
             </p>
           </div>
         </AnimateOnScroll>
@@ -97,13 +99,15 @@ export function AboutSection() {
             <div className="flex flex-col gap-5 text-lg leading-relaxed text-white/60">
               <p>
                 Every engagement is delivered by Andrei directly. You work with the professional researching your
-                accounting questions, preparing the deliverables, and explaining the conclusions — no hand-offs to
-                junior staff.
+                accounting questions, preparing the deliverables, and explaining the conclusions. Nothing is handed
+                off to junior staff.
               </p>
               <p>
                 {"Andrei's"} interest in digital assets began while researching an accounting question whose
-                complexity drew him deeper into blockchain and financial reporting. Today he combines that research
-                focus with practical support through transactions, reporting deadlines, and audits.
+                complexity drew him deeper into blockchain and financial reporting. AI companies now bring him the same
+                kind of problem: pricing models the standards didn&apos;t anticipate, large compute commitments, and
+                development costs that need a capitalization policy. He applies the same research to both, with
+                practical support through transactions, reporting deadlines, and audits.
               </p>
               <p className="text-base">
                 Connect with <ExternalLink href="https://www.linkedin.com/in/andrewbelonogov">Andrei on LinkedIn</ExternalLink>,
@@ -119,8 +123,8 @@ export function AboutSection() {
             <div>
               <h3 className="mb-3 text-xl font-semibold text-white">Who we work with</h3>
               <p className="mb-6 leading-relaxed text-white/60">
-                CFOs, controllers, and finance leaders who need specialized support alongside their team — often ahead
-                of an audit, financing, reporting deadline, or new token arrangement.
+                CFOs, controllers, and finance leaders who need specialized support alongside their team, usually ahead
+                of an audit, a financing, a token launch, or a new pricing model.
               </p>
               <ul className="flex flex-wrap gap-2">
                 {segments.map((segment) => (

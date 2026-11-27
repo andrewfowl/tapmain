@@ -31,7 +31,9 @@ export const ORGANIZATION = {
     "Digital asset accounting (ASC 350-60)",
     "US GAAP technical accounting",
     "Token compensation accounting",
-    "Revenue recognition (ASC 606)",
+    "AI company accounting",
+    "Usage-based revenue recognition (ASC 606)",
+    "Software development cost capitalization",
     "Audit readiness",
   ],
   hasOfferCatalog: {

@@ -23,9 +23,10 @@ export const SERVICES: Service[] = [
     slug: "accounting-strategy",
     title: "Accounting Strategy",
     summary:
-      "We assess the accounting impact of contracts, transactions, and strategic decisions before they happen, from ASC 606 contract structuring to going concern evaluations and first-of-their-kind questions.",
+      "We assess the accounting impact of contracts, transactions, and strategic decisions before they happen, from ASC 606 structuring for usage-based and credit-based pricing to going concern evaluations and first-of-their-kind questions.",
     items: [
       "Customer contract structuring under ASC 606",
+      "Usage-based, credit-based, and hybrid AI pricing models",
       "Going concern evaluation",
       "Assessment of accounting implications for external events and internal initiatives",
       "Unique, first-of-their-kind accounting challenges",
@@ -36,11 +37,12 @@ export const SERVICES: Service[] = [
     slug: "technical-accounting",
     title: "Technical Accounting",
     summary:
-      "We write the technical accounting memos auditors expect for complex transactions: business combinations, equity and debt issuances, SAFEs, consolidation, derivatives, and software revenue.",
+      "We write the technical accounting memos auditors expect for complex transactions: business combinations, equity and debt issuances, SAFEs, consolidation, derivatives, software and AI model development costs, and compute commitments.",
     items: [
       "Business combinations, asset acquisitions, and acqui-hires",
       "Issuance of equity, debt, or SAFEs",
-      "Software development cost capitalization and amortization",
+      "Software and AI model development cost capitalization and amortization",
+      "GPU and cloud compute commitments, including embedded leases (ASC 842)",
       "Consolidation: VIE, equity method investments",
       "Derivatives",
       "Pricing vendor valuation methodology review",

@@ -31,9 +31,9 @@ const bebas = Bebas_Neue({
   display: "swap",
 });
 
-const SITE_TITLE = "Crypto & Digital Asset Technical Accounting | US GAAP, Audit Readiness – TechAccountingPro"
+const SITE_TITLE = "Technical Accounting for Web3 and AI Companies | US GAAP, Audit Readiness – TechAccountingPro"
 const SITE_DESCRIPTION =
-  "Audit-ready US GAAP reporting for crypto and Web3 companies, led by a former KPMG PhD, CPA. Token compensation, revenue recognition, technical memos and audit support on a simple subscription."
+  "Audit-ready US GAAP reporting for Web3 and AI companies, led by a former KPMG PhD, CPA. Token and stock compensation, usage-based revenue, technical memos, and audit support on a monthly plan."
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://techaccountingpro.com"),
