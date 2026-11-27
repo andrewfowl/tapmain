@@ -1,6 +1,7 @@
 import type React from "react";
 import type { Metadata } from "next";
-import { Inter, JetBrains_Mono } from "next/font/google";
+import { Inter, JetBrains_Mono, Bebas_Neue } from "next/font/google";
+import { ThemeProvider } from "@/components/theme-provider";
 import Script from "next/script";
 import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
@@ -20,6 +21,13 @@ const inter = Inter({
 const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
   variable: "--font-jetbrains-mono",
+  display: "swap",
+});
+
+const bebas = Bebas_Neue({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-bebas",
   display: "swap",
 });
 
@@ -59,7 +67,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="light" suppressHydrationWarning>
       <head>
         <Script
           id="gtm-init"
@@ -118,8 +126,9 @@ export default function RootLayout({
           />
         </noscript>
       </head>
-      <body className={`${inter.variable} ${jetbrainsMono.variable} font-sans`}>
+      <body className={`${inter.variable} ${jetbrainsMono.variable} ${bebas.variable} font-sans`}>
         <JsonLd data={ORGANIZATION} />
+        <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false} disableTransitionOnChange>
         <ClientAppWrapper>
           <noscript>
             <iframe
@@ -137,6 +146,7 @@ export default function RootLayout({
           <Analytics />
           <AttributionCapture />
         </ClientAppWrapper>
+        </ThemeProvider>
 
         <Script
           id="linkedin-insight"

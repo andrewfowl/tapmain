@@ -46,7 +46,7 @@ export function WelcomeChat() {
       {mounted && <ChatPanel open={open} onClose={closeChat} />}
 
       {teaser && !open && (
-        <div className="animate-chat-in fixed bottom-20 right-5 z-[90] flex max-w-[260px] items-start gap-2 rounded-2xl rounded-br-md border border-white/10 bg-[#0d0d0d] p-3 text-sm text-white/80 shadow-xl shadow-black/50">
+        <div className="animate-chat-in fixed bottom-20 right-5 z-[90] flex max-w-[260px] items-start gap-2 rounded-2xl rounded-br-md border border-white/10 bg-card p-3 text-sm text-white/80 shadow-xl shadow-black/50">
           <button type="button" onClick={openChat} className="text-left">
             Questions about crypto accounting or audit readiness? Ask us.
           </button>

@@ -5,6 +5,7 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { BOOKING_URL } from "@/lib/site"
+import { ThemeToggle } from "@/components/theme-toggle"
 
 export function SiteHeader() {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -36,14 +37,17 @@ export function SiteHeader() {
           <Link href="/" className="flex items-center gap-3" aria-label="TechAccountingPro home">
             <span
               aria-hidden="true"
-              className="flex h-9 items-center rounded-md bg-brand-charcoal px-2.5 text-base font-black tracking-tight text-brand ring-1 ring-white/10"
+              className="flex h-10 w-10 items-center justify-center bg-brand font-display text-xl leading-none text-brand-charcoal"
             >
               TAP
             </span>
-            <span className="hidden sm:inline text-lg font-semibold tracking-tight text-white">TechAccountingPro</span>
+            <span className="hidden sm:inline font-display text-2xl leading-none tracking-wide text-white">
+              TechAccountingPro
+            </span>
           </Link>
 
           <div className="flex items-center gap-3">
+            <ThemeToggle />
             <Button
               asChild
               variant="outline"

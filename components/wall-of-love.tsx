@@ -186,8 +186,8 @@ function ScrollingColumn({
 
   return (
     <div className="h-[600px] overflow-hidden relative">
-      <div className="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-[#0a0a0a] to-transparent z-10 pointer-events-none" />
-      <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-[#0a0a0a] to-transparent z-10 pointer-events-none" />
+      <div className="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-background to-transparent z-10 pointer-events-none" />
+      <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-background to-transparent z-10 pointer-events-none" />
 
       <div
         className={`flex flex-col ${reverse ? "animate-scroll-down" : "animate-scroll-up"}`}
@@ -209,7 +209,7 @@ export function WallOfLove() {
   const columns = splitIntoColumns(testimonials, 3)
 
   return (
-    <section className="py-24 bg-[#0a0a0a] overflow-hidden">
+    <section className="py-24 bg-background overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 lg:px-8 mb-16">
         <AnimateOnScroll animation="fade-in-up">
           <div className="text-center">

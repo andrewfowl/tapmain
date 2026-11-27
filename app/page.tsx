@@ -180,15 +180,27 @@ export default function HomePage() {
   ]
 
   return (
-    <main className="bg-black min-h-screen">
+    <main className="brand-headings bg-black min-h-screen">
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center pt-24">
-        <div className="max-w-5xl mx-auto px-6 lg:px-8 py-32">
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-24">
+        <div aria-hidden="true" className="pointer-events-none absolute -right-48 -top-48 hidden md:block">
+          {[760, 600, 440, 280].map((size) => (
+            <span
+              key={size}
+              className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full border border-brand/40"
+              style={{ width: size, height: size }}
+            />
+          ))}
+        </div>
+        <div className="relative max-w-5xl mx-auto px-6 lg:px-8 py-32">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
             {/* Left Column - Hero Content */}
             <div className="space-y-10">
               <AnimateOnScroll animation="fade-in-up">
-                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
+                <p className="mb-6 inline-block bg-brand light:bg-brand/45 px-3 py-1.5 text-xs font-bold uppercase tracking-[0.2em] text-brand-charcoal">
+                  Helping accountants get it right
+                </p>
+                <h1 className="font-display text-6xl md:text-7xl lg:text-8xl text-white leading-[0.92] tracking-wide text-balance">
                   Technical accounting for digital assets companies
                 </h1>
               </AnimateOnScroll>
@@ -233,7 +245,12 @@ export default function HomePage() {
                     <img
                       src="/images/logos/overclock-logo.svg"
                       alt="Overclock"
-                      className="h-6 opacity-50 hover:opacity-100 transition-opacity inverse"
+                      className="h-6 opacity-50 hover:opacity-100 transition-opacity light:invert"
+                    />
+                    <img
+                      src="/images/logos/alt5-logo.png"
+                      alt="Alt5 Sigma"
+                      className="h-6 w-auto opacity-50 hover:opacity-100 transition-opacity light:invert light:hue-rotate-180"
                     />
                     <img
                       src="/images/logos/figment-logo.svg"
@@ -248,7 +265,7 @@ export default function HomePage() {
                     <img
                       src="/images/logos/aragon-logo.svg"
                       alt="Aragon"
-                      className="h-6 opacity-50 hover:opacity-100 transition-opacity"
+                      className="h-6 opacity-50 hover:opacity-100 transition-opacity light:invert"
                     />
                   </div>
                 </div>

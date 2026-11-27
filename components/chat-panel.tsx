@@ -100,13 +100,13 @@ export function ChatPanel({ open, onClose }: { open: boolean; onClose: () => voi
       id="tap-chat-panel"
       aria-label="Chat with TechAccountingPro assistant"
       hidden={!open}
-      className="animate-chat-in fixed inset-x-3 bottom-20 z-[90] flex h-[min(70dvh,560px)] flex-col overflow-hidden rounded-2xl border border-white/10 bg-[#0d0d0d] shadow-2xl shadow-black/60 sm:inset-x-auto sm:right-5 sm:w-[380px]"
+      className="animate-chat-in fixed inset-x-3 bottom-20 z-[90] flex h-[min(70dvh,560px)] flex-col overflow-hidden rounded-2xl border border-white/10 bg-card shadow-2xl shadow-black/60 sm:inset-x-auto sm:right-5 sm:w-[380px]"
     >
       <header className="flex items-center justify-between gap-3 border-b border-white/10 px-4 py-3">
         <div className="flex items-center gap-2.5">
           <span
             aria-hidden
-            className="flex h-7 items-center rounded-md bg-[#231f20] px-1.5 text-xs font-black tracking-tight text-[#FFDF1B] ring-1 ring-white/10"
+            className="flex h-7 w-7 items-center justify-center bg-brand font-display text-sm leading-none text-brand-charcoal"
           >
             TAP
           </span>

@@ -1,40 +1,26 @@
 "use client"
 
-import * as React from "react"
+import { useEffect, useState } from "react"
 import { Moon, Sun } from "lucide-react"
 import { useTheme } from "next-themes"
-import { Button } from "@/components/ui/button"
 
 export function ThemeToggle() {
-  const { theme, setTheme } = useTheme()
-  const [mounted, setMounted] = React.useState(false)
+  const { resolvedTheme, setTheme } = useTheme()
+  const [mounted, setMounted] = useState(false)
 
-  // Avoid hydration mismatch
-  React.useEffect(() => {
-    setMounted(true)
-  }, [])
+  useEffect(() => setMounted(true), [])
 
-  if (!mounted) {
-    return (
-      <Button variant="ghost" size="icon" className="w-10 h-10" disabled>
-        <Sun className="h-5 w-5" />
-      </Button>
-    )
-  }
+  const isDark = mounted && resolvedTheme === "dark"
 
   return (
-    <Button
-      variant="ghost"
-      size="icon"
-      onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-      className="w-10 h-10 hover:bg-corporate-100 dark:hover:bg-corporate-200 transition-colors duration-200"
-      aria-label="Toggle theme"
+    <button
+      type="button"
+      onClick={() => setTheme(isDark ? "light" : "dark")}
+      disabled={!mounted}
+      aria-label={isDark ? "Switch to light theme" : "Switch to dark theme"}
+      className="flex h-9 w-9 items-center justify-center rounded-full border border-white/15 text-white/70 transition-colors hover:bg-white/10 hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
     >
-      {theme === "dark" ? (
-        <Sun className="h-5 w-5 text-[#fede17] transition-all" />
-      ) : (
-        <Moon className="h-5 w-5 text-corporate-700 transition-all" />
-      )}
-    </Button>
+      {isDark ? <Sun className="h-4 w-4" aria-hidden /> : <Moon className="h-4 w-4" aria-hidden />}
+    </button>
   )
 }
