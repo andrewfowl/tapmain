@@ -15,26 +15,33 @@ export function AnimateOnScroll({
   animation = "fade-in-up",
   delay = 0,
   className = "",
-  threshold = 0.1,
+  threshold = 0,
 }: AnimateOnScrollProps) {
   const ref = useRef<HTMLDivElement>(null)
   const [isVisible, setIsVisible] = useState(false)
 
   useEffect(() => {
+    const el = ref.current
+    if (!el) return
+
+    // Content already on screen (or with reduced motion) shows immediately instead of blinking in.
+    const alreadyInView = el.getBoundingClientRect().top < window.innerHeight
+    if (alreadyInView || window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      setIsVisible(true)
+      return
+    }
+
+    // Start the reveal before the section reaches the viewport so it never scrolls in blank.
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
           setIsVisible(true)
-          observer.unobserve(entry.target)
+          observer.disconnect()
         }
       },
-      { threshold },
+      { threshold, rootMargin: "0px 0px 20% 0px" },
     )
-
-    if (ref.current) {
-      observer.observe(ref.current)
-    }
-
+    observer.observe(el)
     return () => observer.disconnect()
   }, [threshold])
 

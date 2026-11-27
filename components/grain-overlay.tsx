@@ -7,6 +7,8 @@ export function GrainOverlay() {
         backgroundSize: "256px 256px",
         opacity: 0.035,
         transform: "translateZ(0)",
+        willChange: "transform",
+        contain: "strict",
       }}
       aria-hidden="true"
     />

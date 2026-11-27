@@ -28,8 +28,8 @@ export function SiteHeader() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? "bg-black/90 backdrop-blur-md border-b border-white/10" : "bg-transparent"
+      className={`fixed top-0 left-0 right-0 z-50 border-b transition-[background-color,border-color] duration-300 ${
+        isScrolled ? "bg-black/95 border-white/10" : "bg-transparent border-transparent"
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
